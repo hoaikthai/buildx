@@ -5,7 +5,21 @@ import {useTranslations} from 'next-intl';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 
-const NAV_KEYS = ['about', 'bim', 'design', 'construction', 'pricing', 'news', 'contact'] as const;
+const NAV_SECTIONS = [
+  {key: 'about', idx: 1},
+  {key: 'bim', idx: 2},
+  {key: 'design', idx: 3},
+  {key: 'construction', idx: 4},
+  {key: 'pricing', idx: 5},
+  {key: 'news', idx: 6},
+  {key: 'contact', idx: 7},
+] as const;
+
+function scrollToSection(idx: number) {
+  const container = document.querySelector('.snap-container');
+  if (!container) return;
+  container.scrollTo({top: idx * window.innerHeight, behavior: 'smooth'});
+}
 
 export default function Navbar() {
   const t = useTranslations('nav');
@@ -13,12 +27,17 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', onScroll, {passive: true});
-    return () => window.removeEventListener('scroll', onScroll);
+    const container = document.querySelector('.snap-container');
+    if (!container) return;
+    const onScroll = () => setScrolled(container.scrollTop > window.innerHeight * 0.5);
+    container.addEventListener('scroll', onScroll, {passive: true});
+    return () => container.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navItems = NAV_KEYS.map((key) => ({label: t(key), href: `#${key}`}));
+  const navItems = NAV_SECTIONS.map(({key, idx}) => ({
+    label: t(key),
+    onClick: () => scrollToSection(idx),
+  }));
 
   return (
     <>
@@ -28,7 +47,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <a href="#" className="flex-none">
+          <button className="flex-none cursor-pointer" onClick={() => scrollToSection(0)}>
             <Image
               src="/images/logo.png"
               alt="BuildX"
@@ -37,17 +56,17 @@ export default function Navbar() {
               className="object-contain"
               style={{filter: 'brightness(0) invert(1)'}}
             />
-          </a>
+          </button>
 
           <nav className="hidden lg:flex items-center gap-8">
-            {navItems.map(({label, href}) => (
-              <a
-                key={href}
-                href={href}
-                className="text-white/70 hover:text-[#FFB800] text-xs font-bold tracking-widest uppercase transition-colors"
+            {navItems.map(({label, onClick}) => (
+              <button
+                key={label}
+                onClick={onClick}
+                className="text-white/70 hover:text-[#FFB800] text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer bg-transparent border-none"
               >
                 {label}
-              </a>
+              </button>
             ))}
           </nav>
 
@@ -69,7 +88,7 @@ export default function Navbar() {
       <MobileMenu
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
-        navItems={navItems}
+        navItems={navItems.map(({label, onClick}) => ({label, onClick}))}
       />
     </>
   );

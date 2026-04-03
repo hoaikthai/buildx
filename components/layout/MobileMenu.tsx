@@ -6,7 +6,7 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 interface MobileMenuProps {
   open: boolean;
   onClose: () => void;
-  navItems: {label: string; href: string}[];
+  navItems: {label: string; onClick: () => void}[];
 }
 
 export default function MobileMenu({open, onClose, navItems}: MobileMenuProps) {
@@ -36,18 +36,17 @@ export default function MobileMenu({open, onClose, navItems}: MobileMenuProps) {
           </div>
 
           <nav className="flex flex-col items-center justify-center flex-1 gap-8">
-            {navItems.map(({label, href}, i) => (
-              <motion.a
-                key={href}
-                href={href}
-                onClick={onClose}
+            {navItems.map(({label, onClick}, i) => (
+              <motion.button
+                key={label}
+                onClick={() => { onClick(); onClose(); }}
                 initial={{opacity: 0, x: -20}}
                 animate={{opacity: 1, x: 0}}
                 transition={{delay: i * 0.07}}
-                className="text-white text-2xl font-bold tracking-widest uppercase hover:text-[#FFB800] transition-colors"
+                className="text-white text-2xl font-bold tracking-widest uppercase hover:text-[#FFB800] transition-colors cursor-pointer bg-transparent border-none"
               >
                 {label}
-              </motion.a>
+              </motion.button>
             ))}
           </nav>
 

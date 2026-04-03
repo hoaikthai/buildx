@@ -1,7 +1,6 @@
 import {setRequestLocale} from 'next-intl/server';
 import Navbar from '@/components/layout/Navbar';
 import SideNav from '@/components/layout/SideNav';
-import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
 import BimSection from '@/components/sections/BimSection';
@@ -19,9 +18,12 @@ export default async function HomePage({params}: Props) {
 
   return (
     <>
+      {/* Fixed elements that sit above the scroll container */}
       <Navbar />
       <SideNav />
-      <main>
+
+      {/* Snap container — the actual scroll surface */}
+      <div className="snap-container">
         <HeroSection />
         <AboutSection />
         <BimSection />
@@ -30,8 +32,7 @@ export default async function HomePage({params}: Props) {
         <PricingSection />
         <NewsSection />
         <ContactSection />
-      </main>
-      <Footer />
+      </div>
     </>
   );
 }
