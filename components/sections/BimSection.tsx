@@ -3,7 +3,6 @@ import {useCallback} from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
 import {useTranslations} from 'next-intl';
-import SectionTitle from '@/components/ui/SectionTitle';
 import AnimatedText from '@/components/ui/AnimatedText';
 
 const BIM_IMAGES = [
@@ -20,29 +19,56 @@ export default function BimSection() {
   const next = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section id="bim" className="py-24 md:py-32 bg-[#0f0f0f]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <section id="bim" className="snap-section flex items-center bg-[#0d0d0d]">
+      <div className="w-full max-w-7xl mx-auto px-8 md:px-16 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <AnimatedText>
-            <SectionTitle title={t('title')} label="BIM" />
-            <p className="text-[#FFB800] font-bold text-lg mb-4">{t('subtitle')}</p>
-            <p className="text-white/70 leading-relaxed mb-8">{t('description')}</p>
-            <ul className="space-y-3">
+            <p className="text-[#FFB800] text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
+              BIM SOLUTIONS
+            </p>
+            <h2
+              className="text-white font-bold mb-6 leading-none"
+              style={{fontSize: 'clamp(2.5rem, 4.5vw, 4rem)'}}
+            >
+              {t('title')}
+            </h2>
+            <div className="w-12 h-px bg-[#FFB800] mb-8" />
+            <p className="text-[#FFB800] font-semibold mb-4" style={{fontSize: '1.05rem'}}>
+              {t('subtitle')}
+            </p>
+            <p className="text-white/60 leading-relaxed mb-10" style={{fontSize: '0.95rem'}}>
+              {t('description')}
+            </p>
+            <ul className="space-y-4">
               {features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-3 text-white/80">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800] flex-none" />
-                  {feature}
+                <li key={i} className="flex items-center gap-4 text-white/80">
+                  <span
+                    className="flex-none text-[#FFB800] font-bold"
+                    style={{fontSize: '1.1rem'}}
+                  >
+                    0{i + 1}
+                  </span>
+                  <span className="w-6 h-px bg-[#FFB800]/40 flex-none" />
+                  <span style={{fontSize: '0.95rem'}}>{feature}</span>
                 </li>
               ))}
             </ul>
           </AnimatedText>
 
           <AnimatedText delay={0.15}>
-            <div className="relative">
-              <div className="overflow-hidden" ref={emblaRef}>
+            <div>
+              <div
+                className="overflow-hidden"
+                ref={emblaRef}
+                style={{borderRadius: '2px'}}
+              >
                 <div className="flex">
                   {BIM_IMAGES.map((img, i) => (
-                    <div key={i} className="flex-none w-full relative aspect-video">
+                    <div
+                      key={i}
+                      className="flex-none w-full relative"
+                      style={{aspectRatio: '16/9'}}
+                    >
                       <Image
                         src={`/images/${img}`}
                         alt={`BIM project ${i + 1}`}
@@ -53,21 +79,38 @@ export default function BimSection() {
                   ))}
                 </div>
               </div>
-              <div className="flex gap-3 mt-4 justify-end">
-                <button
-                  onClick={prev}
-                  className="w-10 h-10 border border-white/20 hover:border-[#FFB800] text-white/60 hover:text-[#FFB800] transition-all flex items-center justify-center cursor-pointer"
-                  aria-label="Previous"
-                >
-                  ←
-                </button>
-                <button
-                  onClick={next}
-                  className="w-10 h-10 border border-white/20 hover:border-[#FFB800] text-white/60 hover:text-[#FFB800] transition-all flex items-center justify-center cursor-pointer"
-                  aria-label="Next"
-                >
-                  →
-                </button>
+              <div className="flex items-center justify-between mt-5">
+                <span className="text-white/30 text-xs" style={{letterSpacing: '3px'}}>
+                  DRAG TO EXPLORE
+                </span>
+                <div className="flex gap-2">
+                  <button
+                    onClick={prev}
+                    className="flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-[#FFB800] hover:text-black"
+                    style={{
+                      width: '44px', height: '44px',
+                      border: '1px solid rgba(255,255,255,0.2)',
+                      color: 'rgba(255,255,255,0.6)',
+                      fontSize: '18px',
+                    }}
+                    aria-label="Previous"
+                  >
+                    ←
+                  </button>
+                  <button
+                    onClick={next}
+                    className="flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-[#FFB800] hover:text-black"
+                    style={{
+                      width: '44px', height: '44px',
+                      border: '1px solid rgba(255,255,255,0.2)',
+                      color: 'rgba(255,255,255,0.6)',
+                      fontSize: '18px',
+                    }}
+                    aria-label="Next"
+                  >
+                    →
+                  </button>
+                </div>
               </div>
             </div>
           </AnimatedText>

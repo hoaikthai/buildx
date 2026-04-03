@@ -7,7 +7,7 @@ export default function HeroSection() {
   const t = useTranslations('hero');
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section className="snap-section relative w-full flex items-center justify-center overflow-hidden" style={{height: '100svh'}}>
       <Image
         src="/images/hero-bg.png"
         alt="BuildX Hero"
@@ -15,20 +15,25 @@ export default function HeroSection() {
         priority
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-black/65" />
+      <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.8) 100%)'}} />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-8 text-center">
         <motion.div
           initial={{scaleX: 0}}
           animate={{scaleX: 1}}
-          transition={{duration: 0.8}}
-          className="w-12 h-0.5 bg-[#FFB800] mx-auto mb-8 origin-left"
+          transition={{duration: 1, ease: 'easeOut'}}
+          className="w-16 h-px bg-[#FFB800] mx-auto mb-10 origin-left"
         />
         <motion.p
-          initial={{opacity: 0, y: 30}}
+          initial={{opacity: 0, y: 40}}
           animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.9, delay: 0.3}}
-          className="text-white text-lg md:text-xl lg:text-2xl leading-relaxed font-light max-w-3xl mx-auto mb-10"
+          transition={{duration: 1, delay: 0.4, ease: 'easeOut'}}
+          className="text-white leading-relaxed font-light mx-auto mb-12"
+          style={{
+            fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
+            maxWidth: '820px',
+            letterSpacing: '0.02em',
+          }}
         >
           {t('headline')}
         </motion.p>
@@ -36,20 +41,25 @@ export default function HeroSection() {
           href="#about"
           initial={{opacity: 0, y: 20}}
           animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.7, delay: 0.7}}
-          className="inline-block border border-[#FFB800] text-[#FFB800] px-8 py-3 text-xs font-bold tracking-[3px] uppercase hover:bg-[#FFB800] hover:text-black transition-all duration-300"
+          transition={{duration: 0.8, delay: 0.9}}
+          className="inline-block text-[#FFB800] px-10 py-4 text-xs font-bold uppercase transition-all duration-300 hover:bg-[#FFB800] hover:text-black"
+          style={{
+            border: '1px solid #FFB800',
+            letterSpacing: '4px',
+          }}
         >
           {t('cta')}
         </motion.a>
       </div>
 
       <motion.div
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        transition={{delay: 1.2, duration: 0.8}}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        initial={{opacity: 0, y: 10}}
+        animate={{opacity: 1, y: 0}}
+        transition={{delay: 1.5, duration: 1, repeat: Infinity, repeatType: 'reverse'}}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <div className="w-px h-12 bg-gradient-to-b from-transparent to-[#FFB800]" />
+        <span className="text-white/30 text-[10px] tracking-[4px] uppercase">Scroll</span>
+        <div className="w-px h-10 bg-gradient-to-b from-white/30 to-[#FFB800]" />
       </motion.div>
     </section>
   );

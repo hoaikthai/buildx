@@ -1,43 +1,56 @@
 import Image from 'next/image';
 import {useTranslations} from 'next-intl';
-import SectionTitle from '@/components/ui/SectionTitle';
 import AnimatedText from '@/components/ui/AnimatedText';
 
 export default function AboutSection() {
   const t = useTranslations('about');
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-[#111]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="snap-section flex items-center bg-[#111]">
+      <div className="w-full max-w-7xl mx-auto px-8 md:px-16 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <AnimatedText>
-            <SectionTitle title={t('title')} />
-            <div className="space-y-10">
+            <p className="text-[#FFB800] text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
+              BUILDX
+            </p>
+            <h2
+              className="text-white font-bold mb-10 leading-none"
+              style={{fontSize: 'clamp(2.5rem, 5vw, 4.5rem)'}}
+            >
+              {t('title')}
+            </h2>
+            <div className="w-12 h-px bg-[#FFB800] mb-10" />
+            <div className="space-y-8">
               <div>
-                <p className="text-[#FFB800] text-xs font-bold tracking-[3px] uppercase mb-3">
-                  {t('vision_label')}
+                <p className="text-[#FFB800] text-xs font-bold mb-3" style={{letterSpacing: '4px'}}>
+                  {t('vision_label').toUpperCase()}
                 </p>
-                <p className="text-white/80 leading-relaxed">{t('vision')}</p>
+                <p className="text-white/70 leading-relaxed" style={{fontSize: '1rem'}}>
+                  {t('vision')}
+                </p>
               </div>
               <div>
-                <p className="text-[#FFB800] text-xs font-bold tracking-[3px] uppercase mb-3">
-                  {t('mission_label')}
+                <p className="text-[#FFB800] text-xs font-bold mb-3" style={{letterSpacing: '4px'}}>
+                  {t('mission_label').toUpperCase()}
                 </p>
-                <p className="text-white/80 leading-relaxed">{t('mission')}</p>
+                <p className="text-white/70 leading-relaxed" style={{fontSize: '1rem'}}>
+                  {t('mission')}
+                </p>
               </div>
             </div>
           </AnimatedText>
 
           <AnimatedText delay={0.2}>
-            <div className="relative aspect-square max-w-lg mx-auto lg:mx-0">
+            <div className="relative" style={{aspectRatio: '1/1', maxWidth: '520px', margin: '0 auto'}}>
               <Image
                 src="/images/about.png"
                 alt="About BuildX"
                 fill
                 className="object-cover"
               />
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 border-l-2 border-b-2 border-[#FFB800]" />
-              <div className="absolute -top-4 -right-4 w-24 h-24 border-r-2 border-t-2 border-[#FFB800]" />
+              {/* Gold corner accents */}
+              <div className="absolute -bottom-5 -left-5 w-28 h-28" style={{borderLeft: '2px solid #FFB800', borderBottom: '2px solid #FFB800'}} />
+              <div className="absolute -top-5 -right-5 w-28 h-28" style={{borderRight: '2px solid #FFB800', borderTop: '2px solid #FFB800'}} />
             </div>
           </AnimatedText>
         </div>
