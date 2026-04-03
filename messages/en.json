@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "about": "About",
+    "bim": "BIM Solutions",
+    "design": "Design & Consulting",
+    "construction": "Construction",
+    "pricing": "Pricing",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "hero": {
+    "headline": "In a rapidly transforming construction industry, we believe the future of every project lies not merely in steel and concrete, but originates from precise, intelligent, data-rich digital models.",
+    "cta": "Explore our services"
+  },
+  "about": {
+    "title": "About Us",
+    "vision_label": "Vision",
+    "vision": "To become Vietnam's most trusted partner in creating sustainable living and working spaces, built on superior BIM capabilities, innovative architectural-interior design, and quality construction.",
+    "mission_label": "Mission",
+    "mission": "BuildX continuously learns and innovates to deliver lasting value to clients and the community through construction, architectural, and interior projects."
+  },
+  "bim": {
+    "title": "BIM Solutions",
+    "subtitle": "Smart design & construction solutions with BIM technology at BuildX",
+    "description": "At BuildX, we apply BIM (Building Information Modeling) to manage the entire lifecycle of a project — from design and construction to operations.",
+    "features": [
+      "3D modeling of architecture, structure, and MEPF",
+      "Quantity extraction",
+      "3D clash detection",
+      "Construction methodology planning",
+      "BIM4D construction sequencing"
+    ]
+  },
+  "design": {
+    "title": "Design & Consulting",
+    "description": "BUILDX is proud to offer a wide range of high-quality services designed to meet the diverse needs of our clients.",
+    "services": [
+      {"name": "Architectural Design", "description": "Creative architectural solutions tailored to each space and need."},
+      {"name": "Structural Design", "description": "Safe, durable, and cost-optimized structural engineering."},
+      {"name": "Interior Design", "description": "Modern, refined, and cohesive interior spaces."},
+      {"name": "Exterior Design", "description": "Impressive exteriors that create a unique identity for each project."}
+    ]
+  },
+  "construction": {
+    "title": "Construction",
+    "description": "Professional construction teams ensuring project timelines and quality according to technical standards."
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Flexible solutions for every need",
+    "design_tab": "Design",
+    "bim_tab": "BIM",
+    "unit": "VND/m²",
+    "includes": "Includes",
+    "design_packages": [
+      {
+        "name": "Package 1",
+        "label": "Architectural Design",
+        "price": "150,000",
+        "items": ["Complete architectural drawings", "3D renders", "Building permit documents", "Material consultation"]
+      },
+      {
+        "name": "Package 2",
+        "label": "Interior Design",
+        "price": "150,000",
+        "items": ["Detailed interior drawings", "3D interior renders", "Material schedule", "Color consultation"]
+      },
+      {
+        "name": "Package 3",
+        "label": "Complete Design",
+        "price": "240,000",
+        "items": ["Architecture + Interior + Exterior", "Full design documentation", "Comprehensive 3D renders", "Construction support"]
+      }
+    ],
+    "bim_packages": [
+      {
+        "name": "Package 1",
+        "label": "BIM Model (LOD 300–350)",
+        "price": "15,000",
+        "items": ["3D architectural & structural model", "Quantity extraction", "2D drawings from model", "Design support"]
+      },
+      {
+        "name": "Package 2",
+        "label": "MEPF BIM Model",
+        "price": "20,000",
+        "items": ["Full MEP model", "Multi-discipline coordination", "Automated clash detection", "Coordination reports"]
+      },
+      {
+        "name": "Package 3",
+        "label": "Clash Detection & Updates",
+        "price": "10,000",
+        "items": ["Clash detection", "Detailed clash reports", "Model updates", "Resolution support"]
+      }
+    ]
+  },
+  "news": {
+    "title": "News",
+    "read_more": "Read more",
+    "articles": [
+      {
+        "title": "Logo is the core element of BuildX brand identity",
+        "excerpt": "Logo usage standards ensure that brand image remains consistent and professional across all media platforms.",
+        "image": "news-1.png"
+      },
+      {
+        "title": "BuildX officially introduces complete office identity kit",
+        "excerpt": "The product set includes: business cards, envelopes, notebooks, employee ID cards, uniforms, reflective vests, document bags, socks.",
+        "image": "news-2.png"
+      },
+      {
+        "title": "Featured project: BIM application in residential construction",
+        "excerpt": "BuildX has successfully implemented BIM for many residential projects, delivering high efficiency in construction.",
+        "image": "news-3.png"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "company": "BUILDX INVESTMENT JOINT STOCK COMPANY",
+    "address": "Xuan Thuy Street, Cam Le Ward, Da Nang City",
+    "hotline_label": "Hotline",
+    "hotline": "0236 3 79 79 39",
+    "tax_label": "Tax ID",
+    "tax": "0402135286",
+    "follow": "Follow us"
+  }
+}
