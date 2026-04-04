@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  basePath: '/buildx',
+  assetPrefix: '/buildx/',
   trailingSlash: false,
 }
 
