@@ -7,7 +7,7 @@ interface ServiceCardProps {
   index: number
 }
 
-export default function ServiceCard({
+export function ServiceCard({
   name,
   description,
   index,

@@ -8,7 +8,7 @@ interface AnimatedTextProps {
   className?: string
 }
 
-export default function AnimatedText({
+export function AnimatedText({
   children,
   delay = 0,
   className = '',

@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
-export default function Footer() {
+export function Footer() {
   const t = useTranslations('contact')
 
   return (

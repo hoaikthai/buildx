@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import { useState, useRef } from 'react'
 import { useTranslations } from 'next-intl'
-import AnimatedText from '@/components/ui/AnimatedText'
+import { AnimatedText } from '@/components/ui/AnimatedText'
 
 interface PricingPkg {
   name: string
@@ -95,7 +95,7 @@ export function PricingSection() {
               </h2>
               <div className="bg-gold mt-4 h-px w-12" />
             </div>
-            <div className="flex overflow-hidden border border-[var(--border-subtle)]">
+            <div className="flex overflow-hidden border border-(--border-subtle)">
               {(['design', 'bim'] as const).map((key) => (
                 <button
                   key={key}
@@ -178,7 +178,7 @@ export function PricingSection() {
 
                   {/* Features */}
                   <div className="p-[clamp(0.75rem,1.5vh,1.5rem)] px-8">
-                    <p className="mb-[clamp(0.5rem,1vh,1rem)] text-[0.75rem] font-bold tracking-[3px] text-[var(--text-subtle)]">
+                    <p className="mb-[clamp(0.5rem,1vh,1rem)] text-[0.75rem] font-bold tracking-[3px] text-(--text-subtle)">
                       {t('includes').toUpperCase()}
                     </p>
                     <ul className="space-y-[clamp(0.35rem,0.8vh,0.75rem)]">

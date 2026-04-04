@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import AnimatedText from '@/components/ui/AnimatedText'
+import { AnimatedText } from '@/components/ui/AnimatedText'
 
 const CARD_NUMBERS = ['01', '02', '03', '04']
 const CARD_IMAGES = [

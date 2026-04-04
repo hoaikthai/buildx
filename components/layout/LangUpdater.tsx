@@ -1,7 +1,7 @@
 'use client'
 import { useEffect } from 'react'
 
-export default function LangUpdater({ locale }: { locale: string }) {
+export function LangUpdater({ locale }: { locale: string }) {
   useEffect(() => {
     document.documentElement.lang = locale
   }, [locale])

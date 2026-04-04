@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import AnimatedText from '@/components/ui/AnimatedText'
+import { AnimatedText } from '@/components/ui/AnimatedText'
 
 export function BimSection() {
   const t = useTranslations('bim')

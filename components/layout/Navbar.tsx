@@ -84,9 +84,9 @@ export function Navbar() {
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
             >
-              <span className="block h-0.5 w-6 bg-[var(--text-primary)]" />
-              <span className="block h-0.5 w-6 bg-[var(--text-primary)]" />
-              <span className="block h-0.5 w-4 bg-[var(--text-primary)]" />
+              <span className="block h-0.5 w-6 bg-(--text-primary)" />
+              <span className="block h-0.5 w-6 bg-(--text-primary)" />
+              <span className="block h-0.5 w-4 bg-(--text-primary)" />
             </button>
           </div>
         </div>

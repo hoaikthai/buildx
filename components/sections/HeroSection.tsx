@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function HeroSection() {
+export function HeroSection() {
   return (
     <section id="home" className="snap-section z-60">
       <Image

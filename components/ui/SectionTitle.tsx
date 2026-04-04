@@ -4,7 +4,7 @@ interface SectionTitleProps {
   className?: string
 }
 
-export default function SectionTitle({
+export function SectionTitle({
   label,
   title,
   className = '',

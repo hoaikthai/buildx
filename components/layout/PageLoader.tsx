@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
-export default function PageLoader() {
+export function PageLoader() {
   const [visible, setVisible] = useState(true)
   const [fading, setFading] = useState(false)
 

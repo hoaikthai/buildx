@@ -2,8 +2,8 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import LangUpdater from '@/components/layout/LangUpdater'
-import PageLoader from '@/components/layout/PageLoader'
+import { LangUpdater } from '@/components/layout/LangUpdater'
+import { PageLoader } from '@/components/layout/PageLoader'
 import type { ReactNode } from 'react'
 
 export function generateStaticParams() {

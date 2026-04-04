@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import AnimatedText from '@/components/ui/AnimatedText'
+import { AnimatedText } from '@/components/ui/AnimatedText'
 
 export function ContactSection() {
   const t = useTranslations('contact')
@@ -79,7 +79,7 @@ export function ContactSection() {
 
           <AnimatedText delay={0.2}>
             <div
-              className="h-[480px] w-full overflow-hidden"
+              className="h-120 w-full overflow-hidden"
               style={{ filter: 'grayscale(30%)' }}
             ></div>
           </AnimatedText>
