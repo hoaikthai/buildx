@@ -15,9 +15,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: basePath,
+  basePath,
   assetPrefix: basePath,
-  trailingSlash: false,
 }
 
 export default withNextIntl(nextConfig)

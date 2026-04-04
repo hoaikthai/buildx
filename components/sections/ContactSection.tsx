@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { Image } from '@/components/ui/Image'
 import { useTranslations } from 'next-intl'
 import { AnimatedText } from '@/components/ui/AnimatedText'
 

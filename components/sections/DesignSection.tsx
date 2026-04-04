@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import Image from 'next/image'
+import { Image } from '@/components/ui/Image'
 import { AnimatedText } from '@/components/ui/AnimatedText'
 
 const CARD_NUMBERS = ['01', '02', '03', '04']
