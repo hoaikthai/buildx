@@ -4,49 +4,63 @@ import { AnimatedText } from '@/components/ui/AnimatedText'
 
 export function ConstructionSection() {
   const t = useTranslations('construction')
+  const features = t.raw('features') as string[]
+  const stats = t.raw('stats') as { value: string; label: string }[]
 
   return (
     <section
       id="construction"
-      className="snap-section flex items-center bg-[var(--bg-primary)]"
+      className="snap-section flex items-center bg-(--bg-primary)"
     >
-      <div className="w-full">
-        <div className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
+      <div className="h-full w-full">
+        <div className="grid h-full grid-cols-1 lg:grid-cols-2">
           <AnimatedText delay={0.1} className="relative">
-            <div className="relative h-full min-h-[50vh] w-full">
+            <div className="relative h-full min-h-[30vh] w-full">
               <Image
-                src="/images/bim-5.avif"
+                src="/images/construction.avif"
                 alt="Construction"
                 fill
                 className="object-cover"
               />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    'linear-gradient(to right, transparent 70%, var(--bg-primary) 100%)',
-                }}
-              />
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,transparent_70%,var(--bg-primary)_100%)]" />
             </div>
           </AnimatedText>
 
-          <AnimatedText className="flex flex-col justify-center px-12 py-20 lg:px-16">
+          <AnimatedText className="flex flex-col justify-center px-12 py-10 lg:px-16">
             <p className="text-gold mb-4 text-xs font-bold tracking-[5px]">
               CONSTRUCTION
             </p>
-            <h2
-              className="mb-6 leading-none font-bold text-(--text-primary)"
-              style={{ fontSize: 'clamp(2.5rem, 4.5vw, 4rem)' }}
-            >
+            <h2 className="mb-6 text-[clamp(2.5rem,4.5vw,4rem)] leading-none font-bold text-(--text-primary)">
               {t('title')}
             </h2>
-            <div className="bg-gold mb-8 h-px w-12" />
-            <p
-              className="max-w-[480px] leading-relaxed text-(--text-muted)"
-              style={{ fontSize: '1.05rem' }}
-            >
+            <div className="bg-gold mb-6 h-px w-12" />
+            <p className="mb-8 max-w-[480px] text-[1.05rem] leading-relaxed text-(--text-muted)">
               {t('description')}
             </p>
+
+            <ul className="mb-10 space-y-3">
+              {features.map((feature, i) => (
+                <li key={i} className="flex items-center gap-3 text-[0.95rem] text-(--text-muted)">
+                  <span className="bg-gold mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <div className="border-t border-(--border-subtle) pt-8">
+              <div className="flex gap-10">
+                {stats.map((stat, i) => (
+                  <div key={i}>
+                    <p className="text-gold text-[clamp(1.5rem,2.5vw,2rem)] font-bold leading-none">
+                      {stat.value}
+                    </p>
+                    <p className="mt-1 text-xs tracking-wide text-(--text-muted) uppercase">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </AnimatedText>
         </div>
       </div>

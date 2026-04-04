@@ -55,7 +55,18 @@
   },
   "construction": {
     "title": "Construction",
-    "description": "Professional construction teams ensuring project timelines and quality according to technical standards."
+    "description": "Professional construction teams ensuring project timelines and quality according to technical standards.",
+    "features": [
+      "Residential & villa construction",
+      "Commercial & office buildings",
+      "Industrial & warehouse facilities",
+      "Renovation & retrofitting"
+    ],
+    "stats": [
+      { "value": "50+", "label": "Projects Completed" },
+      { "value": "10+", "label": "Years Experience" },
+      { "value": "100%", "label": "On-time Delivery" }
+    ]
   },
   "pricing": {
     "title": "Pricing",

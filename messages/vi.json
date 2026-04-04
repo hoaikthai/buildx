@@ -55,7 +55,18 @@
   },
   "construction": {
     "title": "Thi công",
-    "description": "Đội ngũ thi công chuyên nghiệp, đảm bảo tiến độ và chất lượng công trình theo đúng tiêu chuẩn kỹ thuật."
+    "description": "Đội ngũ thi công chuyên nghiệp, đảm bảo tiến độ và chất lượng công trình theo đúng tiêu chuẩn kỹ thuật.",
+    "features": [
+      "Xây dựng nhà ở & biệt thự",
+      "Công trình thương mại & văn phòng",
+      "Nhà xưởng & kho bãi công nghiệp",
+      "Cải tạo & sửa chữa công trình"
+    ],
+    "stats": [
+      { "value": "50+", "label": "Dự án hoàn thành" },
+      { "value": "10+", "label": "Năm kinh nghiệm" },
+      { "value": "100%", "label": "Đúng tiến độ" }
+    ]
   },
   "pricing": {
     "title": "Bảng giá",

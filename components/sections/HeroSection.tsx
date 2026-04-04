@@ -4,7 +4,7 @@ export function HeroSection() {
   return (
     <section id="home" className="snap-section z-60">
       <Image
-        src="/images/hero-bg.avif"
+        src="/images/hero.avif"
         alt="BuildX"
         fill
         priority
