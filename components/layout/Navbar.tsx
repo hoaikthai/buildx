@@ -49,7 +49,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <button className="flex-none cursor-pointer" onClick={() => scrollToSection(0)}>
             <Image
-              src="/images/logo.png"
+              src="/images/logo.avif"
               alt="BuildX"
               width={120}
               height={45}

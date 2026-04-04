@@ -13,7 +13,7 @@ export default function ConstructionSection() {
           <AnimatedText delay={0.1} className="relative">
             <div className="relative w-full h-full" style={{minHeight: '50vh'}}>
               <Image
-                src="/images/bim-5.png"
+                src="/images/bim-5.avif"
                 alt="Construction"
                 fill
                 className="object-cover"

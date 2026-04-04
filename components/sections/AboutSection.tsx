@@ -43,7 +43,7 @@ export default function AboutSection() {
           <AnimatedText delay={0.2}>
             <div className="relative" style={{aspectRatio: '1/1', maxWidth: '520px', margin: '0 auto'}}>
               <Image
-                src="/images/about.png"
+                src="/images/about.avif"
                 alt="About BuildX"
                 fill
                 className="object-cover"

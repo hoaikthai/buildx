@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>
             <Image
-              src="/images/logo.png"
+              src="/images/logo.avif"
               alt="BuildX"
               width={120}
               height={45}

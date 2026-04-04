@@ -6,8 +6,8 @@ import {useTranslations} from 'next-intl';
 import AnimatedText from '@/components/ui/AnimatedText';
 
 const BIM_IMAGES = [
-  'bim-1.png', 'bim-2.png', 'bim-3.png', 'bim-4.png', 'bim-5.png',
-  'bim-6.png', 'bim-7.png', 'bim-8.png', 'bim-9.png', 'bim-10.png',
+  'bim-1.avif', 'bim-2.avif', 'bim-3.avif', 'bim-4.avif', 'bim-5.avif',
+  'bim-6.avif', 'bim-7.avif', 'bim-8.avif', 'bim-9.avif', 'bim-10.avif',
 ];
 
 export default function BimSection() {

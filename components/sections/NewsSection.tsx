@@ -9,14 +9,14 @@ export default function NewsSection() {
   }[];
 
   return (
-    <section id="news" className="snap-section flex items-center bg-[#0d0d0d]">
+    <section id="news" className="snap-section flex items-center bg-white">
       <div className="w-full max-w-7xl mx-auto px-8 md:px-16 py-20">
         <AnimatedText>
           <p className="text-[#FFB800] text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
             NEWS
           </p>
           <h2
-            className="text-white font-bold mb-4 leading-none"
+            className="text-[#111] font-bold mb-4 leading-none"
             style={{fontSize: 'clamp(2.5rem, 4.5vw, 4rem)'}}
           >
             {t('title')}

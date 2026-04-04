@@ -28,7 +28,7 @@ export default function PageLoader() {
     >
       <div className="flex flex-col items-center gap-6">
         <Image
-          src="/images/logo-loader.png"
+          src="/images/logo-loader.avif"
           alt="BuildX"
           width={160}
           height={60}
