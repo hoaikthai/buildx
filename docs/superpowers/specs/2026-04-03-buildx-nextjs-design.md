@@ -12,21 +12,21 @@ A faithful Next.js 16 rebuild of [buildx.vn](https://buildx.vn) — a Vietnamese
 
 ## Tech Stack
 
-| Concern | Choice |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| i18n | next-intl, `/vi` and `/en` locale prefixes, Vietnamese default |
-| Styling | Tailwind CSS v4 + CSS custom properties for gold/dark palette |
-| Fonts | Archivo via `next/font/google` |
-| Images | `next/image`, sourced from buildx.vn |
-| Animations | Framer Motion (scroll fade-ins, transitions) |
-| Carousel | Embla Carousel (pricing + BIM image sliders) |
-| Output | `next build` + `output: 'export'` (fully static) |
+| Concern    | Choice                                                         |
+| ---------- | -------------------------------------------------------------- |
+| Framework  | Next.js 16 (App Router)                                        |
+| i18n       | next-intl, `/vi` and `/en` locale prefixes, Vietnamese default |
+| Styling    | Tailwind CSS v4 + CSS custom properties for gold/dark palette  |
+| Fonts      | Archivo via `next/font/google`                                 |
+| Images     | `next/image`, sourced from buildx.vn                           |
+| Animations | Framer Motion (scroll fade-ins, transitions)                   |
+| Carousel   | Embla Carousel (pricing + BIM image sliders)                   |
+| Output     | `next build` + `output: 'export'` (fully static)               |
 
 ## Color Palette
 
 ```css
---color-gold: #FFB800;
+--color-gold: #ffb800;
 --color-dark: #111111;
 --color-dark-2: #1a1a1a;
 --color-white: #ffffff;

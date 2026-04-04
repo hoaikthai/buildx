@@ -15,17 +15,17 @@ Add a dark/light theme toggle to the BuildX site. The toggle affects every secti
 
 CSS custom properties defined in `globals.css`. Light is the `:root` default; dark overrides live in `html.dark`.
 
-| Token | Light | Dark |
-|---|---|---|
-| `--bg-primary` | `#ffffff` | `#111111` |
-| `--bg-secondary` | `#f5f5f5` | `#0d0d0d` |
-| `--bg-card` | `#ffffff` | `#1a1a1a` |
-| `--text-primary` | `#111111` | `#ffffff` |
-| `--text-muted` | `rgba(0,0,0,0.6)` | `rgba(255,255,255,0.6)` |
-| `--text-subtle` | `rgba(0,0,0,0.4)` | `rgba(255,255,255,0.3)` |
-| `--border` | `rgba(0,0,0,0.08)` | `rgba(255,255,255,0.1)` |
-| `--bg-nav` | `rgba(255,255,255,0.95)` | `rgba(17,17,17,0.95)` |
-| `--accent` | `#FFB800` | `#FFB800` |
+| Token            | Light                    | Dark                    |
+| ---------------- | ------------------------ | ----------------------- |
+| `--bg-primary`   | `#ffffff`                | `#111111`               |
+| `--bg-secondary` | `#f5f5f5`                | `#0d0d0d`               |
+| `--bg-card`      | `#ffffff`                | `#1a1a1a`               |
+| `--text-primary` | `#111111`                | `#ffffff`               |
+| `--text-muted`   | `rgba(0,0,0,0.6)`        | `rgba(255,255,255,0.6)` |
+| `--text-subtle`  | `rgba(0,0,0,0.4)`        | `rgba(255,255,255,0.3)` |
+| `--border`       | `rgba(0,0,0,0.08)`       | `rgba(255,255,255,0.1)` |
+| `--bg-nav`       | `rgba(255,255,255,0.95)` | `rgba(17,17,17,0.95)`   |
+| `--accent`       | `#FFB800`                | `#FFB800`               |
 
 The `body` background switches via `background-color: var(--bg-primary)`.
 
@@ -64,44 +64,53 @@ New file: `components/layout/ThemeToggle.tsx`
 ## Files Changed
 
 ### `globals.css`
+
 - Add `:root` block with all CSS tokens
 - Add `html.dark` block with dark overrides
 - Update `body { background-color: var(--bg-primary); color: var(--text-primary); }`
 
 ### `app/layout.tsx`
+
 - Add anti-FOUC `<script>` inside `<head>`
 
 ### `components/layout/ThemeToggle.tsx`
+
 - New component (described above)
 
 ### `components/layout/Navbar.tsx`
+
 - Import and render `<ThemeToggle />` next to `<LanguageSwitcher />`
 - Update scrolled background: add `--bg-nav` token (`rgba(255,255,255,0.95)` light / `rgba(17,17,17,0.95)` dark) to the CSS token table; replace `bg-[#111]/95` with an inline style using `var(--bg-nav)`
 
 ### `components/layout/SideNav.tsx`
+
 - Move inline styles for dot appearance into `.sidenav-dot` and `.sidenav-dot--active` classes defined in `globals.css @layer components`, using CSS vars for colors. SideNav applies these class names instead of inline styles.
 
 ### Sections (bg color only)
-| File | Old class | New class |
-|---|---|---|
-| `AboutSection` | `bg-[#111]` | `bg-[var(--bg-primary)]` |
-| `BimSection` | `bg-[#0d0d0d]` | `bg-[var(--bg-secondary)]` |
-| `DesignSection` | `bg-[#111]` | `bg-[var(--bg-primary)]` |
-| `ConstructionSection` | `bg-[#111]` | `bg-[var(--bg-primary)]` |
-| `PricingSection` | `bg-[#0d0d0d]` | `bg-[var(--bg-secondary)]` |
-| `NewsSection` | `bg-white` | `bg-[var(--bg-primary)]` |
-| `ContactSection` | `bg-[#f5f5f5]` | `bg-[var(--bg-secondary)]` |
+
+| File                  | Old class      | New class                |
+| --------------------- | -------------- | ------------------------ |
+| `AboutSection`        | `bg-[#111]`    | `bg-[var(--bg-primary)]` |
+| `BimSection`          | `bg-[#0d0d0d]` | `bg-(--bg-secondary)`    |
+| `DesignSection`       | `bg-[#111]`    | `bg-[var(--bg-primary)]` |
+| `ConstructionSection` | `bg-[#111]`    | `bg-[var(--bg-primary)]` |
+| `PricingSection`      | `bg-[#0d0d0d]` | `bg-(--bg-secondary)`    |
+| `NewsSection`         | `bg-white`     | `bg-[var(--bg-primary)]` |
+| `ContactSection`      | `bg-[#f5f5f5]` | `bg-(--bg-secondary)`    |
 
 ### Text/border colors in sections
-All hardcoded `text-white`, `text-white/60`, `text-black/60`, `border-white/10`, `bg-[#1a1a1a]` etc. replaced with CSS var equivalents using `color: var(--text-primary)` inline styles or `text-[var(--text-primary)]` Tailwind syntax.
+
+All hardcoded `text-white`, `text-white/60`, `text-black/60`, `border-white/10`, `bg-dark-2` etc. replaced with CSS var equivalents using `color: var(--text-primary)` inline styles or `text-(--text-primary)` Tailwind syntax.
 
 ### `NewsCard.tsx`
+
 - `bg-white` → `bg-[var(--bg-card)]`
-- `text-[#111]` → `text-[var(--text-primary)]`
-- `text-black/60` → `text-[var(--text-muted)]`
+- `text-[#111]` → `text-(--text-primary)`
+- `text-black/60` → `text-(--text-muted)`
 - `border-black/[0.08]` → `border-[var(--border)]`
 
 ### `ContactSection.tsx`
+
 - All `text-[#111]`, `text-black/60`, `text-black/40`, `text-black/50` → CSS var equivalents
 
 ---

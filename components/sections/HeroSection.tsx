@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
 export default function HeroSection() {
   return (
@@ -16,5 +16,5 @@ export default function HeroSection() {
         style={{background: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%)'}}
       /> */}
     </section>
-  );
+  )
 }

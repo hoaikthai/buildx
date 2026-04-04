@@ -1,9 +1,9 @@
-'use client';
-import {useEffect} from 'react';
+'use client'
+import { useEffect } from 'react'
 
-export default function LangUpdater({locale}: {locale: string}) {
+export default function LangUpdater({ locale }: { locale: string }) {
   useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
-  return null;
+    document.documentElement.lang = locale
+  }, [locale])
+  return null
 }

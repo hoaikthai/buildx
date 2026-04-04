@@ -1,31 +1,31 @@
-'use client';
-import {useLocale} from 'next-intl';
-import {useRouter, usePathname} from '@/i18n/navigation';
+'use client'
+import { useLocale } from 'next-intl'
+import { useRouter, usePathname } from '@/i18n/navigation'
 
 export function LanguageSwitcher() {
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
+  const locale = useLocale()
+  const router = useRouter()
+  const pathname = usePathname()
 
   function switchLocale(next: string) {
-    router.replace(pathname, {locale: next});
+    router.replace(pathname, { locale: next })
   }
 
   return (
     <div className="flex items-center gap-1 text-xs font-bold tracking-widest">
       <button
         onClick={() => switchLocale('vi')}
-        className={`px-2 py-1 transition-colors cursor-pointer ${locale === 'vi' ? 'text-gold' : 'text-[var(--text-subtle)]'}`}
+        className={`cursor-pointer px-2 py-1 transition-colors ${locale === 'vi' ? 'text-gold' : 'text-[var(--text-subtle)]'}`}
       >
         VI
       </button>
       <span className="text-[var(--text-faint)]">|</span>
       <button
         onClick={() => switchLocale('en')}
-        className={`px-2 py-1 transition-colors cursor-pointer ${locale === 'en' ? 'text-gold' : 'text-[var(--text-subtle)]'}`}
+        className={`cursor-pointer px-2 py-1 transition-colors ${locale === 'en' ? 'text-gold' : 'text-[var(--text-subtle)]'}`}
       >
         EN
       </button>
     </div>
-  );
+  )
 }

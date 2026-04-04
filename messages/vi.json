@@ -35,10 +35,22 @@
     "title": "Thiết kế & Tư vấn",
     "description": "BUILDX tự hào cung cấp một loạt các dịch vụ chất lượng cao, được thiết kế để đáp ứng nhu cầu đa dạng của khách hàng.",
     "services": [
-      {"name": "Thiết kế Kiến trúc", "description": "Giải pháp kiến trúc sáng tạo, phù hợp với từng không gian và nhu cầu."},
-      {"name": "Thiết kế Kết cấu", "description": "Thiết kế kết cấu công trình an toàn, bền vững và tối ưu chi phí."},
-      {"name": "Thiết kế Nội thất", "description": "Không gian nội thất hiện đại, tinh tế và đồng bộ."},
-      {"name": "Thiết kế Ngoại thất", "description": "Ngoại thất ấn tượng, tạo dấu ấn riêng cho từng công trình."}
+      {
+        "name": "Thiết kế Kiến trúc",
+        "description": "Giải pháp kiến trúc sáng tạo, phù hợp với từng không gian và nhu cầu."
+      },
+      {
+        "name": "Thiết kế Kết cấu",
+        "description": "Thiết kế kết cấu công trình an toàn, bền vững và tối ưu chi phí."
+      },
+      {
+        "name": "Thiết kế Nội thất",
+        "description": "Không gian nội thất hiện đại, tinh tế và đồng bộ."
+      },
+      {
+        "name": "Thiết kế Ngoại thất",
+        "description": "Ngoại thất ấn tượng, tạo dấu ấn riêng cho từng công trình."
+      }
     ]
   },
   "construction": {
@@ -57,19 +69,34 @@
         "name": "Gói 1",
         "label": "Thiết kế Kiến Trúc",
         "price": "150.000",
-        "items": ["Bản vẽ kiến trúc đầy đủ", "Phối cảnh 3D", "Hồ sơ xin phép xây dựng", "Tư vấn vật liệu"]
+        "items": [
+          "Bản vẽ kiến trúc đầy đủ",
+          "Phối cảnh 3D",
+          "Hồ sơ xin phép xây dựng",
+          "Tư vấn vật liệu"
+        ]
       },
       {
         "name": "Gói 2",
         "label": "Thiết kế Nội Thất",
         "price": "150.000",
-        "items": ["Bản vẽ nội thất chi tiết", "Phối cảnh 3D nội thất", "Danh mục vật tư", "Tư vấn màu sắc"]
+        "items": [
+          "Bản vẽ nội thất chi tiết",
+          "Phối cảnh 3D nội thất",
+          "Danh mục vật tư",
+          "Tư vấn màu sắc"
+        ]
       },
       {
         "name": "Gói 3",
         "label": "Thiết kế Trọn Gói",
         "price": "240.000",
-        "items": ["Kiến trúc + Nội thất + Ngoại thất", "Hồ sơ thiết kế đầy đủ", "Phối cảnh 3D toàn diện", "Hỗ trợ thi công"]
+        "items": [
+          "Kiến trúc + Nội thất + Ngoại thất",
+          "Hồ sơ thiết kế đầy đủ",
+          "Phối cảnh 3D toàn diện",
+          "Hỗ trợ thi công"
+        ]
       }
     ],
     "bim_packages": [
@@ -77,19 +104,34 @@
         "name": "Gói 1",
         "label": "Mô hình BIM (LOD 300–350)",
         "price": "15.000",
-        "items": ["Mô hình 3D kiến trúc & kết cấu", "Trích xuất khối lượng", "Bản vẽ 2D từ mô hình", "Hỗ trợ thiết kế"]
+        "items": [
+          "Mô hình 3D kiến trúc & kết cấu",
+          "Trích xuất khối lượng",
+          "Bản vẽ 2D từ mô hình",
+          "Hỗ trợ thiết kế"
+        ]
       },
       {
         "name": "Gói 2",
         "label": "Mô hình BIM MEPF",
         "price": "20.000",
-        "items": ["Mô hình MEP đầy đủ", "Phối hợp đa chuyên ngành", "Kiểm tra xung đột tự động", "Báo cáo phối hợp"]
+        "items": [
+          "Mô hình MEP đầy đủ",
+          "Phối hợp đa chuyên ngành",
+          "Kiểm tra xung đột tự động",
+          "Báo cáo phối hợp"
+        ]
       },
       {
         "name": "Gói 3",
         "label": "Kiểm tra xung đột & Cập nhật",
         "price": "10.000",
-        "items": ["Phát hiện xung đột", "Báo cáo xung đột chi tiết", "Cập nhật mô hình", "Hỗ trợ giải quyết"]
+        "items": [
+          "Phát hiện xung đột",
+          "Báo cáo xung đột chi tiết",
+          "Cập nhật mô hình",
+          "Hỗ trợ giải quyết"
+        ]
       }
     ],
     "bim_note_title": "",

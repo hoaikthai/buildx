@@ -1,21 +1,25 @@
 interface SectionTitleProps {
-  label?: string;
-  title: string;
-  className?: string;
+  label?: string
+  title: string
+  className?: string
 }
 
-export default function SectionTitle({label, title, className = ''}: SectionTitleProps) {
+export default function SectionTitle({
+  label,
+  title,
+  className = '',
+}: SectionTitleProps) {
   return (
     <div className={`mb-12 ${className}`}>
       {label && (
-        <p className="text-gold text-xs font-bold tracking-[4px] uppercase mb-3">
+        <p className="text-gold mb-3 text-xs font-bold tracking-[4px] uppercase">
           {label}
         </p>
       )}
-      <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+      <h2 className="text-3xl leading-tight font-bold text-white md:text-4xl">
         {title}
       </h2>
-      <div className="mt-4 w-12 h-0.5 bg-gold" />
+      <div className="bg-gold mt-4 h-0.5 w-12" />
     </div>
-  );
+  )
 }

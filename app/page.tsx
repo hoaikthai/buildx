@@ -1,11 +1,11 @@
-'use client';
-import {useEffect} from 'react';
-import {useRouter} from 'next/navigation';
+'use client'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function RootPage() {
-  const router = useRouter();
+  const router = useRouter()
   useEffect(() => {
-    router.replace('/vi');
-  }, [router]);
-  return null;
+    router.replace('/vi')
+  }, [router])
+  return null
 }

@@ -1,21 +1,21 @@
-'use client';
-import {useEffect, useState} from 'react';
-import Image from 'next/image';
+'use client'
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 export default function PageLoader() {
-  const [visible, setVisible] = useState(true);
-  const [fading, setFading] = useState(false);
+  const [visible, setVisible] = useState(true)
+  const [fading, setFading] = useState(false)
 
   useEffect(() => {
-    const fadeTimer = setTimeout(() => setFading(true), 1400);
-    const hideTimer = setTimeout(() => setVisible(false), 1900);
+    const fadeTimer = setTimeout(() => setFading(true), 1400)
+    const hideTimer = setTimeout(() => setVisible(false), 1900)
     return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(hideTimer);
-    };
-  }, []);
+      clearTimeout(fadeTimer)
+      clearTimeout(hideTimer)
+    }
+  }, [])
 
-  if (!visible) return null;
+  if (!visible) return null
 
   return (
     <div
@@ -33,13 +33,13 @@ export default function PageLoader() {
           width={160}
           height={60}
           priority
-          style={{filter: 'brightness(0) invert(1)'}}
+          style={{ filter: 'brightness(0) invert(1)' }}
         />
         <div className="flex gap-2">
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className="w-2 h-2 rounded-full bg-gold"
+              className="bg-gold h-2 w-2 rounded-full"
               style={{
                 animation: `bxBounce 1.2s ease-in-out ${i * 0.2}s infinite`,
               }}
@@ -54,5 +54,5 @@ export default function PageLoader() {
         }
       `}</style>
     </div>
-  );
+  )
 }

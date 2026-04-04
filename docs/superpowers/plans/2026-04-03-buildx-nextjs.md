@@ -60,6 +60,7 @@ app/globals.css                     ← Tailwind v4 @import, @theme tokens, base
 ## Task 1: Scaffold Next.js 16 project
 
 **Files:**
+
 - Create: `package.json`, `next.config.ts`, `tsconfig.json`, `app/globals.css`, `app/layout.tsx`
 
 - [ ] **Step 1: Scaffold with create-next-app**
@@ -114,6 +115,7 @@ git commit -m "feat: scaffold Next.js 16 project with dependencies"
 ## Task 2: Configure Tailwind CSS v4 + design tokens
 
 **Files:**
+
 - Modify: `app/globals.css`
 - Delete: `tailwind.config.ts` (v4 uses CSS-first config)
 
@@ -121,16 +123,16 @@ git commit -m "feat: scaffold Next.js 16 project with dependencies"
 
 ```css
 /* app/globals.css */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --color-gold: #FFB800;
+  --color-gold: #ffb800;
   --color-dark: #111111;
   --color-dark-2: #1a1a1a;
   --color-gray-muted: #888888;
   --color-overlay: rgba(0, 0, 0, 0.6);
 
-  --font-archivo: "Archivo", sans-serif;
+  --font-archivo: 'Archivo', sans-serif;
 
   --spacing-section: 100px;
 }
@@ -181,7 +183,7 @@ export default {
   plugins: {
     '@tailwindcss/postcss': {},
   },
-};
+}
 ```
 
 - [ ] **Step 4: Commit**
@@ -196,6 +198,7 @@ git commit -m "feat: configure Tailwind CSS v4 with design tokens"
 ## Task 3: Set up next-intl i18n routing
 
 **Files:**
+
 - Create: `i18n/routing.ts`
 - Create: `i18n/navigation.ts`
 - Create: `i18n/request.ts`
@@ -206,66 +209,66 @@ git commit -m "feat: configure Tailwind CSS v4 with design tokens"
 
 ```ts
 // i18n/routing.ts
-import {defineRouting} from 'next-intl/routing';
+import { defineRouting } from 'next-intl/routing'
 
 export const routing = defineRouting({
   locales: ['vi', 'en'],
   defaultLocale: 'vi',
-});
+})
 ```
 
 - [ ] **Step 2: Create navigation helpers**
 
 ```ts
 // i18n/navigation.ts
-import {createNavigation} from 'next-intl/navigation';
-import {routing} from './routing';
+import { createNavigation } from 'next-intl/navigation'
+import { routing } from './routing'
 
-export const {Link, redirect, usePathname, useRouter, getPathname} =
-  createNavigation(routing);
+export const { Link, redirect, usePathname, useRouter, getPathname } =
+  createNavigation(routing)
 ```
 
 - [ ] **Step 3: Create request config**
 
 ```ts
 // i18n/request.ts
-import {getRequestConfig} from 'next-intl/server';
-import {routing} from './routing';
+import { getRequestConfig } from 'next-intl/server'
+import { routing } from './routing'
 
-export default getRequestConfig(async ({requestLocale}) => {
-  let locale = await requestLocale;
+export default getRequestConfig(async ({ requestLocale }) => {
+  let locale = await requestLocale
   if (!locale || !(routing.locales as readonly string[]).includes(locale)) {
-    locale = routing.defaultLocale;
+    locale = routing.defaultLocale
   }
   return {
     locale,
     messages: (await import(`../messages/${locale}.json`)).default,
-  };
-});
+  }
+})
 ```
 
 - [ ] **Step 4: Create middleware**
 
 ```ts
 // middleware.ts
-import createMiddleware from 'next-intl/middleware';
-import {routing} from './i18n/routing';
+import createMiddleware from 'next-intl/middleware'
+import { routing } from './i18n/routing'
 
-export default createMiddleware(routing);
+export default createMiddleware(routing)
 
 export const config = {
   matcher: ['/((?!_next|_vercel|.*\\..*).*)'],
-};
+}
 ```
 
 - [ ] **Step 5: Update next.config.ts**
 
 ```ts
 // next.config.ts
-import type {NextConfig} from 'next';
-import createNextIntlPlugin from 'next-intl/plugin';
+import type { NextConfig } from 'next'
+import createNextIntlPlugin from 'next-intl/plugin'
 
-const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
 const nextConfig: NextConfig = {
   output: 'export',
@@ -273,25 +276,25 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: false,
-};
+}
 
-export default withNextIntl(nextConfig);
+export default withNextIntl(nextConfig)
 ```
 
 - [ ] **Step 6: Create root redirect page**
 
 ```tsx
 // app/page.tsx
-'use client';
-import {useEffect} from 'react';
-import {useRouter} from 'next/navigation';
+'use client'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function RootPage() {
-  const router = useRouter();
+  const router = useRouter()
   useEffect(() => {
-    router.replace('/vi');
-  }, [router]);
-  return null;
+    router.replace('/vi')
+  }, [router])
+  return null
 }
 ```
 
@@ -301,16 +304,14 @@ export default function RootPage() {
 
 ```tsx
 // app/layout.tsx
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react'
 
-export default function RootLayout({children}: {children: ReactNode}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html suppressHydrationWarning>
-      <body suppressHydrationWarning>
-        {children}
-      </body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
-  );
+  )
 }
 ```
 
@@ -322,19 +323,19 @@ mkdir -p "app/[locale]"
 
 ```tsx
 // app/[locale]/layout.tsx (temporary placeholder — full version in Task 6)
-import {ReactNode} from 'react';
-export default function LocaleLayout({children}: {children: ReactNode}) {
-  return <>{children}</>;
+import { ReactNode } from 'react'
+export default function LocaleLayout({ children }: { children: ReactNode }) {
+  return <>{children}</>
 }
 export function generateStaticParams() {
-  return [{locale: 'vi'}, {locale: 'en'}];
+  return [{ locale: 'vi' }, { locale: 'en' }]
 }
 ```
 
 ```tsx
 // app/[locale]/page.tsx (temporary placeholder)
 export default function Page() {
-  return <div>BuildX</div>;
+  return <div>BuildX</div>
 }
 ```
 
@@ -358,6 +359,7 @@ git commit -m "feat: set up next-intl i18n with vi/en locales"
 ## Task 4: Translation files
 
 **Files:**
+
 - Create: `messages/vi.json`
 - Create: `messages/en.json`
 
@@ -401,10 +403,22 @@ git commit -m "feat: set up next-intl i18n with vi/en locales"
     "title": "Thiết kế & Tư vấn",
     "description": "BUILDX tự hào cung cấp một loạt các dịch vụ chất lượng cao, được thiết kế để đáp ứng nhu cầu đa dạng của khách hàng.",
     "services": [
-      {"name": "Thiết kế Kiến trúc", "description": "Giải pháp kiến trúc sáng tạo, phù hợp với từng không gian và nhu cầu."},
-      {"name": "Thiết kế Kết cấu", "description": "Thiết kế kết cấu công trình an toàn, bền vững và tối ưu chi phí."},
-      {"name": "Thiết kế Nội thất", "description": "Không gian nội thất hiện đại, tinh tế và đồng bộ."},
-      {"name": "Thiết kế Ngoại thất", "description": "Ngoại thất ấn tượng, tạo dấu ấn riêng cho từng công trình."}
+      {
+        "name": "Thiết kế Kiến trúc",
+        "description": "Giải pháp kiến trúc sáng tạo, phù hợp với từng không gian và nhu cầu."
+      },
+      {
+        "name": "Thiết kế Kết cấu",
+        "description": "Thiết kế kết cấu công trình an toàn, bền vững và tối ưu chi phí."
+      },
+      {
+        "name": "Thiết kế Nội thất",
+        "description": "Không gian nội thất hiện đại, tinh tế và đồng bộ."
+      },
+      {
+        "name": "Thiết kế Ngoại thất",
+        "description": "Ngoại thất ấn tượng, tạo dấu ấn riêng cho từng công trình."
+      }
     ]
   },
   "construction": {
@@ -423,19 +437,34 @@ git commit -m "feat: set up next-intl i18n with vi/en locales"
         "name": "Gói 1",
         "label": "Thiết kế Kiến Trúc",
         "price": "150.000",
-        "items": ["Bản vẽ kiến trúc đầy đủ", "Phối cảnh 3D", "Hồ sơ xin phép xây dựng", "Tư vấn vật liệu"]
+        "items": [
+          "Bản vẽ kiến trúc đầy đủ",
+          "Phối cảnh 3D",
+          "Hồ sơ xin phép xây dựng",
+          "Tư vấn vật liệu"
+        ]
       },
       {
         "name": "Gói 2",
         "label": "Thiết kế Nội Thất",
         "price": "150.000",
-        "items": ["Bản vẽ nội thất chi tiết", "Phối cảnh 3D nội thất", "Danh mục vật tư", "Tư vấn màu sắc"]
+        "items": [
+          "Bản vẽ nội thất chi tiết",
+          "Phối cảnh 3D nội thất",
+          "Danh mục vật tư",
+          "Tư vấn màu sắc"
+        ]
       },
       {
         "name": "Gói 3",
         "label": "Thiết kế Trọn Gói",
         "price": "240.000",
-        "items": ["Kiến trúc + Nội thất + Ngoại thất", "Hồ sơ thiết kế đầy đủ", "Phối cảnh 3D toàn diện", "Hỗ trợ thi công"]
+        "items": [
+          "Kiến trúc + Nội thất + Ngoại thất",
+          "Hồ sơ thiết kế đầy đủ",
+          "Phối cảnh 3D toàn diện",
+          "Hỗ trợ thi công"
+        ]
       }
     ],
     "bim_packages": [
@@ -443,19 +472,34 @@ git commit -m "feat: set up next-intl i18n with vi/en locales"
         "name": "Gói 1",
         "label": "Mô hình BIM (LOD 300–350)",
         "price": "15.000",
-        "items": ["Mô hình 3D kiến trúc & kết cấu", "Trích xuất khối lượng", "Bản vẽ 2D từ mô hình", "Hỗ trợ thiết kế"]
+        "items": [
+          "Mô hình 3D kiến trúc & kết cấu",
+          "Trích xuất khối lượng",
+          "Bản vẽ 2D từ mô hình",
+          "Hỗ trợ thiết kế"
+        ]
       },
       {
         "name": "Gói 2",
         "label": "Mô hình BIM MEPF",
         "price": "20.000",
-        "items": ["Mô hình MEP đầy đủ", "Phối hợp đa chuyên ngành", "Kiểm tra xung đột tự động", "Báo cáo phối hợp"]
+        "items": [
+          "Mô hình MEP đầy đủ",
+          "Phối hợp đa chuyên ngành",
+          "Kiểm tra xung đột tự động",
+          "Báo cáo phối hợp"
+        ]
       },
       {
         "name": "Gói 3",
         "label": "Kiểm tra xung đột & Cập nhật",
         "price": "10.000",
-        "items": ["Phát hiện xung đột", "Báo cáo xung đột chi tiết", "Cập nhật mô hình", "Hỗ trợ giải quyết"]
+        "items": [
+          "Phát hiện xung đột",
+          "Báo cáo xung đột chi tiết",
+          "Cập nhật mô hình",
+          "Hỗ trợ giải quyết"
+        ]
       }
     ]
   },
@@ -466,17 +510,17 @@ git commit -m "feat: set up next-intl i18n with vi/en locales"
       {
         "title": "Logo là yếu tố cốt lõi của hệ nhận diện thương hiệu BuildX",
         "excerpt": "Quy chuẩn sử dụng logo giúp đảm bảo hình ảnh thương hiệu luôn đồng bộ, chuyên nghiệp trên mọi nền tảng truyền thông.",
-        "image": "news-1.png"
+        "image": "news-1.avif"
       },
       {
         "title": "BuildX chính thức giới thiệu Bộ nhận diện văn phòng hoàn chỉnh",
         "excerpt": "Bộ sản phẩm bao gồm: danh thiếp, phong bì thư, sổ tay, thẻ nhân viên, áo đồng phục, áo phản quang, túi đựng tài liệu, tất.",
-        "image": "news-2.png"
+        "image": "news-2.avif"
       },
       {
         "title": "Dự án tiêu biểu: Ứng dụng BIM trong công trình dân dụng",
         "excerpt": "BuildX đã thành công triển khai BIM cho nhiều dự án dân dụng, mang lại hiệu quả cao trong thi công.",
-        "image": "news-3.png"
+        "image": "news-3.avif"
       }
     ]
   },
@@ -535,10 +579,22 @@ Save this to `messages/vi.json`.
     "title": "Design & Consulting",
     "description": "BUILDX is proud to offer a wide range of high-quality services designed to meet the diverse needs of our clients.",
     "services": [
-      {"name": "Architectural Design", "description": "Creative architectural solutions tailored to each space and need."},
-      {"name": "Structural Design", "description": "Safe, durable, and cost-optimized structural engineering."},
-      {"name": "Interior Design", "description": "Modern, refined, and cohesive interior spaces."},
-      {"name": "Exterior Design", "description": "Impressive exteriors that create a unique identity for each project."}
+      {
+        "name": "Architectural Design",
+        "description": "Creative architectural solutions tailored to each space and need."
+      },
+      {
+        "name": "Structural Design",
+        "description": "Safe, durable, and cost-optimized structural engineering."
+      },
+      {
+        "name": "Interior Design",
+        "description": "Modern, refined, and cohesive interior spaces."
+      },
+      {
+        "name": "Exterior Design",
+        "description": "Impressive exteriors that create a unique identity for each project."
+      }
     ]
   },
   "construction": {
@@ -557,19 +613,34 @@ Save this to `messages/vi.json`.
         "name": "Package 1",
         "label": "Architectural Design",
         "price": "150,000",
-        "items": ["Complete architectural drawings", "3D renders", "Building permit documents", "Material consultation"]
+        "items": [
+          "Complete architectural drawings",
+          "3D renders",
+          "Building permit documents",
+          "Material consultation"
+        ]
       },
       {
         "name": "Package 2",
         "label": "Interior Design",
         "price": "150,000",
-        "items": ["Detailed interior drawings", "3D interior renders", "Material schedule", "Color consultation"]
+        "items": [
+          "Detailed interior drawings",
+          "3D interior renders",
+          "Material schedule",
+          "Color consultation"
+        ]
       },
       {
         "name": "Package 3",
         "label": "Complete Design",
         "price": "240,000",
-        "items": ["Architecture + Interior + Exterior", "Full design documentation", "Comprehensive 3D renders", "Construction support"]
+        "items": [
+          "Architecture + Interior + Exterior",
+          "Full design documentation",
+          "Comprehensive 3D renders",
+          "Construction support"
+        ]
       }
     ],
     "bim_packages": [
@@ -577,19 +648,34 @@ Save this to `messages/vi.json`.
         "name": "Package 1",
         "label": "BIM Model (LOD 300–350)",
         "price": "15,000",
-        "items": ["3D architectural & structural model", "Quantity extraction", "2D drawings from model", "Design support"]
+        "items": [
+          "3D architectural & structural model",
+          "Quantity extraction",
+          "2D drawings from model",
+          "Design support"
+        ]
       },
       {
         "name": "Package 2",
         "label": "MEPF BIM Model",
         "price": "20,000",
-        "items": ["Full MEP model", "Multi-discipline coordination", "Automated clash detection", "Coordination reports"]
+        "items": [
+          "Full MEP model",
+          "Multi-discipline coordination",
+          "Automated clash detection",
+          "Coordination reports"
+        ]
       },
       {
         "name": "Package 3",
         "label": "Clash Detection & Updates",
         "price": "10,000",
-        "items": ["Clash detection", "Detailed clash reports", "Model updates", "Resolution support"]
+        "items": [
+          "Clash detection",
+          "Detailed clash reports",
+          "Model updates",
+          "Resolution support"
+        ]
       }
     ]
   },
@@ -600,17 +686,17 @@ Save this to `messages/vi.json`.
       {
         "title": "Logo is the core element of BuildX brand identity",
         "excerpt": "Logo usage standards ensure that brand image remains consistent and professional across all media platforms.",
-        "image": "news-1.png"
+        "image": "news-1.avif"
       },
       {
         "title": "BuildX officially introduces complete office identity kit",
         "excerpt": "The product set includes: business cards, envelopes, notebooks, employee ID cards, uniforms, reflective vests, document bags, socks.",
-        "image": "news-2.png"
+        "image": "news-2.avif"
       },
       {
         "title": "Featured project: BIM application in residential construction",
         "excerpt": "BuildX has successfully implemented BIM for many residential projects, delivering high efficiency in construction.",
-        "image": "news-3.png"
+        "image": "news-3.avif"
       }
     ]
   },
@@ -641,6 +727,7 @@ git commit -m "feat: add Vietnamese and English translation files"
 ## Task 5: Download images from buildx.vn
 
 **Files:**
+
 - Create: `public/images/` directory with all images
 
 - [ ] **Step 1: Create images directory and download all images**
@@ -648,23 +735,23 @@ git commit -m "feat: add Vietnamese and English translation files"
 ```bash
 mkdir -p public/images
 
-curl -L "https://buildx.vn/wp-content/uploads/2026/03/logo-1.png" -o public/images/logo.png
-curl -L "https://buildx.vn/wp-content/uploads/2026/03/logo-2.png" -o public/images/logo-loader.png
-curl -L "https://buildx.vn/wp-content/uploads/2026/03/banner-web.png" -o public/images/hero-bg.png
-curl -L "https://buildx.vn/wp-content/uploads/2026/03/anh-web-1024x1024.png" -o public/images/about.png
-curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-07_17-58-42-1024x596.png" -o public/images/bim-1.png
-curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-07_18-29-41-1024x536.png" -o public/images/bim-2.png
-curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-01-02_15-47-29.1_221527-1024x547.png" -o public/images/bim-3.png
-curl -L "https://buildx.vn/wp-content/uploads/2026/03/FU-VC25-SD-P01_Son-Chong-tham-Page-004-Copy-1024x724.png" -o public/images/bim-4.png
-curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-08_08-28-17-1024x555.png" -o public/images/bim-5.png
-curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-07_13-49-25-1024x432.png" -o public/images/bim-6.png
-curl -L "https://buildx.vn/wp-content/uploads/2026/03/Thiet-ke-chua-co-ten-1024x539.png" -o public/images/bim-7.png
-curl -L "https://buildx.vn/wp-content/uploads/2025/08/HE-BAO-CHE1-1024x499.png" -o public/images/bim-8.png
-curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-07_17-20-36-1024x576.png" -o public/images/bim-9.png
-curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-07_17-23-20-1024x576.png" -o public/images/bim-10.png
-curl -L "https://buildx.vn/wp-content/uploads/2025/07/bang-02-01-1024x724.png" -o public/images/news-1.png
-curl -L "https://buildx.vn/wp-content/uploads/2025/06/10578804-scaled.png" -o public/images/news-2.png
-curl -L "https://buildx.vn/wp-content/uploads/2025/07/bang-02-scaled.png" -o public/images/news-3.png
+curl -L "https://buildx.vn/wp-content/uploads/2026/03/logo-1.avif" -o public/images/logo.avif
+curl -L "https://buildx.vn/wp-content/uploads/2026/03/logo-2.avif" -o public/images/logo-loader.avif
+curl -L "https://buildx.vn/wp-content/uploads/2026/03/banner-web.avif" -o public/images/hero-bg.avif
+curl -L "https://buildx.vn/wp-content/uploads/2026/03/anh-web-1024x1024.avif" -o public/images/about.avif
+curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-07_17-58-42-1024x596.avif" -o public/images/bim-1.avif
+curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-07_18-29-41-1024x536.avif" -o public/images/bim-2.avif
+curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-01-02_15-47-29.1_221527-1024x547.avif" -o public/images/bim-3.avif
+curl -L "https://buildx.vn/wp-content/uploads/2026/03/FU-VC25-SD-P01_Son-Chong-tham-Page-004-Copy-1024x724.avif" -o public/images/bim-4.avif
+curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-08_08-28-17-1024x555.avif" -o public/images/bim-5.avif
+curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-07_13-49-25-1024x432.avif" -o public/images/bim-6.avif
+curl -L "https://buildx.vn/wp-content/uploads/2026/03/Thiet-ke-chua-co-ten-1024x539.avif" -o public/images/bim-7.avif
+curl -L "https://buildx.vn/wp-content/uploads/2025/08/HE-BAO-CHE1-1024x499.avif" -o public/images/bim-8.avif
+curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-07_17-20-36-1024x576.avif" -o public/images/bim-9.avif
+curl -L "https://buildx.vn/wp-content/uploads/2025/08/2025-08-07_17-23-20-1024x576.avif" -o public/images/bim-10.avif
+curl -L "https://buildx.vn/wp-content/uploads/2025/07/bang-02-01-1024x724.avif" -o public/images/news-1.avif
+curl -L "https://buildx.vn/wp-content/uploads/2025/06/10578804-scaled.avif" -o public/images/news-2.avif
+curl -L "https://buildx.vn/wp-content/uploads/2025/07/bang-02-scaled.avif" -o public/images/news-3.avif
 ```
 
 - [ ] **Step 2: Verify downloads**
@@ -687,6 +774,7 @@ git commit -m "feat: download all images from buildx.vn"
 ## Task 6: App layout — fonts, providers, root page
 
 **Files:**
+
 - Create: `components/layout/LangUpdater.tsx`
 - Modify: `app/layout.tsx` (add Archivo font + globals.css)
 - Modify: `app/[locale]/layout.tsx` (full layout — no html/body, those live in root layout)
@@ -698,14 +786,14 @@ This sets `document.documentElement.lang` on the client so each locale gets the 
 
 ```tsx
 // components/layout/LangUpdater.tsx
-'use client';
-import {useEffect} from 'react';
+'use client'
+import { useEffect } from 'react'
 
-export default function LangUpdater({locale}: {locale: string}) {
+export default function LangUpdater({ locale }: { locale: string }) {
   useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
-  return null;
+    document.documentElement.lang = locale
+  }, [locale])
+  return null
 }
 ```
 
@@ -713,30 +801,29 @@ export default function LangUpdater({locale}: {locale: string}) {
 
 ```tsx
 // app/layout.tsx
-import type {ReactNode} from 'react';
-import type {Metadata} from 'next';
-import {Archivo} from 'next/font/google';
-import './globals.css';
+import type { ReactNode } from 'react'
+import type { Metadata } from 'next'
+import { Archivo } from 'next/font/google'
+import './globals.css'
 
 const archivo = Archivo({
   subsets: ['latin', 'vietnamese'],
   variable: '--font-archivo',
   display: 'swap',
-});
+})
 
 export const metadata: Metadata = {
   title: 'BuildX — Giải pháp BIM & Thiết kế',
-  description: 'Công ty Cổ phần Đầu tư BuildX — Giải pháp BIM, Thiết kế và Thi công chuyên nghiệp tại Đà Nẵng.',
-};
+  description:
+    'Công ty Cổ phần Đầu tư BuildX — Giải pháp BIM, Thiết kế và Thi công chuyên nghiệp tại Đà Nẵng.',
+}
 
-export default function RootLayout({children}: {children: ReactNode}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html suppressHydrationWarning className={archivo.variable}>
-      <body suppressHydrationWarning>
-        {children}
-      </body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
-  );
+  )
 }
 ```
 
@@ -744,31 +831,31 @@ export default function RootLayout({children}: {children: ReactNode}) {
 
 ```tsx
 // app/[locale]/layout.tsx
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
-import {notFound} from 'next/navigation';
-import {routing} from '@/i18n/routing';
-import LangUpdater from '@/components/layout/LangUpdater';
-import PageLoader from '@/components/layout/PageLoader';
-import type {ReactNode} from 'react';
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
+import { notFound } from 'next/navigation'
+import { routing } from '@/i18n/routing'
+import LangUpdater from '@/components/layout/LangUpdater'
+import PageLoader from '@/components/layout/PageLoader'
+import type { ReactNode } from 'react'
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({locale}));
+  return routing.locales.map((locale) => ({ locale }))
 }
 
 type Props = {
-  children: ReactNode;
-  params: Promise<{locale: string}>;
-};
+  children: ReactNode
+  params: Promise<{ locale: string }>
+}
 
-export default async function LocaleLayout({children, params}: Props) {
-  const {locale} = await params;
+export default async function LocaleLayout({ children, params }: Props) {
+  const { locale } = await params
 
   if (!routing.locales.includes(locale as 'vi' | 'en')) {
-    notFound();
+    notFound()
   }
 
-  const messages = await getMessages();
+  const messages = await getMessages()
 
   return (
     <NextIntlClientProvider messages={messages}>
@@ -776,7 +863,7 @@ export default async function LocaleLayout({children, params}: Props) {
       <PageLoader />
       {children}
     </NextIntlClientProvider>
-  );
+  )
 }
 ```
 
@@ -784,16 +871,16 @@ export default async function LocaleLayout({children, params}: Props) {
 
 ```tsx
 // app/page.tsx
-'use client';
-import {useEffect} from 'react';
-import {useRouter} from 'next/navigation';
+'use client'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function RootPage() {
-  const router = useRouter();
+  const router = useRouter()
   useEffect(() => {
-    router.replace('/vi');
-  }, [router]);
-  return null;
+    router.replace('/vi')
+  }, [router])
+  return null
 }
 ```
 
@@ -817,25 +904,26 @@ git commit -m "feat: set up locale layout with Archivo font and NextIntl provide
 ## Task 7: PageLoader component
 
 **Files:**
+
 - Create: `components/layout/PageLoader.tsx`
 
 - [ ] **Step 1: Create PageLoader**
 
 ```tsx
 // components/layout/PageLoader.tsx
-'use client';
-import {useEffect, useState} from 'react';
-import Image from 'next/image';
+'use client'
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 export default function PageLoader() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), 1800);
-    return () => clearTimeout(timer);
-  }, []);
+    const timer = setTimeout(() => setVisible(false), 1800)
+    return () => clearTimeout(timer)
+  }, [])
 
-  if (!visible) return null;
+  if (!visible) return null
 
   return (
     <div
@@ -848,18 +936,18 @@ export default function PageLoader() {
     >
       <div className="flex flex-col items-center gap-6">
         <Image
-          src="/images/logo-loader.png"
+          src="/images/logo-loader.avif"
           alt="BuildX"
           width={160}
           height={60}
           priority
-          style={{filter: 'brightness(0) invert(1)'}}
+          style={{ filter: 'brightness(0) invert(1)' }}
         />
         <div className="flex gap-2">
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className="w-2 h-2 rounded-full bg-[#FFB800]"
+              className="bg-gold h-2 w-2 rounded-full"
               style={{
                 animation: `bounce 1.2s ease-in-out ${i * 0.2}s infinite`,
               }}
@@ -874,7 +962,7 @@ export default function PageLoader() {
         }
       `}</style>
     </div>
-  );
+  )
 }
 ```
 
@@ -894,6 +982,7 @@ git commit -m "feat: add PageLoader entry animation"
 ## Task 8: Shared UI components
 
 **Files:**
+
 - Create: `components/ui/SectionTitle.tsx`
 - Create: `components/ui/AnimatedText.tsx`
 - Create: `components/ui/LanguageSwitcher.tsx`
@@ -906,25 +995,29 @@ git commit -m "feat: add PageLoader entry animation"
 ```tsx
 // components/ui/SectionTitle.tsx
 interface SectionTitleProps {
-  label?: string;
-  title: string;
-  className?: string;
+  label?: string
+  title: string
+  className?: string
 }
 
-export default function SectionTitle({label, title, className = ''}: SectionTitleProps) {
+export default function SectionTitle({
+  label,
+  title,
+  className = '',
+}: SectionTitleProps) {
   return (
     <div className={`mb-12 ${className}`}>
       {label && (
-        <p className="text-[#FFB800] text-xs font-bold tracking-[4px] uppercase mb-3">
+        <p className="text-gold mb-3 text-xs font-bold tracking-[4px] uppercase">
           {label}
         </p>
       )}
-      <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+      <h2 className="text-3xl leading-tight font-bold text-white md:text-4xl">
         {title}
       </h2>
-      <div className="mt-4 w-12 h-0.5 bg-[#FFB800]" />
+      <div className="bg-gold mt-4 h-0.5 w-12" />
     </div>
-  );
+  )
 }
 ```
 
@@ -932,28 +1025,32 @@ export default function SectionTitle({label, title, className = ''}: SectionTitl
 
 ```tsx
 // components/ui/AnimatedText.tsx
-'use client';
-import {motion} from 'framer-motion';
-import {ReactNode} from 'react';
+'use client'
+import { motion } from 'framer-motion'
+import { ReactNode } from 'react'
 
 interface AnimatedTextProps {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
+  children: ReactNode
+  delay?: number
+  className?: string
 }
 
-export default function AnimatedText({children, delay = 0, className = ''}: AnimatedTextProps) {
+export default function AnimatedText({
+  children,
+  delay = 0,
+  className = '',
+}: AnimatedTextProps) {
   return (
     <motion.div
-      initial={{opacity: 0, y: 30}}
-      whileInView={{opacity: 1, y: 0}}
-      viewport={{once: true, margin: '-50px'}}
-      transition={{duration: 0.7, delay, ease: 'easeOut'}}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.7, delay, ease: 'easeOut' }}
       className={className}
     >
       {children}
     </motion.div>
-  );
+  )
 }
 ```
 
@@ -961,17 +1058,17 @@ export default function AnimatedText({children, delay = 0, className = ''}: Anim
 
 ```tsx
 // components/ui/LanguageSwitcher.tsx
-'use client';
-import {useLocale} from 'next-intl';
-import {useRouter, usePathname} from '@/i18n/navigation';
+'use client'
+import { useLocale } from 'next-intl'
+import { useRouter, usePathname } from '@/i18n/navigation'
 
 export default function LanguageSwitcher() {
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
+  const locale = useLocale()
+  const router = useRouter()
+  const pathname = usePathname()
 
   function switchLocale(next: string) {
-    router.replace(pathname, {locale: next});
+    router.replace(pathname, { locale: next })
   }
 
   return (
@@ -979,7 +1076,7 @@ export default function LanguageSwitcher() {
       <button
         onClick={() => switchLocale('vi')}
         className={`px-2 py-1 transition-colors ${
-          locale === 'vi' ? 'text-[#FFB800]' : 'text-white/50 hover:text-white'
+          locale === 'vi' ? 'text-gold' : 'text-white/50 hover:text-white'
         }`}
       >
         VI
@@ -988,13 +1085,13 @@ export default function LanguageSwitcher() {
       <button
         onClick={() => switchLocale('en')}
         className={`px-2 py-1 transition-colors ${
-          locale === 'en' ? 'text-[#FFB800]' : 'text-white/50 hover:text-white'
+          locale === 'en' ? 'text-gold' : 'text-white/50 hover:text-white'
         }`}
       >
         EN
       </button>
     </div>
-  );
+  )
 }
 ```
 
@@ -1002,30 +1099,34 @@ export default function LanguageSwitcher() {
 
 ```tsx
 // components/ui/ServiceCard.tsx
-'use client';
-import {motion} from 'framer-motion';
+'use client'
+import { motion } from 'framer-motion'
 
 interface ServiceCardProps {
-  name: string;
-  description: string;
-  index: number;
+  name: string
+  description: string
+  index: number
 }
 
-export default function ServiceCard({name, description, index}: ServiceCardProps) {
+export default function ServiceCard({
+  name,
+  description,
+  index,
+}: ServiceCardProps) {
   return (
     <motion.div
-      initial={{opacity: 0, y: 40}}
-      whileInView={{opacity: 1, y: 0}}
-      viewport={{once: true}}
-      transition={{duration: 0.6, delay: index * 0.1}}
-      className="group relative bg-[#1a1a1a] border border-white/10 rounded-sm p-8 hover:border-[#FFB800]/50 transition-all duration-300 cursor-default"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="group bg-dark-2 hover:border-gold/50 relative cursor-default rounded-sm border border-white/10 p-8 transition-all duration-300"
     >
-      <div className="w-8 h-0.5 bg-[#FFB800] mb-6 group-hover:w-16 transition-all duration-300" />
-      <h3 className="text-lg font-bold text-white mb-3">{name}</h3>
-      <p className="text-white/60 text-sm leading-relaxed">{description}</p>
-      <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FFB800] group-hover:w-full transition-all duration-500" />
+      <div className="bg-gold mb-6 h-0.5 w-8 transition-all duration-300 group-hover:w-16" />
+      <h3 className="mb-3 text-lg font-bold text-white">{name}</h3>
+      <p className="text-sm leading-relaxed text-white/60">{description}</p>
+      <div className="bg-gold absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-500 group-hover:w-full" />
     </motion.div>
-  );
+  )
 }
 ```
 
@@ -1034,42 +1135,47 @@ export default function ServiceCard({name, description, index}: ServiceCardProps
 ```tsx
 // components/ui/PricingCard.tsx
 interface PricingItem {
-  name: string;
-  label: string;
-  price: string;
-  items: string[];
+  name: string
+  label: string
+  price: string
+  items: string[]
 }
 
 interface PricingCardProps {
-  pkg: PricingItem;
-  unit: string;
-  includes: string;
+  pkg: PricingItem
+  unit: string
+  includes: string
 }
 
-export default function PricingCard({pkg, unit, includes}: PricingCardProps) {
+export default function PricingCard({ pkg, unit, includes }: PricingCardProps) {
   return (
-    <div className="flex-none w-[320px] md:w-[380px] bg-[#1a1a1a] border border-white/10 rounded-sm p-8 select-none">
-      <p className="text-[#FFB800] text-xs font-bold tracking-[3px] uppercase mb-2">
+    <div className="bg-dark-2 w-[320px] flex-none rounded-sm border border-white/10 p-8 select-none md:w-[380px]">
+      <p className="text-gold mb-2 text-xs font-bold tracking-[3px] uppercase">
         {pkg.name}
       </p>
-      <h3 className="text-xl font-bold text-white mb-6">{pkg.label}</h3>
+      <h3 className="mb-6 text-xl font-bold text-white">{pkg.label}</h3>
       <div className="mb-6">
-        <span className="text-3xl font-bold text-[#FFB800]">{pkg.price}</span>
-        <span className="text-white/40 text-sm ml-2">{unit}</span>
+        <span className="text-gold text-3xl font-bold">{pkg.price}</span>
+        <span className="ml-2 text-sm text-white/40">{unit}</span>
       </div>
       <div className="border-t border-white/10 pt-6">
-        <p className="text-white/40 text-xs uppercase tracking-wider mb-4">{includes}</p>
+        <p className="mb-4 text-xs tracking-wider text-white/40 uppercase">
+          {includes}
+        </p>
         <ul className="space-y-3">
           {pkg.items.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-sm text-white/70">
-              <span className="text-[#FFB800] mt-0.5 flex-none">✓</span>
+            <li
+              key={i}
+              className="flex items-start gap-3 text-sm text-white/70"
+            >
+              <span className="text-gold mt-0.5 flex-none">✓</span>
               {item}
             </li>
           ))}
         </ul>
       </div>
     </div>
-  );
+  )
 }
 ```
 
@@ -1077,48 +1183,54 @@ export default function PricingCard({pkg, unit, includes}: PricingCardProps) {
 
 ```tsx
 // components/ui/NewsCard.tsx
-'use client';
-import Image from 'next/image';
-import {motion} from 'framer-motion';
+'use client'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 interface NewsCardProps {
-  title: string;
-  excerpt: string;
-  image: string;
-  readMore: string;
-  index: number;
+  title: string
+  excerpt: string
+  image: string
+  readMore: string
+  index: number
 }
 
-export default function NewsCard({title, excerpt, image, readMore, index}: NewsCardProps) {
+export default function NewsCard({
+  title,
+  excerpt,
+  image,
+  readMore,
+  index,
+}: NewsCardProps) {
   return (
     <motion.div
-      initial={{opacity: 0, y: 40}}
-      whileInView={{opacity: 1, y: 0}}
-      viewport={{once: true}}
-      transition={{duration: 0.6, delay: index * 0.1}}
-      className="group bg-[#1a1a1a] overflow-hidden cursor-default"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="group bg-dark-2 cursor-default overflow-hidden"
     >
       <div className="relative h-52 overflow-hidden">
         <Image
           src={`/images/${image}`}
           alt={title}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
       <div className="p-6">
-        <h3 className="text-white font-bold text-base leading-snug mb-3 line-clamp-2">
+        <h3 className="mb-3 line-clamp-2 text-base leading-snug font-bold text-white">
           {title}
         </h3>
-        <p className="text-white/50 text-sm leading-relaxed mb-4 line-clamp-3">
+        <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-white/50">
           {excerpt}
         </p>
-        <span className="text-[#FFB800] text-xs font-bold tracking-wider uppercase hover:text-white transition-colors">
+        <span className="text-gold text-xs font-bold tracking-wider uppercase transition-colors hover:text-white">
           {readMore} →
         </span>
       </div>
     </motion.div>
-  );
+  )
 }
 ```
 
@@ -1134,6 +1246,7 @@ git commit -m "feat: add shared UI components (SectionTitle, AnimatedText, Langu
 ## Task 9: Navbar + MobileMenu
 
 **Files:**
+
 - Create: `components/layout/Navbar.tsx`
 - Create: `components/layout/MobileMenu.tsx`
 
@@ -1141,59 +1254,61 @@ git commit -m "feat: add shared UI components (SectionTitle, AnimatedText, Langu
 
 ```tsx
 // components/layout/Navbar.tsx
-'use client';
-import {useState, useEffect} from 'react';
-import Image from 'next/image';
-import {useTranslations} from 'next-intl';
-import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
-import MobileMenu from './MobileMenu';
+'use client'
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
+import MobileMenu from './MobileMenu'
 
 const NAV_ITEMS = [
-  {key: 'about', href: '#about'},
-  {key: 'bim', href: '#bim'},
-  {key: 'design', href: '#design'},
-  {key: 'construction', href: '#construction'},
-  {key: 'pricing', href: '#pricing'},
-  {key: 'news', href: '#news'},
-  {key: 'contact', href: '#contact'},
-] as const;
+  { key: 'about', href: '#about' },
+  { key: 'bim', href: '#bim' },
+  { key: 'design', href: '#design' },
+  { key: 'construction', href: '#construction' },
+  { key: 'pricing', href: '#pricing' },
+  { key: 'news', href: '#news' },
+  { key: 'contact', href: '#contact' },
+] as const
 
 export default function Navbar() {
-  const t = useTranslations('nav');
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const t = useTranslations('nav')
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', onScroll, {passive: true});
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-[#111]/95 backdrop-blur-sm py-3' : 'bg-transparent py-5'
+        className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-[#111]/95 py-3 backdrop-blur-sm'
+            : 'bg-transparent py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
           <a href="#" className="flex-none">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.avif"
               alt="BuildX"
               width={120}
               height={45}
               className="object-contain"
-              style={{filter: 'brightness(0) invert(1)'}}
+              style={{ filter: 'brightness(0) invert(1)' }}
             />
           </a>
 
-          <nav className="hidden lg:flex items-center gap-8">
-            {NAV_ITEMS.map(({key, href}) => (
+          <nav className="hidden items-center gap-8 lg:flex">
+            {NAV_ITEMS.map(({ key, href }) => (
               <a
                 key={key}
                 href={href}
-                className="text-white/70 hover:text-[#FFB800] text-xs font-bold tracking-widest uppercase transition-colors"
+                className="hover:text-gold text-xs font-bold tracking-widest text-white/70 uppercase transition-colors"
               >
                 {t(key)}
               </a>
@@ -1203,13 +1318,13 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <LanguageSwitcher />
             <button
-              className="lg:hidden flex flex-col gap-1.5 p-2"
+              className="flex flex-col gap-1.5 p-2 lg:hidden"
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
             >
-              <span className="block w-6 h-0.5 bg-white" />
-              <span className="block w-6 h-0.5 bg-white" />
-              <span className="block w-4 h-0.5 bg-white" />
+              <span className="block h-0.5 w-6 bg-white" />
+              <span className="block h-0.5 w-6 bg-white" />
+              <span className="block h-0.5 w-4 bg-white" />
             </button>
           </div>
         </div>
@@ -1218,10 +1333,10 @@ export default function Navbar() {
       <MobileMenu
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
-        navItems={NAV_ITEMS.map(({key, href}) => ({label: t(key), href}))}
+        navItems={NAV_ITEMS.map(({ key, href }) => ({ label: t(key), href }))}
       />
     </>
-  );
+  )
 }
 ```
 
@@ -1229,53 +1344,59 @@ export default function Navbar() {
 
 ```tsx
 // components/layout/MobileMenu.tsx
-'use client';
-import {useEffect} from 'react';
-import {motion, AnimatePresence} from 'framer-motion';
-import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+'use client'
+import { useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
 
 interface MobileMenuProps {
-  open: boolean;
-  onClose: () => void;
-  navItems: {label: string; href: string}[];
+  open: boolean
+  onClose: () => void
+  navItems: { label: string; href: string }[]
 }
 
-export default function MobileMenu({open, onClose, navItems}: MobileMenuProps) {
+export default function MobileMenu({
+  open,
+  onClose,
+  navItems,
+}: MobileMenuProps) {
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-    return () => {document.body.style.overflow = ''};
-  }, [open]);
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
 
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          exit={{opacity: 0}}
-          transition={{duration: 0.3}}
-          className="fixed inset-0 z-[100] bg-[#111] flex flex-col"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 z-[100] flex flex-col bg-[#111]"
         >
           <div className="flex justify-end p-6">
             <button
               onClick={onClose}
-              className="text-white/60 hover:text-white text-3xl leading-none"
+              className="text-3xl leading-none text-white/60 hover:text-white"
               aria-label="Close menu"
             >
               ×
             </button>
           </div>
 
-          <nav className="flex flex-col items-center justify-center flex-1 gap-8">
-            {navItems.map(({label, href}, i) => (
+          <nav className="flex flex-1 flex-col items-center justify-center gap-8">
+            {navItems.map(({ label, href }, i) => (
               <motion.a
                 key={href}
                 href={href}
                 onClick={onClose}
-                initial={{opacity: 0, x: -20}}
-                animate={{opacity: 1, x: 0}}
-                transition={{delay: i * 0.07}}
-                className="text-white text-2xl font-bold tracking-widest uppercase hover:text-[#FFB800] transition-colors"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.07 }}
+                className="hover:text-gold text-2xl font-bold tracking-widest text-white uppercase transition-colors"
               >
                 {label}
               </motion.a>
@@ -1288,7 +1409,7 @@ export default function MobileMenu({open, onClose, navItems}: MobileMenuProps) {
         </motion.div>
       )}
     </AnimatePresence>
-  );
+  )
 }
 ```
 
@@ -1304,42 +1425,51 @@ git commit -m "feat: add Navbar and MobileMenu components"
 ## Task 10: SideNav component
 
 **Files:**
+
 - Create: `components/layout/SideNav.tsx`
 
 - [ ] **Step 1: Create SideNav with IntersectionObserver**
 
 ```tsx
 // components/layout/SideNav.tsx
-'use client';
-import {useState, useEffect} from 'react';
+'use client'
+import { useState, useEffect } from 'react'
 
-const SECTIONS = ['about', 'bim', 'design', 'construction', 'pricing', 'news', 'contact'];
+const SECTIONS = [
+  'about',
+  'bim',
+  'design',
+  'construction',
+  'pricing',
+  'news',
+  'contact',
+]
 
 export default function SideNav() {
-  const [active, setActive] = useState<string>('');
+  const [active, setActive] = useState<string>('')
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    const observers: IntersectionObserver[] = []
 
     SECTIONS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
+      const el = document.getElementById(id)
+      if (!el) return
 
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) setActive(id);
+          if (entry.isIntersecting) setActive(id)
         },
-        {threshold: 0.4}
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
+        { threshold: 0.4 },
+      )
+      observer.observe(el)
+      observers.push(observer)
+    })
 
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
+    return () => observers.forEach((o) => o.disconnect())
+  }, [])
 
   return (
-    <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-4 items-center">
+    <nav className="fixed top-1/2 right-6 z-40 hidden -translate-y-1/2 flex-col items-center gap-4 xl:flex">
       {SECTIONS.map((id, i) => (
         <a
           key={id}
@@ -1347,20 +1477,26 @@ export default function SideNav() {
           className="group flex items-center gap-3"
           aria-label={`Go to section ${i + 1}`}
         >
-          <span className={`text-[10px] font-bold transition-all duration-300 ${
-            active === id ? 'text-[#FFB800] opacity-100' : 'text-white/0 group-hover:text-white/50'
-          }`}>
+          <span
+            className={`text-[10px] font-bold transition-all duration-300 ${
+              active === id
+                ? 'text-gold opacity-100'
+                : 'text-white/0 group-hover:text-white/50'
+            }`}
+          >
             0{i + 1}
           </span>
-          <span className={`block rounded-full transition-all duration-300 ${
-            active === id
-              ? 'w-2 h-2 bg-[#FFB800]'
-              : 'w-1.5 h-1.5 bg-white/40 group-hover:bg-white/70'
-          }`} />
+          <span
+            className={`block rounded-full transition-all duration-300 ${
+              active === id
+                ? 'bg-gold h-2 w-2'
+                : 'h-1.5 w-1.5 bg-white/40 group-hover:bg-white/70'
+            }`}
+          />
         </a>
       ))}
     </nav>
-  );
+  )
 }
 ```
 
@@ -1376,70 +1512,89 @@ git commit -m "feat: add SideNav with IntersectionObserver active section tracki
 ## Task 11: Footer
 
 **Files:**
+
 - Create: `components/layout/Footer.tsx`
 
 - [ ] **Step 1: Create Footer**
 
 ```tsx
 // components/layout/Footer.tsx
-import {useTranslations} from 'next-intl';
-import Image from 'next/image';
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 
 export default function Footer() {
-  const t = useTranslations('contact');
+  const t = useTranslations('contact')
 
   return (
-    <footer className="bg-[#0a0a0a] border-t border-white/10 py-12 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+    <footer className="border-t border-white/10 bg-[#0a0a0a] px-6 py-12">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-10 grid grid-cols-1 gap-10 md:grid-cols-3">
           <div>
             <Image
-              src="/images/logo.png"
+              src="/images/logo.avif"
               alt="BuildX"
               width={120}
               height={45}
               className="mb-4 object-contain"
-              style={{filter: 'brightness(0) invert(1)'}}
+              style={{ filter: 'brightness(0) invert(1)' }}
             />
-            <p className="text-white/50 text-xs leading-relaxed">{t('company')}</p>
+            <p className="text-xs leading-relaxed text-white/50">
+              {t('company')}
+            </p>
           </div>
 
           <div>
-            <p className="text-white/30 text-xs uppercase tracking-widest mb-4">{t('hotline_label')}</p>
-            <p className="text-[#FFB800] text-lg font-bold">{t('hotline')}</p>
-            <p className="text-white/50 text-xs mt-2">{t('address')}</p>
+            <p className="mb-4 text-xs tracking-widest text-white/30 uppercase">
+              {t('hotline_label')}
+            </p>
+            <p className="text-gold text-lg font-bold">{t('hotline')}</p>
+            <p className="mt-2 text-xs text-white/50">{t('address')}</p>
           </div>
 
           <div>
-            <p className="text-white/30 text-xs uppercase tracking-widest mb-4">{t('follow')}</p>
+            <p className="mb-4 text-xs tracking-widest text-white/30 uppercase">
+              {t('follow')}
+            </p>
             <div className="flex gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                className="text-white/50 hover:text-[#FFB800] transition-colors text-sm font-bold">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gold text-sm font-bold text-white/50 transition-colors"
+              >
                 Facebook
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"
-                className="text-white/50 hover:text-[#FFB800] transition-colors text-sm font-bold">
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gold text-sm font-bold text-white/50 transition-colors"
+              >
                 YouTube
               </a>
-              <a href="https://tiktok.com/@buildxvn" target="_blank" rel="noopener noreferrer"
-                className="text-white/50 hover:text-[#FFB800] transition-colors text-sm font-bold">
+              <a
+                href="https://tiktok.com/@buildxvn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gold text-sm font-bold text-white/50 transition-colors"
+              >
                 TikTok
               </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2">
-          <p className="text-white/30 text-xs">
+        <div className="flex flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 md:flex-row">
+          <p className="text-xs text-white/30">
             {t('tax_label')}: {t('tax')}
           </p>
-          <p className="text-white/30 text-xs">
+          <p className="text-xs text-white/30">
             © {new Date().getFullYear()} BuildX. All rights reserved.
           </p>
         </div>
       </div>
     </footer>
-  );
+  )
 }
 ```
 
@@ -1455,24 +1610,25 @@ git commit -m "feat: add Footer component"
 ## Task 12: HeroSection
 
 **Files:**
+
 - Create: `components/sections/HeroSection.tsx`
 
 - [ ] **Step 1: Create HeroSection**
 
 ```tsx
 // components/sections/HeroSection.tsx
-'use client';
-import Image from 'next/image';
-import {motion} from 'framer-motion';
-import {useTranslations} from 'next-intl';
+'use client'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
 export default function HeroSection() {
-  const t = useTranslations('hero');
+  const t = useTranslations('hero')
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section className="relative flex h-screen w-full items-center justify-center overflow-hidden">
       <Image
-        src="/images/hero-bg.png"
+        src="/images/hero-bg.avif"
         alt="BuildX Hero"
         fill
         priority
@@ -1480,42 +1636,42 @@ export default function HeroSection() {
       />
       <div className="absolute inset-0 bg-black/65" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         <motion.div
-          initial={{opacity: 0, y: 0, scaleX: 0}}
-          animate={{opacity: 1, scaleX: 1}}
-          transition={{duration: 0.8}}
-          className="w-12 h-0.5 bg-[#FFB800] mx-auto mb-8"
+          initial={{ opacity: 0, y: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.8 }}
+          className="bg-gold mx-auto mb-8 h-0.5 w-12"
         />
         <motion.p
-          initial={{opacity: 0, y: 30}}
-          animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.9, delay: 0.3}}
-          className="text-white text-lg md:text-xl lg:text-2xl leading-relaxed font-light max-w-3xl mx-auto mb-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.3 }}
+          className="mx-auto mb-10 max-w-3xl text-lg leading-relaxed font-light text-white md:text-xl lg:text-2xl"
         >
           {t('headline')}
         </motion.p>
         <motion.a
           href="#about"
-          initial={{opacity: 0, y: 20}}
-          animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.7, delay: 0.7}}
-          className="inline-block border border-[#FFB800] text-[#FFB800] px-8 py-3 text-xs font-bold tracking-[3px] uppercase hover:bg-[#FFB800] hover:text-black transition-all duration-300"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.7 }}
+          className="border-gold text-gold hover:bg-gold inline-block border px-8 py-3 text-xs font-bold tracking-[3px] uppercase transition-all duration-300 hover:text-black"
         >
           {t('cta')}
         </motion.a>
       </div>
 
       <motion.div
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        transition={{delay: 1.2, duration: 0.8}}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
       >
-        <div className="w-px h-12 bg-gradient-to-b from-transparent to-[#FFB800]" />
+        <div className="to-gold h-12 w-px bg-gradient-to-b from-transparent" />
       </motion.div>
     </section>
-  );
+  )
 }
 ```
 
@@ -1531,58 +1687,59 @@ git commit -m "feat: add HeroSection"
 ## Task 13: AboutSection
 
 **Files:**
+
 - Create: `components/sections/AboutSection.tsx`
 
 - [ ] **Step 1: Create AboutSection**
 
 ```tsx
 // components/sections/AboutSection.tsx
-import Image from 'next/image';
-import {useTranslations} from 'next-intl';
-import SectionTitle from '@/components/ui/SectionTitle';
-import AnimatedText from '@/components/ui/AnimatedText';
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import SectionTitle from '@/components/ui/SectionTitle'
+import AnimatedText from '@/components/ui/AnimatedText'
 
 export default function AboutSection() {
-  const t = useTranslations('about');
+  const t = useTranslations('about')
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-[#111]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="bg-[#111] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           <AnimatedText>
             <SectionTitle title={t('title')} />
             <div className="space-y-10">
               <div>
-                <p className="text-[#FFB800] text-xs font-bold tracking-[3px] uppercase mb-3">
+                <p className="text-gold mb-3 text-xs font-bold tracking-[3px] uppercase">
                   {t('vision_label')}
                 </p>
-                <p className="text-white/80 leading-relaxed">{t('vision')}</p>
+                <p className="leading-relaxed text-white/80">{t('vision')}</p>
               </div>
               <div>
-                <p className="text-[#FFB800] text-xs font-bold tracking-[3px] uppercase mb-3">
+                <p className="text-gold mb-3 text-xs font-bold tracking-[3px] uppercase">
                   {t('mission_label')}
                 </p>
-                <p className="text-white/80 leading-relaxed">{t('mission')}</p>
+                <p className="leading-relaxed text-white/80">{t('mission')}</p>
               </div>
             </div>
           </AnimatedText>
 
           <AnimatedText delay={0.2}>
-            <div className="relative aspect-square max-w-lg mx-auto lg:mx-0">
+            <div className="relative mx-auto aspect-square max-w-lg lg:mx-0">
               <Image
-                src="/images/about.png"
+                src="/images/about.avif"
                 alt="About BuildX"
                 fill
                 className="object-cover"
               />
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 border-l-2 border-b-2 border-[#FFB800]" />
-              <div className="absolute -top-4 -right-4 w-24 h-24 border-r-2 border-t-2 border-[#FFB800]" />
+              <div className="border-gold absolute -bottom-4 -left-4 h-24 w-24 border-b-2 border-l-2" />
+              <div className="border-gold absolute -top-4 -right-4 h-24 w-24 border-t-2 border-r-2" />
             </div>
           </AnimatedText>
         </div>
       </div>
     </section>
-  );
+  )
 }
 ```
 
@@ -1598,45 +1755,56 @@ git commit -m "feat: add AboutSection"
 ## Task 14: BimSection
 
 **Files:**
+
 - Create: `components/sections/BimSection.tsx`
 
 - [ ] **Step 1: Create BimSection with Embla image carousel**
 
 ```tsx
 // components/sections/BimSection.tsx
-'use client';
-import {useCallback} from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import Image from 'next/image';
-import {useTranslations} from 'next-intl';
-import SectionTitle from '@/components/ui/SectionTitle';
-import AnimatedText from '@/components/ui/AnimatedText';
+'use client'
+import { useCallback } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import SectionTitle from '@/components/ui/SectionTitle'
+import AnimatedText from '@/components/ui/AnimatedText'
 
 const BIM_IMAGES = [
-  'bim-1.png', 'bim-2.png', 'bim-3.png', 'bim-4.png', 'bim-5.png',
-  'bim-6.png', 'bim-7.png', 'bim-8.png', 'bim-9.png', 'bim-10.png',
-];
+  'bim-1.avif',
+  'bim-2.avif',
+  'bim-3.avif',
+  'bim-4.avif',
+  'bim-5.avif',
+  'bim-6.avif',
+  'bim-7.avif',
+  'bim-8.avif',
+  'bim-9.avif',
+  'bim-10.avif',
+]
 
 export default function BimSection() {
-  const t = useTranslations('bim');
-  const features = t.raw('features') as string[];
-  const [emblaRef, emblaApi] = useEmblaCarousel({loop: true, dragFree: true});
+  const t = useTranslations('bim')
+  const features = t.raw('features') as string[]
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, dragFree: true })
 
-  const prev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const next = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const prev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
+  const next = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
 
   return (
-    <section id="bim" className="py-24 md:py-32 bg-[#0f0f0f]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-16">
+    <section id="bim" className="bg-[#0f0f0f] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 grid grid-cols-1 items-start gap-16 lg:grid-cols-2">
           <AnimatedText>
             <SectionTitle title={t('title')} label="BIM" />
-            <p className="text-[#FFB800] font-bold text-lg mb-4">{t('subtitle')}</p>
-            <p className="text-white/70 leading-relaxed mb-8">{t('description')}</p>
+            <p className="text-gold mb-4 text-lg font-bold">{t('subtitle')}</p>
+            <p className="mb-8 leading-relaxed text-white/70">
+              {t('description')}
+            </p>
             <ul className="space-y-3">
               {features.map((feature, i) => (
                 <li key={i} className="flex items-center gap-3 text-white/80">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800] flex-none" />
+                  <span className="bg-gold h-1.5 w-1.5 flex-none rounded-full" />
                   {feature}
                 </li>
               ))}
@@ -1648,7 +1816,10 @@ export default function BimSection() {
               <div className="overflow-hidden" ref={emblaRef}>
                 <div className="flex">
                   {BIM_IMAGES.map((img, i) => (
-                    <div key={i} className="flex-none w-full relative aspect-video">
+                    <div
+                      key={i}
+                      className="relative aspect-video w-full flex-none"
+                    >
                       <Image
                         src={`/images/${img}`}
                         alt={`BIM project ${i + 1}`}
@@ -1659,17 +1830,17 @@ export default function BimSection() {
                   ))}
                 </div>
               </div>
-              <div className="flex gap-3 mt-4 justify-end">
+              <div className="mt-4 flex justify-end gap-3">
                 <button
                   onClick={prev}
-                  className="w-10 h-10 border border-white/20 hover:border-[#FFB800] text-white/60 hover:text-[#FFB800] transition-all flex items-center justify-center"
+                  className="hover:border-gold hover:text-gold flex h-10 w-10 items-center justify-center border border-white/20 text-white/60 transition-all"
                   aria-label="Previous"
                 >
                   ←
                 </button>
                 <button
                   onClick={next}
-                  className="w-10 h-10 border border-white/20 hover:border-[#FFB800] text-white/60 hover:text-[#FFB800] transition-all flex items-center justify-center"
+                  className="hover:border-gold hover:text-gold flex h-10 w-10 items-center justify-center border border-white/20 text-white/60 transition-all"
                   aria-label="Next"
                 >
                   →
@@ -1680,7 +1851,7 @@ export default function BimSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 ```
 
@@ -1696,32 +1867,33 @@ git commit -m "feat: add BimSection with Embla image carousel"
 ## Task 15: DesignSection
 
 **Files:**
+
 - Create: `components/sections/DesignSection.tsx`
 
 - [ ] **Step 1: Create DesignSection**
 
 ```tsx
 // components/sections/DesignSection.tsx
-import {useTranslations} from 'next-intl';
-import SectionTitle from '@/components/ui/SectionTitle';
-import AnimatedText from '@/components/ui/AnimatedText';
-import ServiceCard from '@/components/ui/ServiceCard';
+import { useTranslations } from 'next-intl'
+import SectionTitle from '@/components/ui/SectionTitle'
+import AnimatedText from '@/components/ui/AnimatedText'
+import ServiceCard from '@/components/ui/ServiceCard'
 
 export default function DesignSection() {
-  const t = useTranslations('design');
-  const services = t.raw('services') as {name: string; description: string}[];
+  const t = useTranslations('design')
+  const services = t.raw('services') as { name: string; description: string }[]
 
   return (
-    <section id="design" className="py-24 md:py-32 bg-[#111]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="design" className="bg-[#111] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
         <AnimatedText>
-          <div className="max-w-2xl mb-16">
+          <div className="mb-16 max-w-2xl">
             <SectionTitle title={t('title')} />
-            <p className="text-white/60 leading-relaxed">{t('description')}</p>
+            <p className="leading-relaxed text-white/60">{t('description')}</p>
           </div>
         </AnimatedText>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, i) => (
             <ServiceCard
               key={i}
@@ -1733,7 +1905,7 @@ export default function DesignSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 ```
 
@@ -1749,28 +1921,29 @@ git commit -m "feat: add DesignSection with 4 service cards"
 ## Task 16: ConstructionSection
 
 **Files:**
+
 - Create: `components/sections/ConstructionSection.tsx`
 
 - [ ] **Step 1: Create ConstructionSection**
 
 ```tsx
 // components/sections/ConstructionSection.tsx
-import Image from 'next/image';
-import {useTranslations} from 'next-intl';
-import SectionTitle from '@/components/ui/SectionTitle';
-import AnimatedText from '@/components/ui/AnimatedText';
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import SectionTitle from '@/components/ui/SectionTitle'
+import AnimatedText from '@/components/ui/AnimatedText'
 
 export default function ConstructionSection() {
-  const t = useTranslations('construction');
+  const t = useTranslations('construction')
 
   return (
-    <section id="construction" className="py-24 md:py-32 bg-[#0f0f0f]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="construction" className="bg-[#0f0f0f] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           <AnimatedText delay={0.1}>
             <div className="relative aspect-video overflow-hidden">
               <Image
-                src="/images/bim-5.png"
+                src="/images/bim-5.avif"
                 alt="Construction"
                 fill
                 className="object-cover"
@@ -1781,12 +1954,14 @@ export default function ConstructionSection() {
 
           <AnimatedText>
             <SectionTitle title={t('title')} />
-            <p className="text-white/70 leading-relaxed text-lg">{t('description')}</p>
+            <p className="text-lg leading-relaxed text-white/70">
+              {t('description')}
+            </p>
           </AnimatedText>
         </div>
       </div>
     </section>
-  );
+  )
 }
 ```
 
@@ -1802,48 +1977,57 @@ git commit -m "feat: add ConstructionSection"
 ## Task 17: PricingSection
 
 **Files:**
+
 - Create: `components/sections/PricingSection.tsx`
 
 - [ ] **Step 1: Create PricingSection with Embla draggable carousel**
 
 ```tsx
 // components/sections/PricingSection.tsx
-'use client';
-import {useState} from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import {useTranslations} from 'next-intl';
-import SectionTitle from '@/components/ui/SectionTitle';
-import AnimatedText from '@/components/ui/AnimatedText';
-import PricingCard from '@/components/ui/PricingCard';
+'use client'
+import { useState } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import { useTranslations } from 'next-intl'
+import SectionTitle from '@/components/ui/SectionTitle'
+import AnimatedText from '@/components/ui/AnimatedText'
+import PricingCard from '@/components/ui/PricingCard'
 
 export default function PricingSection() {
-  const t = useTranslations('pricing');
-  const [tab, setTab] = useState<'design' | 'bim'>('design');
-  const [emblaRef] = useEmblaCarousel({dragFree: true, align: 'start'});
+  const t = useTranslations('pricing')
+  const [tab, setTab] = useState<'design' | 'bim'>('design')
+  const [emblaRef] = useEmblaCarousel({ dragFree: true, align: 'start' })
 
   const designPackages = t.raw('design_packages') as {
-    name: string; label: string; price: string; items: string[];
-  }[];
+    name: string
+    label: string
+    price: string
+    items: string[]
+  }[]
   const bimPackages = t.raw('bim_packages') as {
-    name: string; label: string; price: string; items: string[];
-  }[];
+    name: string
+    label: string
+    price: string
+    items: string[]
+  }[]
 
-  const packages = tab === 'design' ? designPackages : bimPackages;
+  const packages = tab === 'design' ? designPackages : bimPackages
 
   return (
-    <section id="pricing" className="py-24 md:py-32 bg-[#111]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="pricing" className="bg-[#111] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
         <AnimatedText>
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <SectionTitle title={t('title')} />
               <p className="text-white/50">{t('subtitle')}</p>
             </div>
-            <div className="flex border border-white/20 rounded-sm overflow-hidden w-fit">
+            <div className="flex w-fit overflow-hidden rounded-sm border border-white/20">
               <button
                 onClick={() => setTab('design')}
                 className={`px-6 py-2.5 text-xs font-bold tracking-widest uppercase transition-all ${
-                  tab === 'design' ? 'bg-[#FFB800] text-black' : 'text-white/50 hover:text-white'
+                  tab === 'design'
+                    ? 'bg-gold text-black'
+                    : 'text-white/50 hover:text-white'
                 }`}
               >
                 {t('design_tab')}
@@ -1851,7 +2035,9 @@ export default function PricingSection() {
               <button
                 onClick={() => setTab('bim')}
                 className={`px-6 py-2.5 text-xs font-bold tracking-widest uppercase transition-all ${
-                  tab === 'bim' ? 'bg-[#FFB800] text-black' : 'text-white/50 hover:text-white'
+                  tab === 'bim'
+                    ? 'bg-gold text-black'
+                    : 'text-white/50 hover:text-white'
                 }`}
               >
                 {t('bim_tab')}
@@ -1860,7 +2046,10 @@ export default function PricingSection() {
           </div>
         </AnimatedText>
 
-        <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
+        <div
+          className="cursor-grab overflow-hidden active:cursor-grabbing"
+          ref={emblaRef}
+        >
           <div className="flex gap-6">
             {packages.map((pkg, i) => (
               <PricingCard
@@ -1874,7 +2063,7 @@ export default function PricingSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 ```
 
@@ -1890,31 +2079,34 @@ git commit -m "feat: add PricingSection with tab switcher and Embla carousel"
 ## Task 18: NewsSection
 
 **Files:**
+
 - Create: `components/sections/NewsSection.tsx`
 
 - [ ] **Step 1: Create NewsSection**
 
 ```tsx
 // components/sections/NewsSection.tsx
-import {useTranslations} from 'next-intl';
-import SectionTitle from '@/components/ui/SectionTitle';
-import AnimatedText from '@/components/ui/AnimatedText';
-import NewsCard from '@/components/ui/NewsCard';
+import { useTranslations } from 'next-intl'
+import SectionTitle from '@/components/ui/SectionTitle'
+import AnimatedText from '@/components/ui/AnimatedText'
+import NewsCard from '@/components/ui/NewsCard'
 
 export default function NewsSection() {
-  const t = useTranslations('news');
+  const t = useTranslations('news')
   const articles = t.raw('articles') as {
-    title: string; excerpt: string; image: string;
-  }[];
+    title: string
+    excerpt: string
+    image: string
+  }[]
 
   return (
-    <section id="news" className="py-24 md:py-32 bg-[#0f0f0f]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="news" className="bg-[#0f0f0f] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
         <AnimatedText>
           <SectionTitle title={t('title')} className="mb-12" />
         </AnimatedText>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((article, i) => (
             <NewsCard
               key={i}
@@ -1928,7 +2120,7 @@ export default function NewsSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 ```
 
@@ -1944,65 +2136,66 @@ git commit -m "feat: add NewsSection with card grid"
 ## Task 19: ContactSection
 
 **Files:**
+
 - Create: `components/sections/ContactSection.tsx`
 
 - [ ] **Step 1: Create ContactSection**
 
 ```tsx
 // components/sections/ContactSection.tsx
-import {useTranslations} from 'next-intl';
-import SectionTitle from '@/components/ui/SectionTitle';
-import AnimatedText from '@/components/ui/AnimatedText';
+import { useTranslations } from 'next-intl'
+import SectionTitle from '@/components/ui/SectionTitle'
+import AnimatedText from '@/components/ui/AnimatedText'
 
 export default function ContactSection() {
-  const t = useTranslations('contact');
+  const t = useTranslations('contact')
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-[#111]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <section id="contact" className="bg-[#111] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
           <AnimatedText>
             <SectionTitle title={t('title')} />
             <div className="space-y-8">
               <div>
-                <p className="text-[#FFB800] text-xs font-bold tracking-[3px] uppercase mb-2">
+                <p className="text-gold mb-2 text-xs font-bold tracking-[3px] uppercase">
                   {t('company')}
                 </p>
                 <p className="text-white/70">{t('address')}</p>
               </div>
               <div>
-                <p className="text-white/40 text-xs uppercase tracking-widest mb-2">
+                <p className="mb-2 text-xs tracking-widest text-white/40 uppercase">
                   {t('hotline_label')}
                 </p>
                 <a
                   href={`tel:${t('hotline').replace(/\s/g, '')}`}
-                  className="text-[#FFB800] text-2xl font-bold hover:text-white transition-colors"
+                  className="text-gold text-2xl font-bold transition-colors hover:text-white"
                 >
                   {t('hotline')}
                 </a>
               </div>
               <div>
-                <p className="text-white/40 text-xs uppercase tracking-widest mb-2">
+                <p className="mb-2 text-xs tracking-widest text-white/40 uppercase">
                   {t('tax_label')}
                 </p>
                 <p className="text-white/70">{t('tax')}</p>
               </div>
               <div>
-                <p className="text-white/40 text-xs uppercase tracking-widest mb-4">
+                <p className="mb-4 text-xs tracking-widest text-white/40 uppercase">
                   {t('follow')}
                 </p>
                 <div className="flex gap-6">
                   {[
-                    {label: 'Facebook', href: 'https://facebook.com'},
-                    {label: 'YouTube', href: 'https://youtube.com'},
-                    {label: 'TikTok', href: 'https://tiktok.com/@buildxvn'},
-                  ].map(({label, href}) => (
+                    { label: 'Facebook', href: 'https://facebook.com' },
+                    { label: 'YouTube', href: 'https://youtube.com' },
+                    { label: 'TikTok', href: 'https://tiktok.com/@buildxvn' },
+                  ].map(({ label, href }) => (
                     <a
                       key={label}
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/50 hover:text-[#FFB800] transition-colors text-sm font-bold tracking-widest uppercase"
+                      className="hover:text-gold text-sm font-bold tracking-widest text-white/50 uppercase transition-colors"
                     >
                       {label}
                     </a>
@@ -2013,12 +2206,12 @@ export default function ContactSection() {
           </AnimatedText>
 
           <AnimatedText delay={0.2}>
-            <div className="w-full h-80 lg:h-full min-h-[320px] bg-[#1a1a1a] overflow-hidden">
+            <div className="bg-dark-2 h-80 min-h-[320px] w-full overflow-hidden lg:h-full">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.3!2d108.2!3d16.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDA!5e0!3m2!1svi!2svn!4v1"
                 width="100%"
                 height="100%"
-                style={{border: 0, filter: 'invert(90%) hue-rotate(180deg)'}}
+                style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -2029,7 +2222,7 @@ export default function ContactSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 ```
 
@@ -2045,6 +2238,7 @@ git commit -m "feat: add ContactSection with map embed"
 ## Task 20: Assemble page.tsx and wire layout
 
 **Files:**
+
 - Modify: `app/[locale]/page.tsx`
 - Modify: `app/[locale]/layout.tsx`
 
@@ -2052,17 +2246,17 @@ git commit -m "feat: add ContactSection with map embed"
 
 ```tsx
 // app/[locale]/page.tsx
-import Navbar from '@/components/layout/Navbar';
-import SideNav from '@/components/layout/SideNav';
-import Footer from '@/components/layout/Footer';
-import HeroSection from '@/components/sections/HeroSection';
-import AboutSection from '@/components/sections/AboutSection';
-import BimSection from '@/components/sections/BimSection';
-import DesignSection from '@/components/sections/DesignSection';
-import ConstructionSection from '@/components/sections/ConstructionSection';
-import PricingSection from '@/components/sections/PricingSection';
-import NewsSection from '@/components/sections/NewsSection';
-import ContactSection from '@/components/sections/ContactSection';
+import Navbar from '@/components/layout/Navbar'
+import SideNav from '@/components/layout/SideNav'
+import Footer from '@/components/layout/Footer'
+import HeroSection from '@/components/sections/HeroSection'
+import AboutSection from '@/components/sections/AboutSection'
+import BimSection from '@/components/sections/BimSection'
+import DesignSection from '@/components/sections/DesignSection'
+import ConstructionSection from '@/components/sections/ConstructionSection'
+import PricingSection from '@/components/sections/PricingSection'
+import NewsSection from '@/components/sections/NewsSection'
+import ContactSection from '@/components/sections/ContactSection'
 
 export default function HomePage() {
   return (
@@ -2081,7 +2275,7 @@ export default function HomePage() {
       </main>
       <Footer />
     </>
-  );
+  )
 }
 ```
 
@@ -2092,6 +2286,7 @@ npm run dev
 ```
 
 Open http://localhost:3000 in browser. Verify:
+
 - PageLoader animation on first load
 - Navbar fixed at top, transparent then opaque on scroll
 - SideNav dots visible on right, highlight active section
@@ -2118,6 +2313,7 @@ git commit -m "feat: assemble full page with all 8 sections"
 ## Task 21: Static export + final build
 
 **Files:**
+
 - Verify: `next.config.ts` has `output: 'export'`
 
 - [ ] **Step 1: Run production build**
@@ -2127,6 +2323,7 @@ npm run build 2>&1
 ```
 
 Expected output:
+
 ```
 Route (app)                              Size     First Load JS
 ┌ ○ /                                   ...
@@ -2156,6 +2353,7 @@ open http://localhost:3001/vi
 ```
 
 Verify the static build renders identically to the dev server. Check:
+
 - All images load
 - Language switcher navigates between /vi and /en
 - Animations work

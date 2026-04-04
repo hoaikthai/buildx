@@ -1,28 +1,32 @@
-import type {ReactNode} from 'react';
-import type {Metadata} from 'next';
-import {Archivo, Montserrat} from 'next/font/google';
-import './globals.css';
+import type { ReactNode } from 'react'
+import type { Metadata } from 'next'
+import { Archivo, Montserrat } from 'next/font/google'
+import './globals.css'
 
 const archivo = Archivo({
   subsets: ['latin', 'vietnamese'],
   variable: '--font-archivo',
   display: 'swap',
-});
+})
 
 const montserrat = Montserrat({
   subsets: ['latin', 'vietnamese'],
   variable: '--font-montserrat',
   display: 'swap',
-});
+})
 
 export const metadata: Metadata = {
   title: 'BuildX — Giải pháp BIM & Thiết kế',
-  description: 'Công ty Cổ phần Đầu tư BuildX — Giải pháp BIM, Thiết kế và Thi công chuyên nghiệp tại Đà Nẵng.',
-};
+  description:
+    'Công ty Cổ phần Đầu tư BuildX — Giải pháp BIM, Thiết kế và Thi công chuyên nghiệp tại Đà Nẵng.',
+}
 
-export default function RootLayout({children}: {children: ReactNode}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html suppressHydrationWarning className={`${archivo.variable} ${montserrat.variable}`}>
+    <html
+      suppressHydrationWarning
+      className={`${archivo.variable} ${montserrat.variable}`}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -30,9 +34,7 @@ export default function RootLayout({children}: {children: ReactNode}) {
           }}
         />
       </head>
-      <body suppressHydrationWarning>
-        {children}
-      </body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
-  );
+  )
 }
