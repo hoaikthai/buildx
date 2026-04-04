@@ -2,8 +2,9 @@
 import {useState, useEffect} from 'react';
 import Image from 'next/image';
 import {useTranslations} from 'next-intl';
-import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
-import MobileMenu from './MobileMenu';
+import {LanguageSwitcher} from '@/components/ui/LanguageSwitcher';
+import {MobileMenu} from './MobileMenu';
+import {ThemeToggle} from './ThemeToggle';
 
 const NAV_SECTIONS = [
   {key: 'about', idx: 1},
@@ -21,7 +22,7 @@ function scrollToSection(idx: number) {
   container.scrollTo({top: idx * window.innerHeight, behavior: 'smooth'});
 }
 
-export default function Navbar() {
+export function Navbar() {
   const t = useTranslations('nav');
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,7 +44,7 @@ export default function Navbar() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-[#111]/95 backdrop-blur-sm py-3' : 'bg-transparent py-5'
+          scrolled ? 'backdrop-blur-sm py-3 bg-[var(--bg-nav)]' : 'bg-transparent py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -54,7 +55,7 @@ export default function Navbar() {
               width={120}
               height={45}
               className="object-contain"
-              style={{filter: 'brightness(0) invert(1)'}}
+              style={{filter: 'var(--logo-filter)'}}
             />
           </button>
 
@@ -63,7 +64,7 @@ export default function Navbar() {
               <button
                 key={label}
                 onClick={onClick}
-                className="text-white/70 hover:text-gold text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer bg-transparent border-none"
+                className="text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer bg-transparent border-none hover:text-gold text-[var(--text-muted)]"
               >
                 {label}
               </button>
@@ -71,15 +72,16 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <LanguageSwitcher />
             <button
               className="lg:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
             >
-              <span className="block w-6 h-0.5 bg-white" />
-              <span className="block w-6 h-0.5 bg-white" />
-              <span className="block w-4 h-0.5 bg-white" />
+              <span className="block w-6 h-0.5 bg-[var(--text-primary)]" />
+              <span className="block w-6 h-0.5 bg-[var(--text-primary)]" />
+              <span className="block w-4 h-0.5 bg-[var(--text-primary)]" />
             </button>
           </div>
         </div>

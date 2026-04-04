@@ -17,6 +17,13 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: ReactNode}) {
   return (
     <html suppressHydrationWarning className={archivo.variable}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t!=='light')document.documentElement.classList.add('dark');}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body suppressHydrationWarning>
         {children}
       </body>

@@ -3,46 +3,37 @@ import {useState} from 'react';
 import {useTranslations} from 'next-intl';
 import AnimatedText from '@/components/ui/AnimatedText';
 
-const CARD_IMAGES = [
-  {bg: '#0d0d0d', num: '01'},
-  {bg: '#0a0a0a', num: '02'},
-  {bg: '#111', num: '03'},
-  {bg: '#0d0d0d', num: '04'},
-];
+const CARD_NUMS = ['01', '02', '03', '04'];
+const CARD_BG = ['var(--bg-secondary)', 'var(--bg-card)', 'var(--bg-primary)', 'var(--bg-secondary)'];
 
-export default function DesignSection() {
+export function DesignSection() {
   const t = useTranslations('design');
   const services = t.raw('services') as {name: string; description: string}[];
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section id="design" className="snap-section flex flex-col justify-center bg-[#111]">
+    <section id="design" className="snap-section flex flex-col justify-center bg-[var(--bg-primary)]">
       <div className="w-full max-w-7xl mx-auto px-8 md:px-16 pt-20 pb-8">
         <AnimatedText>
-          <p className="text-gold text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
+          <p className="text-gold text-xs font-bold mb-4 tracking-[5px]">
             SERVICES
           </p>
           <h2
-            className="text-white font-bold mb-3 leading-none"
+            className="font-bold mb-3 leading-none text-[var(--text-primary)]"
             style={{fontSize: 'clamp(2.5rem, 4.5vw, 4rem)'}}
           >
             {t('title')}
           </h2>
           <div className="w-12 h-px bg-gold mb-3" />
-          <p className="text-white/50 mb-8" style={{fontSize: '0.95rem'}}>
+          <p className="mb-8 text-[var(--text-muted)]" style={{fontSize: '0.95rem'}}>
             {t('description')}
           </p>
         </AnimatedText>
       </div>
 
-      {/* Hover-expanding accordion cards */}
       <div
         className="flex w-full"
-        style={{
-          height: 'calc(100vh - 280px)',
-          minHeight: '320px',
-          maxHeight: '520px',
-        }}
+        style={{height: 'calc(100vh - 280px)', minHeight: '320px', maxHeight: '520px'}}
       >
         {services.map((service, i) => {
           const isHovered = hovered === i;
@@ -57,66 +48,57 @@ export default function DesignSection() {
               style={{
                 flex: isHovered ? '4 1 0%' : anyHovered ? '0.5 1 0%' : '1 1 0%',
                 transition: 'flex 0.5s cubic-bezier(0.4,0,0.2,1)',
-                background: CARD_IMAGES[i].bg,
-                borderRight: i < services.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                background: CARD_BG[i],
+                borderRight: i < services.length - 1 ? '1px solid var(--border)' : 'none',
               }}
             >
               {/* Large number watermark */}
-              <div
-                className="absolute inset-0 flex items-end justify-start"
-                style={{padding: '20px 24px'}}
-              >
+              <div className="absolute inset-0 flex items-end justify-start p-5">
                 <span
-                  className="font-bold text-white/5 leading-none select-none"
+                  className="font-bold leading-none select-none text-[var(--border)]"
                   style={{fontSize: 'clamp(5rem, 12vw, 10rem)'}}
                 >
-                  {CARD_IMAGES[i].num}
+                  {CARD_NUMS[i]}
                 </span>
               </div>
 
               {/* Gold left border on hover */}
               <div
-                className="absolute left-0 top-0 bottom-0 transition-all duration-500"
+                className="absolute left-0 top-0 bottom-0 w-[3px] bg-gold transition-all duration-500"
                 style={{
-                  width: '3px',
-                  background: '#FFB800',
                   transform: isHovered ? 'scaleY(1)' : 'scaleY(0)',
                   transformOrigin: 'bottom',
                 }}
               />
 
-              {/* Always visible: number label at top */}
+              {/* Number label at top */}
               <div className="absolute top-8 left-6">
-                <span
-                  className="text-gold font-bold"
-                  style={{fontSize: '0.7rem', letterSpacing: '3px'}}
-                >
-                  {CARD_IMAGES[i].num}
+                <span className="text-gold font-bold text-[0.7rem] tracking-[3px]">
+                  {CARD_NUMS[i]}
                 </span>
               </div>
 
               {/* Content revealed on hover */}
               <div
-                className="absolute inset-0 flex flex-col justify-center"
+                className="absolute inset-0 flex flex-col justify-center min-w-[280px]"
                 style={{
                   padding: '40px 36px',
                   opacity: isHovered ? 1 : 0,
                   transform: isHovered ? 'translateX(0)' : 'translateX(-16px)',
                   transition: 'opacity 0.4s ease, transform 0.4s ease',
                   transitionDelay: isHovered ? '0.1s' : '0s',
-                  minWidth: '280px',
                 }}
               >
                 <div className="w-8 h-px bg-gold mb-6" />
                 <h3
-                  className="text-white font-bold mb-4 leading-tight"
-                  style={{fontSize: 'clamp(1.2rem, 2vw, 1.6rem)', whiteSpace: 'nowrap'}}
+                  className="font-bold mb-4 leading-tight whitespace-nowrap text-[var(--text-primary)]"
+                  style={{fontSize: 'clamp(1.2rem, 2vw, 1.6rem)'}}
                 >
                   {service.name}
                 </h3>
                 <p
-                  className="text-white/60 leading-relaxed"
-                  style={{fontSize: '0.9rem', maxWidth: '320px'}}
+                  className="leading-relaxed text-[var(--text-muted)] max-w-[320px]"
+                  style={{fontSize: '0.9rem'}}
                 >
                   {service.description}
                 </p>

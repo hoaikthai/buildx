@@ -2,7 +2,7 @@
 import {useLocale} from 'next-intl';
 import {useRouter, usePathname} from '@/i18n/navigation';
 
-export default function LanguageSwitcher() {
+export function LanguageSwitcher() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -15,18 +15,14 @@ export default function LanguageSwitcher() {
     <div className="flex items-center gap-1 text-xs font-bold tracking-widest">
       <button
         onClick={() => switchLocale('vi')}
-        className={`px-2 py-1 transition-colors cursor-pointer ${
-          locale === 'vi' ? 'text-gold' : 'text-white/50 hover:text-white'
-        }`}
+        className={`px-2 py-1 transition-colors cursor-pointer ${locale === 'vi' ? 'text-gold' : 'text-[var(--text-subtle)]'}`}
       >
         VI
       </button>
-      <span className="text-white/30">|</span>
+      <span className="text-[var(--text-faint)]">|</span>
       <button
         onClick={() => switchLocale('en')}
-        className={`px-2 py-1 transition-colors cursor-pointer ${
-          locale === 'en' ? 'text-gold' : 'text-white/50 hover:text-white'
-        }`}
+        className={`px-2 py-1 transition-colors cursor-pointer ${locale === 'en' ? 'text-gold' : 'text-[var(--text-subtle)]'}`}
       >
         EN
       </button>
