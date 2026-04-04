@@ -43,7 +43,7 @@ export default function MobileMenu({open, onClose, navItems}: MobileMenuProps) {
                 initial={{opacity: 0, x: -20}}
                 animate={{opacity: 1, x: 0}}
                 transition={{delay: i * 0.07}}
-                className="text-white text-2xl font-bold tracking-widest uppercase hover:text-[#FFB800] transition-colors cursor-pointer bg-transparent border-none"
+                className="text-white text-2xl font-bold tracking-widest uppercase hover:text-gold transition-colors cursor-pointer bg-transparent border-none"
               >
                 {label}
               </motion.button>

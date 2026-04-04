@@ -16,7 +16,7 @@ export default function LanguageSwitcher() {
       <button
         onClick={() => switchLocale('vi')}
         className={`px-2 py-1 transition-colors cursor-pointer ${
-          locale === 'vi' ? 'text-[#FFB800]' : 'text-white/50 hover:text-white'
+          locale === 'vi' ? 'text-gold' : 'text-white/50 hover:text-white'
         }`}
       >
         VI
@@ -25,7 +25,7 @@ export default function LanguageSwitcher() {
       <button
         onClick={() => switchLocale('en')}
         className={`px-2 py-1 transition-colors cursor-pointer ${
-          locale === 'en' ? 'text-[#FFB800]' : 'text-white/50 hover:text-white'
+          locale === 'en' ? 'text-gold' : 'text-white/50 hover:text-white'
         }`}
       >
         EN

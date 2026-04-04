@@ -22,7 +22,7 @@ export default function Footer() {
 
           <div>
             <p className="text-white/30 text-xs uppercase tracking-widest mb-4">{t('hotline_label')}</p>
-            <p className="text-[#FFB800] text-lg font-bold">{t('hotline')}</p>
+            <p className="text-gold text-lg font-bold">{t('hotline')}</p>
             <p className="text-white/50 text-xs mt-2">{t('address')}</p>
           </div>
 
@@ -39,7 +39,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/50 hover:text-[#FFB800] transition-colors text-sm font-bold"
+                  className="text-white/50 hover:text-gold transition-colors text-sm font-bold"
                 >
                   {label}
                 </a>

@@ -34,7 +34,7 @@ export default function NewsCard({title, excerpt, image, readMore, index}: NewsC
         <p className="text-black/60 text-sm leading-relaxed mb-4 line-clamp-3">
           {excerpt}
         </p>
-        <span className="text-[#FFB800] text-xs font-bold tracking-wider uppercase hover:text-white transition-colors">
+        <span className="text-gold text-xs font-bold tracking-wider uppercase hover:text-white transition-colors">
           {readMore} →
         </span>
       </div>

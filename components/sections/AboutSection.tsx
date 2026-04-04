@@ -10,7 +10,7 @@ export default function AboutSection() {
       <div className="w-full max-w-7xl mx-auto px-8 md:px-16 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <AnimatedText>
-            <p className="text-[#FFB800] text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
+            <p className="text-gold text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
               BUILDX
             </p>
             <h2
@@ -19,10 +19,10 @@ export default function AboutSection() {
             >
               {t('title')}
             </h2>
-            <div className="w-12 h-px bg-[#FFB800] mb-10" />
+            <div className="w-12 h-px bg-gold mb-10" />
             <div className="space-y-8">
               <div>
-                <p className="text-[#FFB800] text-xs font-bold mb-3" style={{letterSpacing: '4px'}}>
+                <p className="text-gold text-xs font-bold mb-3" style={{letterSpacing: '4px'}}>
                   {t('vision_label').toUpperCase()}
                 </p>
                 <p className="text-white/70 leading-relaxed" style={{fontSize: '1rem'}}>
@@ -30,7 +30,7 @@ export default function AboutSection() {
                 </p>
               </div>
               <div>
-                <p className="text-[#FFB800] text-xs font-bold mb-3" style={{letterSpacing: '4px'}}>
+                <p className="text-gold text-xs font-bold mb-3" style={{letterSpacing: '4px'}}>
                   {t('mission_label').toUpperCase()}
                 </p>
                 <p className="text-white/70 leading-relaxed" style={{fontSize: '1rem'}}>

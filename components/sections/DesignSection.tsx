@@ -19,7 +19,7 @@ export default function DesignSection() {
     <section id="design" className="snap-section flex flex-col justify-center bg-[#111]">
       <div className="w-full max-w-7xl mx-auto px-8 md:px-16 pt-20 pb-8">
         <AnimatedText>
-          <p className="text-[#FFB800] text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
+          <p className="text-gold text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
             SERVICES
           </p>
           <h2
@@ -28,7 +28,7 @@ export default function DesignSection() {
           >
             {t('title')}
           </h2>
-          <div className="w-12 h-px bg-[#FFB800] mb-3" />
+          <div className="w-12 h-px bg-gold mb-3" />
           <p className="text-white/50 mb-8" style={{fontSize: '0.95rem'}}>
             {t('description')}
           </p>
@@ -88,7 +88,7 @@ export default function DesignSection() {
               {/* Always visible: number label at top */}
               <div className="absolute top-8 left-6">
                 <span
-                  className="text-[#FFB800] font-bold"
+                  className="text-gold font-bold"
                   style={{fontSize: '0.7rem', letterSpacing: '3px'}}
                 >
                   {CARD_IMAGES[i].num}
@@ -107,7 +107,7 @@ export default function DesignSection() {
                   minWidth: '280px',
                 }}
               >
-                <div className="w-8 h-px bg-[#FFB800] mb-6" />
+                <div className="w-8 h-px bg-gold mb-6" />
                 <h3
                   className="text-white font-bold mb-4 leading-tight"
                   style={{fontSize: 'clamp(1.2rem, 2vw, 1.6rem)', whiteSpace: 'nowrap'}}

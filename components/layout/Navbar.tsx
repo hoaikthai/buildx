@@ -63,7 +63,7 @@ export default function Navbar() {
               <button
                 key={label}
                 onClick={onClick}
-                className="text-white/70 hover:text-[#FFB800] text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer bg-transparent border-none"
+                className="text-white/70 hover:text-gold text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer bg-transparent border-none"
               >
                 {label}
               </button>

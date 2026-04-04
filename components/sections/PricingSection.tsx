@@ -71,7 +71,7 @@ export default function PricingSection() {
         <AnimatedText>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
             <div>
-              <p className="text-[#FFB800] text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
+              <p className="text-gold text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
                 PRICING
               </p>
               <h2
@@ -80,7 +80,7 @@ export default function PricingSection() {
               >
                 {t('title')}
               </h2>
-              <div className="w-12 h-px bg-[#FFB800] mt-4" />
+              <div className="w-12 h-px bg-gold mt-4" />
             </div>
             <div
               className="flex overflow-hidden"
@@ -167,7 +167,7 @@ export default function PricingSection() {
                     <ul className="space-y-3">
                       {pkg.items.map((item, j) => (
                         <li key={j} className="flex items-start gap-3" style={{fontSize: '0.875rem', color: 'rgba(255,255,255,0.65)'}}>
-                          <span className="text-[#FFB800] flex-none mt-0.5">✓</span>
+                          <span className="text-gold flex-none mt-0.5">✓</span>
                           {item}
                         </li>
                       ))}

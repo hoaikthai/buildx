@@ -23,7 +23,7 @@ export default function BimSection() {
       <div className="w-full max-w-7xl mx-auto px-8 md:px-16 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <AnimatedText>
-            <p className="text-[#FFB800] text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
+            <p className="text-gold text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
               BIM SOLUTIONS
             </p>
             <h2
@@ -32,8 +32,8 @@ export default function BimSection() {
             >
               {t('title')}
             </h2>
-            <div className="w-12 h-px bg-[#FFB800] mb-8" />
-            <p className="text-[#FFB800] font-semibold mb-4" style={{fontSize: '1.05rem'}}>
+            <div className="w-12 h-px bg-gold mb-8" />
+            <p className="text-gold font-semibold mb-4" style={{fontSize: '1.05rem'}}>
               {t('subtitle')}
             </p>
             <p className="text-white/60 leading-relaxed mb-10" style={{fontSize: '0.95rem'}}>
@@ -43,12 +43,12 @@ export default function BimSection() {
               {features.map((feature, i) => (
                 <li key={i} className="flex items-center gap-4 text-white/80">
                   <span
-                    className="flex-none text-[#FFB800] font-bold"
+                    className="flex-none text-gold font-bold"
                     style={{fontSize: '1.1rem'}}
                   >
                     0{i + 1}
                   </span>
-                  <span className="w-6 h-px bg-[#FFB800]/40 flex-none" />
+                  <span className="w-6 h-px bg-gold/40 flex-none" />
                   <span style={{fontSize: '0.95rem'}}>{feature}</span>
                 </li>
               ))}
@@ -86,7 +86,7 @@ export default function BimSection() {
                 <div className="flex gap-2">
                   <button
                     onClick={prev}
-                    className="flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-[#FFB800] hover:text-black"
+                    className="flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-gold hover:text-black"
                     style={{
                       width: '44px', height: '44px',
                       border: '1px solid rgba(255,255,255,0.2)',
@@ -99,7 +99,7 @@ export default function BimSection() {
                   </button>
                   <button
                     onClick={next}
-                    className="flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-[#FFB800] hover:text-black"
+                    className="flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-gold hover:text-black"
                     style={{
                       width: '44px', height: '44px',
                       border: '1px solid rgba(255,255,255,0.2)',

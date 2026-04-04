@@ -24,7 +24,7 @@ export default function ConstructionSection() {
 
           {/* Text right half */}
           <AnimatedText className="flex flex-col justify-center px-12 lg:px-16 py-20">
-            <p className="text-[#FFB800] text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
+            <p className="text-gold text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
               CONSTRUCTION
             </p>
             <h2
@@ -33,7 +33,7 @@ export default function ConstructionSection() {
             >
               {t('title')}
             </h2>
-            <div className="w-12 h-px bg-[#FFB800] mb-8" />
+            <div className="w-12 h-px bg-gold mb-8" />
             <p className="text-white/70 leading-relaxed" style={{fontSize: '1.05rem', maxWidth: '480px'}}>
               {t('description')}
             </p>

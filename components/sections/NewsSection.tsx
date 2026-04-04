@@ -12,7 +12,7 @@ export default function NewsSection() {
     <section id="news" className="snap-section flex items-center bg-white">
       <div className="w-full max-w-7xl mx-auto px-8 md:px-16 py-20">
         <AnimatedText>
-          <p className="text-[#FFB800] text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
+          <p className="text-gold text-xs font-bold mb-4" style={{letterSpacing: '5px'}}>
             NEWS
           </p>
           <h2
@@ -21,7 +21,7 @@ export default function NewsSection() {
           >
             {t('title')}
           </h2>
-          <div className="w-12 h-px bg-[#FFB800] mb-12" />
+          <div className="w-12 h-px bg-gold mb-12" />
         </AnimatedText>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
