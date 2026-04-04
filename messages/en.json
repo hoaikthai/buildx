@@ -9,10 +9,10 @@
     "contact": "Contact"
   },
   "hero": {
-    "headline": "In a rapidly transforming construction industry, we believe the future of every project lies not merely in steel and concrete, but originates from precise, intelligent, data-rich digital models.",
     "cta": "Explore our services"
   },
   "about": {
+    "headline": "In a rapidly transforming construction industry, we believe the future of every project lies not merely in steel and concrete, but originates from precise, intelligent, data-rich digital models.",
     "title": "About Us",
     "vision_label": "Vision",
     "vision": "To become Vietnam's most trusted partner in creating sustainable living and working spaces, built on superior BIM capabilities, innovative architectural-interior design, and quality construction.",
@@ -91,6 +91,13 @@
         "price": "10,000",
         "items": ["Clash detection", "Detailed clash reports", "Model updates", "Resolution support"]
       }
+    ],
+    "bim_note_title": "Note",
+    "bim_note_items": [
+      "The unit price does not include the area of typical floors.",
+      "Small, complex, or urgent projects → separate quote.",
+      "Applicable to areas ≥ 2,000 m²",
+      "Discounts are available for multi-discipline package projects."
     ]
   },
   "news": {

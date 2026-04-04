@@ -55,7 +55,6 @@ export function Navbar() {
               width={120}
               height={45}
               className="object-contain"
-              style={{filter: 'var(--logo-filter)'}}
             />
           </button>
 
@@ -64,7 +63,7 @@ export function Navbar() {
               <button
                 key={label}
                 onClick={onClick}
-                className="text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer bg-transparent border-none hover:text-gold text-[var(--text-muted)]"
+                className="text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer bg-transparent border-none hover:text-gold text-(--text-muted)"
               >
                 {label}
               </button>

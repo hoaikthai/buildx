@@ -19,13 +19,13 @@ export function DesignSection() {
             SERVICES
           </p>
           <h2
-            className="font-bold mb-3 leading-none text-[var(--text-primary)]"
+            className="font-bold mb-3 leading-none text-(--text-primary)"
             style={{fontSize: 'clamp(2.5rem, 4.5vw, 4rem)'}}
           >
             {t('title')}
           </h2>
           <div className="w-12 h-px bg-gold mb-3" />
-          <p className="mb-8 text-[var(--text-muted)]" style={{fontSize: '0.95rem'}}>
+          <p className="mb-8 text-(--text-muted)" style={{fontSize: '0.95rem'}}>
             {t('description')}
           </p>
         </AnimatedText>
@@ -91,13 +91,13 @@ export function DesignSection() {
               >
                 <div className="w-8 h-px bg-gold mb-6" />
                 <h3
-                  className="font-bold mb-4 leading-tight whitespace-nowrap text-[var(--text-primary)]"
+                  className="font-bold mb-4 leading-tight whitespace-nowrap text-(--text-primary)"
                   style={{fontSize: 'clamp(1.2rem, 2vw, 1.6rem)'}}
                 >
                   {service.name}
                 </h3>
                 <p
-                  className="leading-relaxed text-[var(--text-muted)] max-w-[320px]"
+                  className="leading-relaxed text-(--text-muted) max-w-[320px]"
                   style={{fontSize: '0.9rem'}}
                 >
                   {service.description}

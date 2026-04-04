@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import {useTranslations} from 'next-intl';
 import AnimatedText from '@/components/ui/AnimatedText';
 import {NewsCard} from '@/components/ui/NewsCard';
@@ -9,14 +10,20 @@ export function NewsSection() {
   }[];
 
   return (
-    <section id="news" className="snap-section flex items-center bg-[var(--bg-primary)]">
-      <div className="w-full max-w-7xl mx-auto px-8 md:px-16 py-20">
+    <section id="news" className="snap-section flex items-center">
+      <Image
+        src="/images/news-background.avif"
+        alt=""
+        fill
+        className="object-cover"
+      />
+      <div className="relative w-full max-w-7xl mx-auto px-8 md:px-16 py-20">
         <AnimatedText>
           <p className="text-gold text-xs font-bold mb-4 tracking-[5px]">
             NEWS
           </p>
           <h2
-            className="font-bold mb-4 leading-none text-[var(--text-primary)]"
+            className="font-bold mb-4 leading-none text-(--text-primary)"
             style={{fontSize: 'clamp(2.5rem, 4.5vw, 4rem)'}}
           >
             {t('title')}

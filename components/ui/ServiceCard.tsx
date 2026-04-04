@@ -14,7 +14,7 @@ export default function ServiceCard({name, description, index}: ServiceCardProps
       whileInView={{opacity: 1, y: 0}}
       viewport={{once: true}}
       transition={{duration: 0.6, delay: index * 0.1}}
-      className="group relative bg-[#1a1a1a] border border-white/10 p-8 hover:border-gold/50 transition-all duration-300 cursor-default"
+      className="group relative bg-dark-2 border border-white/10 p-8 hover:border-gold/50 transition-all duration-300 cursor-default"
     >
       <div className="w-8 h-0.5 bg-gold mb-6 group-hover:w-16 transition-all duration-300" />
       <h3 className="text-lg font-bold text-white mb-3">{name}</h3>

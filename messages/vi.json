@@ -9,11 +9,11 @@
     "contact": "Liên hệ"
   },
   "hero": {
-    "headline": "Trong một ngành xây dựng đang chuyển mình mạnh mẽ, chúng tôi tin rằng tương lai của mọi công trình không chỉ nằm ở thép và bê tông mà khởi nguồn từ những mô hình số chính xác, thông minh và giàu dữ liệu.",
     "cta": "Khám phá dịch vụ"
   },
   "about": {
-    "title": "Về chúng tôi",
+    "headline": "Trong một ngành xây dựng đang chuyển mình mạnh mẽ, chúng tôi tin rằng tương lai của mọi công trình không chỉ nằm ở thép và bê tông mà khởi nguồn từ những mô hình số chính xác, thông minh và giàu dữ liệu.",
+    "title": "Giới thiệu",
     "vision_label": "Tầm nhìn",
     "vision": "Trở thành đối tác uy tín hàng đầu Việt Nam trong việc kiến tạo không gian sống và làm việc bền vững, dựa trên năng lực BIM vượt trội, thiết kế kiến trúc-nội thất sáng tạo và thi công chuẩn mực.",
     "mission_label": "Sứ mệnh",
@@ -91,6 +91,13 @@
         "price": "10.000",
         "items": ["Phát hiện xung đột", "Báo cáo xung đột chi tiết", "Cập nhật mô hình", "Hỗ trợ giải quyết"]
       }
+    ],
+    "bim_note_title": "",
+    "bim_note_items": [
+      "Đơn giá không bao gồm diện tích các tầng điển hình.",
+      "Công trình nhỏ, phức tạp hoặc yêu cầu gấp → báo giá riêng.",
+      "Áp dụng cho diện tích ≥ 2.000 m².",
+      "Có chiết khấu cho dự án trọn gói nhiều bộ môn."
     ]
   },
   "news": {

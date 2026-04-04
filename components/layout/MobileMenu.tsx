@@ -28,7 +28,7 @@ export function MobileMenu({open, onClose, navItems}: MobileMenuProps) {
           <div className="flex justify-end p-6">
             <button
               onClick={onClose}
-              className="text-4xl leading-none cursor-pointer transition-colors hover:text-gold text-[var(--text-muted)]"
+              className="text-4xl leading-none cursor-pointer transition-colors hover:text-gold text-(--text-muted)"
               aria-label="Close menu"
             >
               ×
@@ -43,7 +43,7 @@ export function MobileMenu({open, onClose, navItems}: MobileMenuProps) {
                 initial={{opacity: 0, x: -20}}
                 animate={{opacity: 1, x: 0}}
                 transition={{delay: i * 0.07}}
-                className="text-2xl font-bold tracking-widest uppercase hover:text-gold transition-colors cursor-pointer bg-transparent border-none text-[var(--text-primary)]"
+                className="text-2xl font-bold tracking-widest uppercase hover:text-gold transition-colors cursor-pointer bg-transparent border-none text-(--text-primary)"
               >
                 {label}
               </motion.button>

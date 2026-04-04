@@ -26,13 +26,13 @@ export function ConstructionSection() {
               CONSTRUCTION
             </p>
             <h2
-              className="font-bold mb-6 leading-none text-[var(--text-primary)]"
+              className="font-bold mb-6 leading-none text-(--text-primary)"
               style={{fontSize: 'clamp(2.5rem, 4.5vw, 4rem)'}}
             >
               {t('title')}
             </h2>
             <div className="w-12 h-px bg-gold mb-8" />
-            <p className="leading-relaxed text-[var(--text-muted)] max-w-[480px]" style={{fontSize: '1.05rem'}}>
+            <p className="leading-relaxed text-(--text-muted) max-w-[480px]" style={{fontSize: '1.05rem'}}>
               {t('description')}
             </p>
           </AnimatedText>

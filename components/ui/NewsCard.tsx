@@ -29,13 +29,13 @@ export function NewsCard({title, excerpt, image, readMore, index}: NewsCardProps
         />
       </div>
       <div className="p-6">
-        <h3 className="font-bold text-base leading-snug mb-3 line-clamp-2 text-[var(--text-primary)]">
+        <h3 className="font-bold text-base leading-snug mb-3 line-clamp-2 text-(--text-primary)">
           {title}
         </h3>
-        <p className="text-sm leading-relaxed mb-4 line-clamp-3 text-[var(--text-muted)]">
+        <p className="text-sm leading-relaxed mb-4 line-clamp-3 text-(--text-muted)">
           {excerpt}
         </p>
-        <span className="text-gold text-xs font-bold tracking-wider uppercase hover:text-[var(--text-primary)] transition-colors">
+        <span className="text-gold text-xs font-bold tracking-wider uppercase hover:text-(--text-primary) transition-colors">
           {readMore} →
         </span>
       </div>

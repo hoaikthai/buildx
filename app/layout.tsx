@@ -1,11 +1,17 @@
 import type {ReactNode} from 'react';
 import type {Metadata} from 'next';
-import {Archivo} from 'next/font/google';
+import {Archivo, Montserrat} from 'next/font/google';
 import './globals.css';
 
 const archivo = Archivo({
   subsets: ['latin', 'vietnamese'],
   variable: '--font-archivo',
+  display: 'swap',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin', 'vietnamese'],
+  variable: '--font-montserrat',
   display: 'swap',
 });
 
@@ -16,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: ReactNode}) {
   return (
-    <html suppressHydrationWarning className={archivo.variable}>
+    <html suppressHydrationWarning className={`${archivo.variable} ${montserrat.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{

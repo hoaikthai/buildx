@@ -19,7 +19,7 @@ export function BimSection() {
   const next = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section id="bim" className="snap-section flex items-center bg-[var(--bg-secondary)]">
+    <section id="bim" className="snap-section flex items-center bg-(--bg-secondary)">
       <div className="w-full max-w-7xl mx-auto px-8 md:px-16 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <AnimatedText>
@@ -27,7 +27,7 @@ export function BimSection() {
               BIM SOLUTIONS
             </p>
             <h2
-              className="font-bold mb-6 leading-none text-[var(--text-primary)]"
+              className="font-bold mb-6 leading-none text-(--text-primary)"
               style={{fontSize: 'clamp(2.5rem, 4.5vw, 4rem)'}}
             >
               {t('title')}
@@ -36,12 +36,12 @@ export function BimSection() {
             <p className="text-gold font-semibold mb-4" style={{fontSize: '1.05rem'}}>
               {t('subtitle')}
             </p>
-            <p className="leading-relaxed mb-10 text-[var(--text-muted)]" style={{fontSize: '0.95rem'}}>
+            <p className="leading-relaxed mb-10 text-(--text-muted)" style={{fontSize: '0.95rem'}}>
               {t('description')}
             </p>
             <ul className="space-y-4">
               {features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-4 text-[var(--text-primary)]">
+                <li key={i} className="flex items-center gap-4 text-(--text-primary)">
                   <span className="flex-none text-gold font-bold" style={{fontSize: '1.1rem'}}>
                     0{i + 1}
                   </span>
@@ -54,7 +54,7 @@ export function BimSection() {
 
           <AnimatedText delay={0.15}>
             <div>
-              <div className="overflow-hidden rounded-[2px]" ref={emblaRef}>
+              <div className="overflow-hidden rounded-xs" ref={emblaRef}>
                 <div className="flex">
                   {BIM_IMAGES.map((img, i) => (
                     <div key={i} className="flex-none w-full relative aspect-video">
@@ -69,20 +69,17 @@ export function BimSection() {
                 </div>
               </div>
               <div className="flex items-center justify-between mt-5">
-                <span className="text-xs tracking-[3px] text-[var(--text-subtle)]">
-                  DRAG TO EXPLORE
-                </span>
                 <div className="flex gap-2">
                   <button
                     onClick={prev}
-                    className="flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-gold hover:text-black w-11 h-11 border border-[var(--border-subtle)] text-[var(--text-muted)] text-lg"
+                    className="flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-gold hover:text-black w-11 h-11 border border-(--border-subtle) text-(--text-muted)text-lg"
                     aria-label="Previous"
                   >
                     ←
                   </button>
                   <button
                     onClick={next}
-                    className="flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-gold hover:text-black w-11 h-11 border border-[var(--border-subtle)] text-[var(--text-muted)] text-lg"
+                    className="flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-gold hover:text-black w-11 h-11 border border-(--border-subtle) text-(--text-muted)text-lg"
                     aria-label="Next"
                   >
                     →
