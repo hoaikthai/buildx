@@ -16,7 +16,7 @@ export function AboutSection() {
       <div className="relative mx-auto w-full max-w-7xl px-8 py-20 md:px-16">
         <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
           <AnimatedText>
-            <p className="text-gold text-xxl mb-4 font-bold tracking-[5px]">
+            <p className="text-gold text-4xl mb-4 font-bold tracking-[5px]">
               BUILDX
             </p>
             <h2

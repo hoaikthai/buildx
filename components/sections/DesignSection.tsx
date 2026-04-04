@@ -1,14 +1,15 @@
 'use client'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import AnimatedText from '@/components/ui/AnimatedText'
 
-const CARD_NUMS = ['01', '02', '03', '04']
-const CARD_BG = [
-  'var(--bg-secondary)',
-  'var(--bg-card)',
-  'var(--bg-primary)',
-  'var(--bg-secondary)',
+const CARD_NUMBERS = ['01', '02', '03', '04']
+const CARD_IMAGES = [
+  '/images/design-interior-1.avif',
+  '/images/design-interior-1.avif',
+  '/images/design-interior-1.avif',
+  '/images/design-exterior-1.avif',
 ]
 
 export function DesignSection() {
@@ -19,7 +20,7 @@ export function DesignSection() {
   return (
     <section
       id="design"
-      className="snap-section flex flex-col justify-center bg-[var(--bg-primary)]"
+      className="snap-section flex flex-col justify-center bg-(--bg-primary)"
     >
       <div className="mx-auto w-full max-w-7xl px-8 pt-20 pb-8 md:px-16">
         <AnimatedText>
@@ -43,12 +44,7 @@ export function DesignSection() {
       </div>
 
       <div
-        className="flex w-full"
-        style={{
-          height: 'calc(100vh - 280px)',
-          minHeight: '320px',
-          maxHeight: '520px',
-        }}
+        className="flex w-full min-h-80 h-[calc(100dvh-280px)]"
       >
         {services.map((service, i) => {
           const isHovered = hovered === i
@@ -61,42 +57,48 @@ export function DesignSection() {
               onMouseLeave={() => setHovered(null)}
               className="relative cursor-default overflow-hidden"
               style={{
-                flex: isHovered ? '4 1 0%' : anyHovered ? '0.5 1 0%' : '1 1 0%',
+                flex: isHovered ? '2 1 0%' : anyHovered ? '0.5 1 0%' : '1 1 0%',
                 transition: 'flex 0.5s cubic-bezier(0.4,0,0.2,1)',
-                background: CARD_BG[i],
                 borderRight:
                   i < services.length - 1 ? '1px solid var(--border)' : 'none',
               }}
             >
+              {/* Background image */}
+              <Image
+                src={CARD_IMAGES[i]}
+                alt={`service-${CARD_NUMBERS[i]}`}
+                fill
+                className="object-cover"
+              />
+
+              {/* Dark overlay */}
+              <div
+                className="absolute inset-0 bg-black transition-opacity duration-500"
+                style={{ opacity: isHovered ? 0.4 : 0.65 }}
+              />
+
               {/* Large number watermark */}
               <div className="absolute inset-0 flex items-end justify-start p-5">
                 <span
-                  className="leading-none font-bold text-[var(--border)] select-none"
+                  className="leading-none font-bold text-white/20 select-none"
                   style={{ fontSize: 'clamp(5rem, 12vw, 10rem)' }}
                 >
-                  {CARD_NUMS[i]}
+                  {CARD_NUMBERS[i]}
                 </span>
               </div>
 
               {/* Gold left border on hover */}
               <div
-                className="bg-gold absolute top-0 bottom-0 left-0 w-[3px] transition-all duration-500"
+                className="bg-gold absolute top-0 bottom-0 left-0 w-0.75 transition-all duration-500"
                 style={{
                   transform: isHovered ? 'scaleY(1)' : 'scaleY(0)',
                   transformOrigin: 'bottom',
                 }}
               />
 
-              {/* Number label at top */}
-              <div className="absolute top-8 left-6">
-                <span className="text-gold text-[0.7rem] font-bold tracking-[3px]">
-                  {CARD_NUMS[i]}
-                </span>
-              </div>
-
               {/* Content revealed on hover */}
               <div
-                className="absolute inset-0 flex min-w-[280px] flex-col justify-center"
+                className="absolute inset-0 flex min-w-70 flex-col justify-center"
                 style={{
                   padding: '40px 36px',
                   opacity: isHovered ? 1 : 0,
@@ -105,15 +107,14 @@ export function DesignSection() {
                   transitionDelay: isHovered ? '0.1s' : '0s',
                 }}
               >
-                <div className="bg-gold mb-6 h-px w-8" />
                 <h3
-                  className="mb-4 leading-tight font-bold whitespace-nowrap text-(--text-primary)"
+                  className="mb-4 leading-tight font-bold whitespace-nowrap text-white"
                   style={{ fontSize: 'clamp(1.2rem, 2vw, 1.6rem)' }}
                 >
                   {service.name}
                 </h3>
                 <p
-                  className="max-w-[320px] leading-relaxed text-(--text-muted)"
+                  className="max-w-[320px] leading-relaxed text-white/75"
                   style={{ fontSize: '0.9rem' }}
                 >
                   {service.description}
