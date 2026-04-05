@@ -45,6 +45,7 @@ export function DesignSection() {
 
       <div
         className="flex w-full min-h-80 h-[calc(100dvh-280px)]"
+        onTouchStart={() => setHovered(null)}
       >
         {services.map((service, i) => {
           const isHovered = hovered === i
@@ -55,6 +56,7 @@ export function DesignSection() {
               key={i}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
+              onTouchStart={(e) => { e.stopPropagation(); setHovered(isHovered ? null : i) }}
               className="relative cursor-default overflow-hidden"
               style={{
                 flex: isHovered ? '2 1 0%' : anyHovered ? '0.5 1 0%' : '1 1 0%',
