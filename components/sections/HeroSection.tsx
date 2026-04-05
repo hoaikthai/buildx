@@ -7,7 +7,7 @@ export function HeroSection() {
         src="/images/hero.avif"
         alt="BuildX"
         fill
-        priority
+        preload
         className="object-cover"
       />
       {/* Subtle dark vignette so logo stays readable */}

@@ -1,11 +1,27 @@
+'use client'
 import { Image } from '@/components/ui/Image'
 import { useTranslations } from 'next-intl'
 import { AnimatedText } from '@/components/ui/AnimatedText'
+import { useEffect, useState } from 'react'
+
+const IMAGES = [
+  '/images/construction-1.avif',
+  '/images/construction-2.avif',
+  '/images/construction-3.avif',
+]
 
 export function ConstructionSection() {
   const t = useTranslations('construction')
   const features = t.raw('features') as string[]
   const stats = t.raw('stats') as { value: string; label: string }[]
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % IMAGES.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <section
@@ -15,13 +31,16 @@ export function ConstructionSection() {
       <div className="h-full w-full">
         <div className="grid h-full grid-cols-1 lg:grid-cols-2">
           <AnimatedText delay={0.1} className="relative">
-            <div className="relative h-full min-h-[30vh] w-full">
-              <Image
-                src="/images/construction.avif"
-                alt="Construction"
-                fill
-                className="object-cover"
-              />
+            <div className="relative h-full min-h-[30vh] w-full overflow-hidden">
+              {IMAGES.map((src, i) => (
+                <Image
+                  key={src}
+                  src={src}
+                  alt="Construction"
+                  fill
+                  className={`object-cover transition-opacity duration-1000 ${i === current ? 'opacity-100' : 'opacity-0'}`}
+                />
+              ))}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,transparent_70%,var(--bg-primary)_100%)]" />
             </div>
           </AnimatedText>
