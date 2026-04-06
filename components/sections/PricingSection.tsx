@@ -3,10 +3,12 @@ import { Image } from '@/components/ui/Image'
 import { useState, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { AnimatedText } from '@/components/ui/AnimatedText'
+import { useSwipe } from '@/hooks/useSwipe'
 
 interface PricingPkg {
   name: string
   label: string
+  lod?: string
   price: string
   items: string[]
 }
@@ -22,14 +24,14 @@ function get3DStyle(position: 'active' | 'left' | 'right' | 'hidden') {
     case 'left':
       return {
         transform:
-          'translate(calc(-50% - 300px), -50%) scale(0.85) perspective(800px) rotateY(15deg)',
+          'translate(calc(-50% - clamp(250px, 22vw, 360px)), -50%) scale(0.85) perspective(800px) rotateY(15deg)',
         opacity: 0.65,
         zIndex: 5,
       }
     case 'right':
       return {
         transform:
-          'translate(calc(-50% + 300px), -50%) scale(0.85) perspective(800px) rotateY(-15deg)',
+          'translate(calc(-50% + clamp(250px, 22vw, 360px)), -50%) scale(0.85) perspective(800px) rotateY(-15deg)',
         opacity: 0.65,
         zIndex: 5,
       }
@@ -63,6 +65,11 @@ export function PricingSection() {
       setCardsVisible(true)
     }, 250)
   }
+
+  const swipeHandlers = useSwipe({
+    onSwipeLeft: () => setActiveIndex(i => Math.min(i + 1, packages.length - 1)),
+    onSwipeRight: () => setActiveIndex(i => Math.max(i - 1, 0)),
+  })
 
   function getPosition(i: number) {
     const diff = i - activeIndex
@@ -115,12 +122,13 @@ export function PricingSection() {
 
         {/* 3D Carousel */}
         <div
-          className="relative h-[clamp(260px,42vh,420px)] w-full transition-all duration-250"
+          className="relative h-[clamp(260px,42vh,560px)] w-full transition-all duration-250"
           style={{
             perspective: '1200px',
             opacity: cardsVisible ? 1 : 0,
             transform: cardsVisible ? 'translateY(0)' : 'translateY(12px)',
           }}
+          {...swipeHandlers}
         >
           {packages.map((pkg, i) => {
             const pos = getPosition(i)
@@ -134,7 +142,7 @@ export function PricingSection() {
                 onClick={() => setActiveIndex(i)}
                 className="absolute top-1/2 left-1/2 cursor-pointer"
                 style={{
-                  width: 'min(360px, 85vw)',
+                  width: 'clamp(320px, 28vw, 480px)',
                   ...posStyle,
                   transition: 'all 0.5s cubic-bezier(0.4,0,0.2,1)',
                 }}
@@ -163,14 +171,17 @@ export function PricingSection() {
                     <p className="mb-1 text-xs font-bold tracking-[3px] text-black/60">
                       {pkg.name}
                     </p>
-                    <h3 className="text-[clamp(1.1rem,2vh,1.5rem)] font-bold text-black">
+                    <h3 className="text-[clamp(1.1rem,2vh,1.75rem)] font-bold text-black">
                       {pkg.label}
                     </h3>
+                    <p className="text-[clamp(0.875rem,1.5vh,1.25rem)] font-bold text-black">
+                      {pkg.lod}
+                    </p>
                     <div className="mt-[clamp(0.5rem,1vh,1rem)]">
-                      <span className="text-[clamp(1.5rem,3vh,2.25rem)] font-bold text-black">
+                      <span className="text-[clamp(1.5rem,3vh,2.75rem)] font-bold text-black">
                         {pkg.price}
                       </span>
-                      <span className="ml-2 text-base text-black/60">
+                      <span className="ml-2 text-sm text-black/60">
                         {t('unit')}
                       </span>
                     </div>
@@ -181,11 +192,11 @@ export function PricingSection() {
                     <p className="mb-[clamp(0.5rem,1vh,1rem)] text-[0.75rem] font-bold tracking-[3px] text-(--text-subtle)">
                       {t('includes').toUpperCase()}
                     </p>
-                    <ul className="space-y-[clamp(0.35rem,0.8vh,0.75rem)]">
+                    <ul className="space-y-[clamp(0.35rem,0.8vh,0.875rem)]">
                       {pkg.items.map((item, j) => (
                         <li
                           key={j}
-                          className="flex items-start gap-3 text-base text-(--text-muted)"
+                          className="flex items-start gap-3 text-[clamp(0.8125rem,1.2vh,0.9375rem)] text-(--text-muted)"
                         >
                           <span className="text-gold mt-0.5 flex-none">✓</span>
                           {item}
@@ -199,32 +210,10 @@ export function PricingSection() {
           })}
         </div>
 
-        {/* Carousel nav dots */}
-        <div
-          className="mt-[clamp(0.25rem,1vh,1rem)] flex justify-center gap-3 transition-opacity duration-250"
-          style={{ opacity: cardsVisible ? 1 : 0 }}
-        >
-          {packages.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveIndex(i)}
-              className="h-2 cursor-pointer rounded-full transition-all duration-200"
-              style={{
-                width: i === activeIndex ? '24px' : '8px',
-                background: i === activeIndex ? '#FFB800' : 'var(--text-faint)',
-              }}
-              aria-label={`Go to card ${i + 1}`}
-            />
-          ))}
-        </div>
-
         {/* BIM note — always rendered to reserve space, hidden on design tab */}
         <div
-          className={`border-gold/30 bg-gold/40 mx-auto mt-[clamp(0.5rem,1.5vh,1.5rem)] max-w-xl rounded-xl border p-[clamp(0.75rem,1.5vh,1.25rem)] transition-opacity duration-300 ${tab === 'bim' ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+          className={`border-gold/30 bg-gold/40 mx-auto mt-[clamp(0.5rem,3vh,1.5rem)] max-w-xl rounded-xl border p-[clamp(0.75rem,1.5vh,1.25rem)] transition-opacity duration-300 ${tab === 'bim' ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
         >
-          <p className="text-gold mb-3 text-xs font-bold tracking-[3px] uppercase">
-            {t('bim_note_title')}
-          </p>
           <ul className="space-y-1.5">
             {(t.raw('bim_note_items') as string[]).map((item, i) => (
               <li

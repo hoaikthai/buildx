@@ -81,10 +81,11 @@
         "label": "Thiết kế Kiến Trúc",
         "price": "150.000",
         "items": [
-          "Bản vẽ kiến trúc đầy đủ",
-          "Phối cảnh 3D",
-          "Hồ sơ xin phép xây dựng",
-          "Tư vấn vật liệu"
+          "Bộ hồ sơ xin phép xây dựng",
+          "Phối cảnh 3D mặt tiền",
+          "Bộ hồ sơ thiết kế kiến trúc",
+          "Bộ hồ sơ kết cấu",
+          "Bộ hồ sơ thiết kế điện nước"
         ]
       },
       {
@@ -92,10 +93,10 @@
         "label": "Thiết kế Nội Thất",
         "price": "150.000",
         "items": [
-          "Bản vẽ nội thất chi tiết",
           "Phối cảnh 3D nội thất",
-          "Danh mục vật tư",
-          "Tư vấn màu sắc"
+          "Bản vẽ triển khai chủng loại vật liệu",
+          "Bản vẽ bố trí trần thạch cao",
+          "Bản vẽ bố trí đèn chiếu sáng và đèn trang trí"
         ]
       },
       {
@@ -103,34 +104,36 @@
         "label": "Thiết kế Trọn Gói",
         "price": "240.000",
         "items": [
-          "Kiến trúc + Nội thất + Ngoại thất",
-          "Hồ sơ thiết kế đầy đủ",
-          "Phối cảnh 3D toàn diện",
-          "Hỗ trợ thi công"
+          "Bộ hồ sơ thiết kế Xin phép",
+          "Bộ hồ sơ thiết kế Kiến trúc, Kết cấu, Điện nước",
+          "Bộ hồ sơ thiết kế nội thất",
+          "Phối cảnh 3D ngoại thất và nội thất",
+          "Khối lượng vật tư xây dựng"
         ]
       }
     ],
     "bim_packages": [
       {
         "name": "Gói 1",
-        "label": "Mô hình BIM (LOD 300–350)",
+        "label": "Dựng mô hình BIM",
+        "lod": "LOD 300–350",
         "price": "15.000",
         "items": [
-          "Mô hình 3D kiến trúc & kết cấu",
-          "Trích xuất khối lượng",
-          "Bản vẽ 2D từ mô hình",
-          "Hỗ trợ thiết kế"
+          "Các lớp hoàn thiện được tách riêng từng lớp",
+          "Trích xuất khối lượng đã triển khai",
+          "Bao gồm các bản vẽ mặt bằng thiết kế chính"
         ]
       },
       {
         "name": "Gói 2",
-        "label": "Mô hình BIM MEPF",
+        "label": "Dựng mô hình BIM MEPF",
+        "lod": "LOD 300–350",
         "price": "20.000",
         "items": [
-          "Mô hình MEP đầy đủ",
-          "Phối hợp đa chuyên ngành",
-          "Kiểm tra xung đột tự động",
-          "Báo cáo phối hợp"
+          "Hệ thống ống và thiết bị Cấp thoát nước, Điện, Điện nhẹ, HVAC, PCCC",
+          "Trích xuất khối lượng đã triển khai",
+          "Bản vẽ Combine các thiết bị và hệ thống MEPF",
+          "Bản vẽ mặt bằng chính của các hệ thống"
         ]
       },
       {
@@ -138,14 +141,13 @@
         "label": "Kiểm tra xung đột & Cập nhật",
         "price": "10.000",
         "items": [
-          "Phát hiện xung đột",
-          "Báo cáo xung đột chi tiết",
-          "Cập nhật mô hình",
-          "Hỗ trợ giải quyết"
+          "Kiểm tra xung đột Kiến trúc - Kết cấu - MEPF",
+          "Lập báo cáo xung đột và đề xuất phương án xử lý",
+          "Cập nhật mô hình BIM và bản vẽ theo kết quả xử lý"
         ]
       }
     ],
-    "bim_note_title": "",
+    "bim_note_title": "Ghi chú",
     "bim_note_items": [
       "Đơn giá không bao gồm diện tích các tầng điển hình.",
       "Công trình nhỏ, phức tạp hoặc yêu cầu gấp → báo giá riêng.",

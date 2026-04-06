@@ -81,10 +81,11 @@
         "label": "Architectural Design",
         "price": "150,000",
         "items": [
-          "Complete architectural drawings",
-          "3D renders",
-          "Building permit documents",
-          "Material consultation"
+          "Building permit document set",
+          "3D facade renders",
+          "Architectural design document set",
+          "Structural document set",
+          "Electrical & plumbing design document set"
         ]
       },
       {
@@ -92,45 +93,47 @@
         "label": "Interior Design",
         "price": "150,000",
         "items": [
-          "Detailed interior drawings",
           "3D interior renders",
-          "Material schedule",
-          "Color consultation"
+          "Material specification drawings",
+          "Plasterboard ceiling layout drawings",
+          "Lighting & decorative lighting layout drawings"
         ]
       },
       {
         "name": "Package 3",
-        "label": "Complete Design",
+        "label": "Complete Design Package",
         "price": "240,000",
         "items": [
-          "Architecture + Interior + Exterior",
-          "Full design documentation",
-          "Comprehensive 3D renders",
-          "Construction support"
+          "Building permit design document set",
+          "Architectural, structural, electrical & plumbing design document set",
+          "Interior design document set",
+          "3D exterior and interior renders",
+          "Construction material quantities"
         ]
       }
     ],
     "bim_packages": [
       {
         "name": "Package 1",
-        "label": "BIM Model (LOD 300–350)",
+        "label": "BIM Modeling",
+        "lod": "LOD 300–350",
         "price": "15,000",
         "items": [
-          "3D architectural & structural model",
-          "Quantity extraction",
-          "2D drawings from model",
-          "Design support"
+          "Finish layers modeled separately by layer",
+          "Deployed quantity extraction",
+          "Includes main floor plan drawings"
         ]
       },
       {
         "name": "Package 2",
-        "label": "MEPF BIM Model",
+        "label": "MEPF BIM Modeling",
+        "lod": "LOD 300–350",
         "price": "20,000",
         "items": [
-          "Full MEP model",
-          "Multi-discipline coordination",
-          "Automated clash detection",
-          "Coordination reports"
+          "Plumbing, Electrical, Low-voltage, HVAC, Fire Protection piping & equipment systems",
+          "Deployed quantity extraction",
+          "Combined MEPF equipment and systems drawings",
+          "Main floor plan drawings for all systems"
         ]
       },
       {
@@ -138,10 +141,9 @@
         "label": "Clash Detection & Updates",
         "price": "10,000",
         "items": [
-          "Clash detection",
-          "Detailed clash reports",
-          "Model updates",
-          "Resolution support"
+          "Architectural – Structural – MEPF clash detection",
+          "Clash report with proposed resolutions",
+          "BIM model and drawings updated per resolution results"
         ]
       }
     ],

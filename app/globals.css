@@ -89,6 +89,11 @@ html.dark {
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     overscroll-behavior: none;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .snap-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
   }
 
   /* Every snapping section */
