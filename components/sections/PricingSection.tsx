@@ -85,7 +85,13 @@ export function PricingSection() {
         src="/images/pricing-background.avif"
         alt=""
         fill
-        className="object-cover"
+        className="object-cover dark:hidden"
+      />
+      <Image
+        src="/images/pricing-background-dark.avif"
+        alt=""
+        fill
+        className="hidden object-cover dark:block"
       />
       <div className="relative mx-auto w-full max-w-7xl px-8 md:px-16">
         <AnimatedText>

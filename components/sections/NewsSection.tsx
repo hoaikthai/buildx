@@ -17,7 +17,13 @@ export function NewsSection() {
         src="/images/news-background.avif"
         alt=""
         fill
-        className="object-cover"
+        className="object-cover dark:hidden"
+      />
+      <Image
+        src="/images/news-background-dark.avif"
+        alt=""
+        fill
+        className="hidden object-cover dark:block"
       />
       <div className="relative mx-auto w-full max-w-7xl px-8 py-20 md:px-16">
         <AnimatedText>

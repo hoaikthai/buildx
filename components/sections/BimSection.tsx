@@ -49,9 +49,21 @@ export function BimSection() {
   return (
     <section
       id="bim"
-      className="snap-section flex flex-col justify-center bg-(--bg-secondary)"
+      className="snap-section flex flex-col justify-center"
     >
-      <div className="mx-auto w-full max-w-7xl px-8 pt-4 pb-4 md:px-16">
+      <Image
+        src="/images/bim-background.avif"
+        alt=""
+        fill
+        className="object-cover dark:hidden"
+      />
+      <Image
+        src="/images/bim-background-dark.avif"
+        alt=""
+        fill
+        className="hidden object-cover dark:block"
+      />
+      <div className="relative mx-auto w-full max-w-7xl px-8 pt-4 pb-4 md:px-16">
         <AnimatedText>
           <p className="text-gold mb-2 text-xs font-bold tracking-[5px]">
             BIM SOLUTIONS
@@ -81,7 +93,7 @@ export function BimSection() {
       {/* Scroll container */}
       <div
         ref={scrollRef}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-8 pb-4 scroll-pl-8 md:px-16 md:scroll-pl-16 [&::-webkit-scrollbar]:hidden"
+        className="relative flex snap-x snap-mandatory gap-4 overflow-x-auto px-8 pb-4 scroll-pl-8 md:px-16 md:scroll-pl-16 [&::-webkit-scrollbar]:hidden"
         style={{ scrollbarWidth: 'none' }}
       >
         {features.map((feature, i) => (
@@ -120,7 +132,7 @@ export function BimSection() {
       </div>
 
       {/* Bottom controls: prev — dots — next */}
-      <div className="flex items-center justify-center gap-4 pt-1 pb-2">
+      <div className="relative flex items-center justify-center gap-4 pt-1 pb-2">
         <button
           onClick={prev}
           disabled={minVisible === 0}

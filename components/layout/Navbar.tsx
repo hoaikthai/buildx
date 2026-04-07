@@ -44,10 +44,8 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-(--bg-nav) py-3 backdrop-blur-sm'
-            : 'bg-transparent py-5'
+        className={`fixed top-0 right-0 left-0 z-50 bg-linear-to-b from-black/20 to-transparent transition-all duration-300 ${
+          scrolled ? 'py-2' : 'py-5'
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
@@ -58,8 +56,8 @@ export function Navbar() {
             <Image
               src="/images/logo.avif"
               alt="BuildX"
-              width={120}
-              height={45}
+              width={144}
+              height={54}
               className="object-contain"
             />
           </button>

@@ -11,23 +11,29 @@ export function AboutSection() {
         src="/images/about-background.avif"
         alt=""
         fill
-        className="object-cover"
+        className="object-cover dark:hidden"
       />
-      <div className="relative mx-auto w-full max-w-7xl px-8 py-20 md:px-16">
+      <Image
+        src="/images/about-background-dark.avif"
+        alt=""
+        fill
+        className="hidden object-cover dark:block"
+      />
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-10 md:px-12">
         <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
           <AnimatedText>
             <p className="text-gold text-4xl mb-4 font-bold tracking-[5px]">
               BUILDX
             </p>
             <h2
-              className="leading-none font-bold text-black"
+              className="leading-none font-bold text-(--text-primary)"
               style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}
             >
               {t('title')}
             </h2>
             <div className="bg-gold mb-4 h-px w-12" />
             <p
-              className="mb-10 leading-relaxed text-black/70"
+              className="mb-10 leading-relaxed text-(--text-muted)"
               style={{ fontSize: '1rem' }}
             >
               {t('headline')}
@@ -38,7 +44,7 @@ export function AboutSection() {
                   {t('vision_label').toUpperCase()}
                 </p>
                 <p
-                  className="leading-relaxed text-black/70"
+                  className="leading-relaxed text-(--text-muted)"
                   style={{ fontSize: '1rem' }}
                 >
                   {t('vision')}
@@ -49,7 +55,7 @@ export function AboutSection() {
                   {t('mission_label').toUpperCase()}
                 </p>
                 <p
-                  className="leading-relaxed text-black/70"
+                  className="leading-relaxed text-(--text-muted)"
                   style={{ fontSize: '1rem' }}
                 >
                   {t('mission')}
@@ -59,7 +65,7 @@ export function AboutSection() {
           </AnimatedText>
 
           <AnimatedText delay={0.2}>
-            <div className="relative mx-auto aspect-square max-w-130">
+            <div className="relative mx-auto aspect-square max-w-150">
               <Image
                 src="/images/about.avif"
                 alt="About BuildX"
