@@ -64,7 +64,7 @@ export function AboutSection() {
             </div>
           </AnimatedText>
 
-          <AnimatedText delay={0.2}>
+          <AnimatedText delay={0.2} className="hidden lg:block">
             <div className="relative mx-auto aspect-square max-w-150">
               <Image
                 src="/images/about.avif"

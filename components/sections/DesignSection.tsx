@@ -22,7 +22,7 @@ export function DesignSection() {
       id="design"
       className="snap-section flex flex-col justify-center bg-(--bg-primary)"
     >
-      <div className="mx-auto w-full max-w-7xl px-8 pt-20 pb-8 md:px-16">
+      <div className="mx-auto w-full max-w-7xl px-8 pt-8 sm:pt-20 pb-8 md:px-16">
         <AnimatedText>
           <p className="text-gold mb-4 text-xs font-bold tracking-[5px]">
             SERVICES

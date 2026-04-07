@@ -80,13 +80,6 @@ export function ContactSection() {
               </div>
             </div>
           </AnimatedText>
-
-          <AnimatedText delay={0.2}>
-            <div
-              className="h-120 w-full overflow-hidden"
-              style={{ filter: 'grayscale(30%)' }}
-            ></div>
-          </AnimatedText>
         </div>
       </div>
     </section>

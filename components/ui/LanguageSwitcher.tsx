@@ -12,17 +12,17 @@ export function LanguageSwitcher() {
   }
 
   return (
-    <div className="flex items-center gap-1 text-xs font-bold tracking-widest">
+    <div className="hidden sm:flex items-center gap-1 text-xs font-bold tracking-widest">
       <button
         onClick={() => switchLocale('vi')}
-        className={`cursor-pointer px-2 py-1 transition-colors ${locale === 'vi' ? 'text-gold' : 'text-[var(--text-subtle)]'}`}
+        className={`cursor-pointer px-2 py-1 transition-colors ${locale === 'vi' ? 'text-gold' : 'text-(--text-subtle)'}`}
       >
         VI
       </button>
-      <span className="text-[var(--text-faint)]">|</span>
+      <span className="text-(--text-faint)">|</span>
       <button
         onClick={() => switchLocale('en')}
-        className={`cursor-pointer px-2 py-1 transition-colors ${locale === 'en' ? 'text-gold' : 'text-[var(--text-subtle)]'}`}
+        className={`cursor-pointer px-2 py-1 transition-colors ${locale === 'en' ? 'text-gold' : 'text-(--text-subtle)'}`}
       >
         EN
       </button>

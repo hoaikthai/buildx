@@ -12,7 +12,7 @@ export function NewsSection() {
   }[]
 
   return (
-    <section id="news" className="snap-section flex items-center">
+    <section id="news" className="snap-section flex flex-col justify-center">
       <Image
         src="/images/news-background.avif"
         alt=""
@@ -25,7 +25,7 @@ export function NewsSection() {
         fill
         className="hidden object-cover dark:block"
       />
-      <div className="relative mx-auto w-full max-w-7xl px-8 py-20 md:px-16">
+      <div className="relative mx-auto w-full max-w-7xl px-8 pt-10 pb-4 md:px-16 md:pt-20">
         <AnimatedText>
           <p className="text-gold mb-4 text-xs font-bold tracking-[5px]">
             NEWS
@@ -36,21 +36,22 @@ export function NewsSection() {
           >
             {t('title')}
           </h2>
-          <div className="bg-gold mb-12 h-px w-12" />
+          <div className="bg-gold mb-6 md:mb-12 h-px w-12" />
         </AnimatedText>
+      </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {articles.map((article, i) => (
+      <div className="relative flex snap-x snap-mandatory gap-6 overflow-x-auto px-8 pb-8 scroll-pl-8 md:mx-auto md:grid md:w-full md:max-w-7xl md:grid-cols-2 md:overflow-visible md:px-16 md:pb-20 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden">
+        {articles.map((article, i) => (
+          <div key={i} className="w-[85vw] shrink-0 snap-start md:w-auto md:shrink">
             <NewsCard
-              key={i}
               title={article.title}
               excerpt={article.excerpt}
               image={article.image}
               readMore={t('read_more')}
               index={i}
             />
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   )

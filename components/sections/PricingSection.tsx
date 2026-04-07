@@ -108,12 +108,12 @@ export function PricingSection() {
               </h2>
               <div className="bg-gold mt-4 h-px w-12" />
             </div>
-            <div className="flex overflow-hidden border border-(--border-subtle)">
+            <div className="grid grid-cols-2 overflow-hidden border border-(--border-subtle)">
               {(['design', 'bim'] as const).map((key) => (
                 <button
                   key={key}
                   onClick={() => switchTab(key)}
-                  className={`cursor-pointer px-8 py-3 text-xs font-bold tracking-[3px] uppercase transition-all duration-200 ${
+                  className={`cursor-pointer whitespace-nowrap px-8 py-3 text-center text-xs font-bold tracking-[3px] uppercase transition-all duration-200 ${
                     tab === key
                       ? 'bg-gold text-black'
                       : 'bg-transparent text-(--text-muted)'

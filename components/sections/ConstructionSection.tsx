@@ -31,7 +31,7 @@ export function ConstructionSection() {
       <div className="h-full w-full">
         <div className="grid h-full grid-cols-1 lg:grid-cols-2">
           <AnimatedText delay={0.1} className="relative">
-            <div className="relative h-full min-h-[30vh] w-full overflow-hidden">
+            <div className="relative h-full min-h-[20vh] lg:min-h-[30vh] w-full overflow-hidden">
               {IMAGES.map((src, i) => (
                 <Image
                   key={src}
@@ -41,23 +41,23 @@ export function ConstructionSection() {
                   className={`object-cover transition-opacity duration-1000 ${i === current ? 'opacity-100' : 'opacity-0'}`}
                 />
               ))}
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,transparent_70%,var(--bg-primary)_100%)]" />
+              <div className="absolute inset-0 hidden lg:block bg-[linear-gradient(to_right,transparent_70%,var(--bg-primary)_100%)]" />
             </div>
           </AnimatedText>
 
-          <AnimatedText className="flex flex-col justify-center px-12 py-10 lg:px-16">
+          <AnimatedText className="flex flex-col justify-center px-6 py-5 lg:px-16 lg:py-10">
             <p className="text-gold mb-4 text-xs font-bold tracking-[5px]">
               CONSTRUCTION
             </p>
-            <h2 className="mb-6 text-[clamp(2.5rem,4.5vw,4rem)] leading-none font-bold text-(--text-primary)">
+            <h2 className="mb-4 lg:mb-6 text-[clamp(1.8rem,4.5vw,4rem)] leading-none font-bold text-(--text-primary)">
               {t('title')}
             </h2>
             <div className="bg-gold mb-6 h-px w-12" />
-            <p className="mb-8 max-w-[480px] text-[1.05rem] leading-relaxed text-(--text-muted)">
+            <p className="mb-5 lg:mb-8 max-w-[480px] text-[0.95rem] lg:text-[1.05rem] leading-relaxed text-(--text-muted)">
               {t('description')}
             </p>
 
-            <ul className="mb-10 space-y-3">
+            <ul className="mb-6 lg:mb-10 space-y-2 lg:space-y-3">
               {features.map((feature, i) => (
                 <li key={i} className="flex items-center gap-3 text-[0.95rem] text-(--text-muted)">
                   <span className="bg-gold mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full" />
@@ -67,7 +67,7 @@ export function ConstructionSection() {
             </ul>
 
             <div className="border-t border-(--border-subtle) pt-8">
-              <div className="flex gap-10">
+              <div className="flex gap-6 lg:gap-10">
                 {stats.map((stat, i) => (
                   <div key={i}>
                     <p className="text-gold text-[clamp(1.5rem,2.5vw,2rem)] font-bold leading-none">
