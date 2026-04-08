@@ -8,7 +8,13 @@ export function HeroSection() {
         alt="BuildX"
         fill
         preload
-        className="object-cover"
+        className="object-cover dark:hidden"
+      />
+      <Image
+        src="/images/hero-dark.avif"
+        alt=""
+        fill
+        className="hidden object-cover dark:block"
       />
       {/* Subtle dark vignette so logo stays readable */}
       {/* <div
