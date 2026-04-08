@@ -63,9 +63,9 @@
       "Renovation & retrofitting"
     ],
     "stats": [
-      { "value": "50+", "label": "Projects Completed" },
-      { "value": "10+", "label": "Years Experience" },
-      { "value": "100%", "label": "On-time Delivery" }
+      { "value": "50", "suffix": "+", "label": "Projects Completed" },
+      { "value": "10", "suffix": "+", "label": "Years Experience" },
+      { "value": "100", "suffix": "%", "label": "On-time Delivery" }
     ]
   },
   "pricing": {

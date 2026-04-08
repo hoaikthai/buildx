@@ -102,8 +102,7 @@ export function BimSection() {
             ref={(el) => {
               itemRefs.current[i] = el
             }}
-            className="flex w-[85vw] shrink-0 snap-start flex-col gap-2 md:w-[clamp(260px,30vw,400px)]"
-            style={{ height: '50dvh' }}
+            className="flex w-[85vw] shrink-0 snap-start flex-col gap-2 h-[40dvh] md:w-[clamp(260px,30vw,400px)] md:h-[50dvh]"
           >
             <h3
               className="shrink-0 font-bold leading-tight text-(--text-primary)"

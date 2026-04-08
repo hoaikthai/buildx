@@ -3,6 +3,8 @@ import { Image } from '@/components/ui/Image'
 import { useTranslations } from 'next-intl'
 import { AnimatedText } from '@/components/ui/AnimatedText'
 import { useEffect, useState } from 'react'
+import { useCountUp } from '@/hooks/useCountUp'
+import { useInView } from '@/hooks/useInView'
 
 const IMAGES = [
   '/images/construction-1.avif',
@@ -10,11 +12,28 @@ const IMAGES = [
   '/images/construction-3.avif',
 ]
 
+function StatCounter({ value, suffix, label, isInView }: { value: string; suffix: string; label: string; isInView: boolean }) {
+  const numericValue = parseInt(value, 10) ?? 0
+  const animatedCount = useCountUp(numericValue, { shouldStart: isInView })
+
+  return (
+    <div>
+      <p className="text-gold text-[clamp(1.5rem,2.5vw,2rem)] font-bold leading-none">
+        {animatedCount}{suffix}
+      </p>
+      <p className="mt-1 text-xs tracking-wide text-(--text-muted) uppercase">
+        {label}
+      </p>
+    </div>
+  )
+}
+
 export function ConstructionSection() {
   const t = useTranslations('construction')
   const features = t.raw('features') as string[]
-  const stats = t.raw('stats') as { value: string; label: string }[]
+  const stats = t.raw('stats') as { value: string; suffix: string; label: string }[]
   const [current, setCurrent] = useState(0)
+  const [statsRef, isStatsInView] = useInView()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,7 +72,7 @@ export function ConstructionSection() {
               {t('title')}
             </h2>
             <div className="bg-gold mb-6 h-px w-12" />
-            <p className="mb-5 lg:mb-8 max-w-[480px] text-[0.95rem] lg:text-[1.05rem] leading-relaxed text-(--text-muted)">
+            <p className="mb-5 lg:mb-8 max-w-120 text-[0.95rem] lg:text-[1.05rem] leading-relaxed text-(--text-muted)">
               {t('description')}
             </p>
 
@@ -66,17 +85,10 @@ export function ConstructionSection() {
               ))}
             </ul>
 
-            <div className="border-t border-(--border-subtle) pt-8">
+            <div className="border-t border-(--border-subtle) pt-8" ref={statsRef}>
               <div className="flex gap-6 lg:gap-10">
                 {stats.map((stat, i) => (
-                  <div key={i}>
-                    <p className="text-gold text-[clamp(1.5rem,2.5vw,2rem)] font-bold leading-none">
-                      {stat.value}
-                    </p>
-                    <p className="mt-1 text-xs tracking-wide text-(--text-muted) uppercase">
-                      {stat.label}
-                    </p>
-                  </div>
+                  <StatCounter key={i} value={stat.value} suffix={stat.suffix} label={stat.label} isInView={isStatsInView} />
                 ))}
               </div>
             </div>

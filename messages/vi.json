@@ -63,9 +63,9 @@
       "Cải tạo & sửa chữa công trình"
     ],
     "stats": [
-      { "value": "50+", "label": "Dự án hoàn thành" },
-      { "value": "10+", "label": "Năm kinh nghiệm" },
-      { "value": "100%", "label": "Đúng tiến độ" }
+      { "value": "50", "suffix": "+", "label": "Dự án hoàn thành" },
+      { "value": "10", "suffix": "+", "label": "Năm kinh nghiệm" },
+      { "value": "100", "suffix": "%", "label": "Đúng tiến độ" }
     ]
   },
   "pricing": {
