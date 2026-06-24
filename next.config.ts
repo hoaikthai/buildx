@@ -2,7 +2,6 @@ import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
-const basePath = process.env.NODE_ENV === 'production' ? '/buildx' : ''
 
 const nextConfig: NextConfig = {
   typescript: {
@@ -15,8 +14,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath,
-  assetPrefix: basePath,
 }
 
 export default withNextIntl(nextConfig)
