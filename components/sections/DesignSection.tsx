@@ -14,7 +14,7 @@ const CARD_IMAGES = [
 
 export function DesignSection() {
   const t = useTranslations('design')
-  const services = t.raw('services') as { name: string; description: string }[]
+  const services = t.raw('services') as string[]
   const [hovered, setHovered] = useState<number | null>(null)
 
   return (
@@ -25,7 +25,7 @@ export function DesignSection() {
       <div className="mx-auto w-full max-w-7xl px-8 pt-8 sm:pt-20 pb-8 md:px-16">
         <AnimatedText>
           <p className="text-gold mb-4 text-xs font-bold tracking-[5px]">
-            SERVICES
+            SERVICE
           </p>
           <h2
             className="mb-3 leading-none font-bold text-(--text-primary)"
@@ -110,17 +110,11 @@ export function DesignSection() {
                 }}
               >
                 <h3
-                  className="mb-4 leading-tight font-bold whitespace-nowrap text-white"
+                  className="leading-tight font-bold whitespace-nowrap text-white"
                   style={{ fontSize: 'clamp(1.2rem, 2vw, 1.6rem)' }}
                 >
-                  {service.name}
+                  {service}
                 </h3>
-                <p
-                  className="max-w-[320px] leading-relaxed text-white/75"
-                  style={{ fontSize: '0.9rem' }}
-                >
-                  {service.description}
-                </p>
               </div>
             </div>
           )

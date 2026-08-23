@@ -216,12 +216,13 @@ export function PricingSection() {
           })}
         </div>
 
-        {/* BIM note — always rendered to reserve space, hidden on design tab */}
+        {/* Note — content depends on active tab */}
         <div
-          className={`border-gold/30 bg-gold/40 mx-auto mt-[clamp(0.5rem,3vh,1.5rem)] max-w-xl rounded-xl border p-[clamp(0.75rem,1.5vh,1.25rem)] transition-opacity duration-300 ${tab === 'bim' ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+          className="border-gold/30 bg-gold/40 mx-auto mt-[clamp(0.5rem,3vh,1.5rem)] max-w-xl rounded-xl border p-[clamp(0.75rem,1.5vh,1.25rem)] transition-opacity duration-300"
+          style={{ opacity: cardsVisible ? 1 : 0 }}
         >
           <ul className="space-y-1.5">
-            {(t.raw('bim_note_items') as string[]).map((item, i) => (
+            {(t.raw(tab === 'design' ? 'design_note_items' : 'bim_note_items') as string[]).map((item, i) => (
               <li
                 key={i}
                 className="flex items-start gap-2 text-sm text-(--text-muted)"

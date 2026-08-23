@@ -4,6 +4,7 @@ import { AnimatedText } from '@/components/ui/AnimatedText'
 import { FacebookIcon } from '@/components/icons/FacebookIcon'
 import { YouTubeIcon } from '@/components/icons/YouTubeIcon'
 import { TikTokIcon } from '@/components/icons/TikTokIcon'
+import { ZaloIcon } from '@/components/icons/ZaloIcon'
 
 export function ContactSection() {
   const t = useTranslations('contact')
@@ -64,6 +65,7 @@ export function ContactSection() {
                     { label: 'Facebook', href: 'https://facebook.com/buildx', icon: FacebookIcon },
                     { label: 'YouTube', href: 'https://youtube.com/@buildxvn', icon: YouTubeIcon },
                     { label: 'TikTok', href: 'https://tiktok.com/@buildxvn', icon: TikTokIcon },
+                    { label: 'Zalo', href: 'https://zalo.me/02363797939', icon: ZaloIcon },
                   ].map(({ label, href, icon: Icon }) => (
                     <a
                       key={label}

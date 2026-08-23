@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server'
 import { Navbar } from '@/components/layout/Navbar'
 import { SideNav } from '@/components/layout/SideNav'
+import { ScrollSnapController } from '@/components/layout/ScrollSnapController'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { AboutSection } from '@/components/sections/AboutSection'
 import { BimSection } from '@/components/sections/BimSection'
@@ -21,6 +22,7 @@ export default async function HomePage({ params }: Props) {
       {/* Fixed elements that sit above the scroll container */}
       <Navbar />
       <SideNav />
+      <ScrollSnapController />
 
       {/* Snap container — the actual scroll surface */}
       <div className="snap-container">

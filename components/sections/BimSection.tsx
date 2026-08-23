@@ -66,7 +66,7 @@ export function BimSection() {
       <div className="relative mx-auto w-full max-w-7xl px-8 pt-4 pb-4 md:px-16">
         <AnimatedText>
           <p className="text-gold mb-2 text-xs font-bold tracking-[5px]">
-            BIM SOLUTIONS
+            SERVICE
           </p>
           <h2
             className="mb-3 leading-none font-bold text-(--text-primary)"
@@ -87,6 +87,14 @@ export function BimSection() {
           >
             {t('description')}
           </p>
+          <a
+            href="https://autode.sk/45L9Jl6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gold mb-4 inline-block px-5 py-2.5 text-xs font-bold tracking-[2px] text-white transition-opacity hover:opacity-90"
+          >
+            {t('cta').toUpperCase()} »
+          </a>
         </AnimatedText>
       </div>
 

@@ -32,36 +32,26 @@ export function AboutSection() {
               {t('title')}
             </h2>
             <div className="bg-gold mb-4 h-px w-12" />
-            <p
-              className="mb-10 leading-relaxed text-(--text-muted)"
-              style={{ fontSize: '1rem' }}
-            >
-              {t('headline')}
-            </p>
-            <div className="space-y-8">
-              <div>
-                <p className="text-gold mb-3 text-xs font-bold tracking-[4px]">
-                  {t('vision_label').toUpperCase()}
-                </p>
-                <p
-                  className="leading-relaxed text-(--text-muted)"
-                  style={{ fontSize: '1rem' }}
-                >
-                  {t('vision')}
-                </p>
-              </div>
-              <div>
-                <p className="text-gold mb-3 text-xs font-bold tracking-[4px]">
-                  {t('mission_label').toUpperCase()}
-                </p>
-                <p
-                  className="leading-relaxed text-(--text-muted)"
-                  style={{ fontSize: '1rem' }}
-                >
-                  {t('mission')}
-                </p>
-              </div>
+            <div className="space-y-6">
+              <p
+                className="leading-relaxed text-(--text-muted)"
+                style={{ fontSize: '1rem' }}
+              >
+                {t('description_1')}
+              </p>
+              <p
+                className="leading-relaxed text-(--text-muted)"
+                style={{ fontSize: '1rem' }}
+              >
+                {t('description_2')}
+              </p>
             </div>
+            <a
+              href="#bim"
+              className="bg-gold mt-8 inline-block px-8 py-4 text-sm font-bold tracking-[2px] text-white transition-opacity hover:opacity-90"
+            >
+              {t('cta').toUpperCase()} »
+            </a>
           </AnimatedText>
 
           <AnimatedText delay={0.2} className="hidden lg:block">

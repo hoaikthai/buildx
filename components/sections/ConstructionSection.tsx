@@ -66,7 +66,7 @@ export function ConstructionSection() {
 
           <AnimatedText className="flex flex-col justify-center px-6 py-5 lg:px-16 lg:py-10">
             <p className="text-gold mb-4 text-xs font-bold tracking-[5px]">
-              CONSTRUCTION
+              SERVICE
             </p>
             <h2 className="mb-4 lg:mb-6 text-[clamp(1.8rem,4.5vw,4rem)] leading-none font-bold text-(--text-primary)">
               {t('title')}

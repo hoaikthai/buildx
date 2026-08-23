@@ -12,45 +12,32 @@
     "cta": "Explore our services"
   },
   "about": {
-    "headline": "In a rapidly transforming construction industry, we believe the future of every project lies not merely in steel and concrete, but originates from precise, intelligent, data-rich digital models.",
     "title": "About Us",
-    "vision_label": "Vision",
-    "vision": "To become Vietnam's most trusted partner in creating sustainable living and working spaces, built on superior BIM capabilities, innovative architectural-interior design, and quality construction.",
-    "mission_label": "Mission",
-    "mission": "BuildX continuously learns and innovates to deliver lasting value to clients and the community through construction, architectural, and interior projects."
+    "description_1": "At BuildX, we hold firm to our core values: optimal, aesthetic design, technically precise construction, and quality assurance for every real-world project.",
+    "description_2": "But amid the construction industry's strong digital transformation, BuildX believes the true value of every project lies not only in steel and concrete, but originates from precise, intelligent, data-rich digital models. All project information is fully integrated into the 3D model, letting you access, manage, and leverage information anytime, anywhere on an online platform, eliminating dependence on traditional paper records.",
+    "cta": "View more"
   },
   "bim": {
     "title": "BIM Solutions",
-    "subtitle": "Smart design & construction solutions with BIM technology at BuildX",
-    "description": "At BuildX, we apply BIM (Building Information Modeling) to manage the entire lifecycle of a project — from design and construction to operations.",
+    "subtitle": "Smart design & construction management solutions with BIM technology at BuildX",
+    "description": "You don't just own a physical building — you also hold a complete \"digital twin\". This is a fully integrated data system covering architecture, structure, and MEP, making it easy, accurate, and cost-effective to manage and retrieve the project's data in the future.",
     "features": [
-      "3D modeling of architecture, structure, and MEPF",
-      "Quantity extraction",
-      "3D clash detection",
+      "Multi-disciplinary 3D modeling (LOD 300-400)",
+      "Quantity takeoff & cost estimation optimization",
+      "Clash detection & design coordination",
       "Construction methodology planning",
-      "BIM4D construction sequencing"
-    ]
+      "Construction sequence simulation"
+    ],
+    "cta": "Explore sample model"
   },
   "design": {
     "title": "Design & Consulting",
-    "description": "BUILDX is proud to offer a wide range of high-quality services designed to meet the diverse needs of our clients.",
+    "description": "At BuildX, every design solution is not just aesthetic creativity but the optimal answer to technical and functional challenges. We provide consulting based on real-world data and intuitive 3D simulation, helping you bring your dream living space to life with absolute precision from the very first idea.",
     "services": [
-      {
-        "name": "Architectural Design",
-        "description": "Creative architectural solutions tailored to each space and need."
-      },
-      {
-        "name": "Structural Design",
-        "description": "Safe, durable, and cost-optimized structural engineering."
-      },
-      {
-        "name": "Interior Design",
-        "description": "Modern, refined, and cohesive interior spaces."
-      },
-      {
-        "name": "Exterior Design",
-        "description": "Impressive exteriors that create a unique identity for each project."
-      }
+      "Office building projects",
+      "Apartment & hotel building projects",
+      "Villa projects",
+      "Residential home projects"
     ]
   },
   "construction": {
@@ -64,8 +51,8 @@
     ],
     "stats": [
       { "value": "50", "suffix": "+", "label": "Projects Completed" },
-      { "value": "10", "suffix": "+", "label": "Years Experience" },
-      { "value": "100", "suffix": "%", "label": "On-time Delivery" }
+      { "value": "22", "suffix": "+", "label": "Years Experience" },
+      { "value": "100", "suffix": "+", "label": "Workforce" }
     ]
   },
   "pricing": {
@@ -75,6 +62,11 @@
     "bim_tab": "BIM",
     "unit": "VND/m²",
     "includes": "Includes",
+    "design_note_items": [
+      "Unit price applies to residential homes, offices, and hotels.",
+      "For high-demand projects such as villas, the unit price will increase by 20-30%.",
+      "Small, complex, or urgent projects → separate quote."
+    ],
     "design_packages": [
       {
         "name": "Package 1",

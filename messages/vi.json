@@ -12,45 +12,32 @@
     "cta": "Khám phá dịch vụ"
   },
   "about": {
-    "headline": "Trong một ngành xây dựng đang chuyển mình mạnh mẽ, chúng tôi tin rằng tương lai của mọi công trình không chỉ nằm ở thép và bê tông mà khởi nguồn từ những mô hình số chính xác, thông minh và giàu dữ liệu.",
     "title": "Giới thiệu",
-    "vision_label": "Tầm nhìn",
-    "vision": "Trở thành đối tác uy tín hàng đầu Việt Nam trong việc kiến tạo không gian sống và làm việc bền vững, dựa trên năng lực BIM vượt trội, thiết kế kiến trúc-nội thất sáng tạo và thi công chuẩn mực.",
-    "mission_label": "Sứ mệnh",
-    "mission": "BuildX không ngừng học hỏi, đổi mới để mang lại giá trị bền vững cho khách hàng và cộng đồng thông qua các dự án xây dựng, kiến trúc và nội thất."
+    "description_1": "Tại BuildX, chúng tôi kiên trì với giá trị cốt lõi: Thiết kế tối ưu và thẩm mỹ, thi công đúng kỹ thuật và đảm bảo chất lượng cho từng công trình thực tế.",
+    "description_2": "Nhưng trong bối cảnh ngành xây dựng đang chuyển dịch số mạnh mẽ, BuildX tin rằng giá trị thực sự của mỗi công trình không chỉ nằm ở bê tông cốt thép, mà khởi nguồn từ những mô hình số chính xác, thông minh và giàu dữ liệu. Toàn bộ thông tin công trình được tích hợp trọn vẹn trên mô hình 3D, giúp bạn dễ dàng truy cập, quản lý và khai thác thông tin mọi lúc mọi nơi trên nền tảng trực tuyến, từ đó loại bỏ hoàn toàn sự phụ thuộc vào hồ sơ giấy truyền thống.",
+    "cta": "Xem thêm"
   },
   "bim": {
     "title": "Giải pháp BIM",
-    "subtitle": "Giải pháp thiết kế & thi công thông minh với công nghệ BIM tại BuildX",
-    "description": "Tại BuildX, chúng tôi ứng dụng BIM (Building Information Modeling) để quản lý toàn bộ vòng đời công trình — từ thiết kế, thi công đến vận hành.",
+    "subtitle": "Giải pháp thiết kế & quản lý thi công thông minh với công nghệ BIM tại BuildX",
+    "description": "Bạn không chỉ sở hữu một công trình thực tế mà còn nắm giữ \"bản sao số\" hoàn chỉnh. Đây là hệ thống dữ liệu tích hợp toàn diện về kiến trúc, kết cấu và hệ thống cơ điện giúp việc quản lý và truy xuất dữ liệu cần thiết của công trình trong tương lai trở nên dễ dàng, chính xác và tiết kiệm chi phí.",
     "features": [
-      "Mô hình hóa 3D kiến trúc, kết cấu và MEPF",
-      "Trích xuất khối lượng",
-      "Phối hợp xung đột 3D",
-      "Biện pháp thi công",
-      "Trình tự thi công BIM4D"
-    ]
+      "Mô hình hóa 3D đa bộ môn (LOD 300-400)",
+      "Tối ưu hóa khối lượng & dự toán",
+      "Kiểm tra xung đột & Phối hợp thiết kế",
+      "Lập biện pháp thi công",
+      "Mô phỏng trình tự thi công"
+    ],
+    "cta": "Khám phá mô hình mẫu"
   },
   "design": {
     "title": "Thiết kế & Tư vấn",
-    "description": "BUILDX tự hào cung cấp một loạt các dịch vụ chất lượng cao, được thiết kế để đáp ứng nhu cầu đa dạng của khách hàng.",
+    "description": "Tại BuildX, mỗi phương án thiết kế không chỉ là sự sáng tạo về thẩm mỹ mà còn là lời giải tối ưu cho bài toán kỹ thuật và công năng. Chúng tôi tư vấn dựa trên dữ liệu thực tế và mô phỏng 3D trực quan, giúp bạn hiện thực hóa không gian sống mơ ước với sự chính xác tuyệt đối ngay từ khâu ý tưởng.",
     "services": [
-      {
-        "name": "Thiết kế Kiến trúc",
-        "description": "Giải pháp kiến trúc sáng tạo, phù hợp với từng không gian và nhu cầu."
-      },
-      {
-        "name": "Thiết kế Kết cấu",
-        "description": "Thiết kế kết cấu công trình an toàn, bền vững và tối ưu chi phí."
-      },
-      {
-        "name": "Thiết kế Nội thất",
-        "description": "Không gian nội thất hiện đại, tinh tế và đồng bộ."
-      },
-      {
-        "name": "Thiết kế Ngoại thất",
-        "description": "Ngoại thất ấn tượng, tạo dấu ấn riêng cho từng công trình."
-      }
+      "Dự án tòa nhà văn phòng",
+      "Dự án tòa nhà căn hộ, khách sạn",
+      "Dự án villa, biệt thự",
+      "Dự án ở gia đình"
     ]
   },
   "construction": {
@@ -64,8 +51,8 @@
     ],
     "stats": [
       { "value": "50", "suffix": "+", "label": "Dự án hoàn thành" },
-      { "value": "10", "suffix": "+", "label": "Năm kinh nghiệm" },
-      { "value": "100", "suffix": "%", "label": "Đúng tiến độ" }
+      { "value": "22", "suffix": "+", "label": "Năm kinh nghiệm" },
+      { "value": "100", "suffix": "+", "label": "Nhân công" }
     ]
   },
   "pricing": {
@@ -75,6 +62,11 @@
     "bim_tab": "BIM",
     "unit": "VND/m²",
     "includes": "Bao gồm",
+    "design_note_items": [
+      "Đơn giá áp dụng cho nhà ở dân dụng, văn phòng, khách sạn.",
+      "Đối với những công trình có yêu cầu cao như biệt thự, villa, đơn giá sẽ tăng thêm 20-30%.",
+      "Công trình nhỏ, phức tạp hoặc yêu cầu gấp → báo giá riêng."
+    ],
     "design_packages": [
       {
         "name": "Gói 1",
